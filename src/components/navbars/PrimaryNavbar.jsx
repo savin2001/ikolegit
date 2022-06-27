@@ -13,20 +13,20 @@ const PrimaryNavbar = () => {
 
     return (
         <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-50 bg-base-100 w-full">
-            <div className="navbar container mx-auto">
-                <div className="navbar-start">
+            <div className="navbar max-w-7xl mx-auto">
+                <div className="navbar-start flex-auto w-1/2">
                     <a className="btn btn-ghost normal-case text-2xl">
                         <span>Iko</span>
                         <span className="text-primary">Legit</span>
                     </a>
                 </div>
 
-                <div className="navbar-end">
+                <div className="navbar-end  flex-auto  w-1/2">
                     <label className="swap swap-rotate">
                         <input type="checkbox" />
                         <div className="swap-on" onClick={handleOpenSearch}>
                             {/* <button
-                                className="btn btn-ghost btn-circle"
+                                class="btn btn-ghost btn-circle"
                                 // 
                             > */}
                             <AiOutlineClose className="h-5 w-5" />
@@ -34,7 +34,7 @@ const PrimaryNavbar = () => {
                         </div>
                         <div className="swap-off" onClick={handleCloseSearch}>
                             {/* <button
-                                className="btn btn-ghost btn-circle"
+                                class="btn btn-ghost btn-circle"
                                 // onClick={handleOpenSearch}
                             > */}
                             <AiOutlineSearch className="h-5 w-5" />
@@ -86,11 +86,11 @@ const PrimaryNavbar = () => {
                             </div>
                         </div>
                     </div>
-                    <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
+                    <button class="btn btn-ghost btn-circle">
+                        <div class="indicator">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
+                                class="h-5 w-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -102,7 +102,7 @@ const PrimaryNavbar = () => {
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                                 />
                             </svg>
-                            <span className="badge badge-sm badge-primary indicator-item">
+                            <span class="badge badge-sm badge-primary indicator-item">
                                 2
                             </span>
                         </div>

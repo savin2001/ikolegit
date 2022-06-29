@@ -4,52 +4,52 @@ import { AiOutlineMenu } from "react-icons/ai";
 const slides = [
     {
         id: 0,
-        title: "Lorem ipsum dolor sit amet",
+        title: "Amazon Fire TV 43 inch smart TV",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
+            "Amazon Fire TV 4-Series comes with a 1-year limited warranty and a 30-day Amazon Device return policy.",
         img: "https://m.media-amazon.com/images/I/51EPd38RHQL._AC_SL1000_.jpg",
     },
     {
         id: 1,
-        title: "Lorem ipsum dolor sit amet",
+        title: "iPhone XR, 64GB, Black",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
-        img: "https://m.media-amazon.com/images/I/61V49wCBDtL._AC_SL1500_.jpg",
+            "The product is refurbished, is fully functional and in excellent condition. Backed by the 90-day Amazon Renewed Guarantee.",
+        img: "https://m.media-amazon.com/images/I/717KHGCJ6eL._AC_SL1500_.jpg",
     },
     {
         id: 2,
-        title: "Lorem ipsum dolor sit amet",
+        title: "Acoustic Bluetooth Speaker",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
-        img: "https://m.media-amazon.com/images/I/51EPd38RHQL._AC_SL1000_.jpg",
+            "Enhanced bass boost design, front panel controls, illuminated display, bass, treble and main volume controls, stereo auxiliary input, pro surround function.",
+        img: "https://m.media-amazon.com/images/I/51M5O+wl7dL._AC_SL1000_.jpg",
     },
     {
         id: 3,
-        title: "Lorem ipsum dolor sit amet",
+        title: "Computer Intel Core-i5",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
+            "2022 Newest HP 15.6 HD Laptop Computer, Intel Core-i5 Quad-Core N4120(up to 2.6GHz), 8GB DDR4 RAM, 128GB SSD, HDMI, Bluetooth, Webcam, USB-C, RJ45 Ethernet, Windows 11S, Silver, JVQ Mousepad",
         img: "https://m.media-amazon.com/images/I/71IyteItZhL._AC_SL1500_.jpg",
     },
     {
         id: 4,
-        title: "Lorem ipsum dolor sit amet",
+        title: "EVGA Z12 RGB Gaming Keyboard",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
+            "RGB Backlit LED, 5 Programmable Macro Keys, Dedicated Media Keys, Water Resistant, 834-W0-12US-KR",
         img: "https://m.media-amazon.com/images/I/61mko8+Uf6L._AC_SL1500_.jpg",
     },
     {
         id: 5,
-        title: "Lorem ipsum dolor sit amet",
+        title: "LED Wireless Mouse",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
+            "Uiosmuph G12 Slim Rechargeable Wireless Silent Mouse, 2.4G Portable USB Optical Wireless Computer Mice with USB Receiver and Type C Adapter (Matte Black)",
         img: "https://m.media-amazon.com/images/I/51KCV2cdDsS._AC_SL1500_.jpg",
     },
     {
         id: 6,
-        title: "Lorem ipsum dolor sit amet",
+        title: "Sony Wired Headphones",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex exercitationem, fugiat repellat dicta voluptatibus laboriosam!",
-        img: "https://m.media-amazon.com/images/I/51-+O3-wFxL._AC_SL1000_.jpg",
+            "Lightweight 1.38 in neodymium dynamic drivers deliver a punchy, rhythmic response to even the most demanding tracks. Driver Unit: Dome type",
+        img: "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhlYWRwaG9uZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
     },
 ];
 const Home = () => {
@@ -120,10 +120,14 @@ const Home = () => {
                         <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
                             {slides.map((slide) => (
                                 <>
-                                    <div className="carousel-item w-64">
-                                        <div id={`latest${slide.id}`}></div>
+                                    <div
+                                        className="carousel-item w-64"
+                                        key={slide.id}
+                                    >
+                                        <div></div>
                                         <img
-                                            src="https://api.lorem.space/image/furniture?w=250&h=180&hash=8B7BCDC2"
+                                            src={slide.img}
+                                            alt={slide.title}
                                             className="rounded-box"
                                         />
                                     </div>
@@ -133,35 +137,46 @@ const Home = () => {
                     </div>
                     <div className="mx-auto sm:hidden md:block lg:block">
                         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-                            {Array.from(Array(4)).map((index) => (
+                            {slides.map((slide) => (
                                 <div
-                                    className="card w-64 bg-base-100 shadow-xl m-5"
-                                    key={index}
+                                    className="card w-fit bg-base-100 shadow-xl m-5"
+                                    key={slide.id}
                                 >
                                     <figure>
                                         <img
-                                            src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                            alt="Shoes"
+                                            src={slide.img}
+                                            alt={slide.title}
+
                                         />
                                     </figure>
                                     <div className="card-body">
                                         <h2 className="card-title">
-                                            Shoes!
+                                            {slide.title}
                                             <div className="badge badge-primary">
                                                 NEW
                                             </div>
                                         </h2>
-                                        <p>
-                                            If a dog chews shoes whose shoes
-                                            does he choose?
-                                        </p>
-                                        <div className="card-actions justify-end">
-                                            <div className="badge badge-outline">
-                                                Fashion
+                                        <div className="justify-start">
+                                            <div
+                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                            >
+                                                Electronics
                                             </div>
-                                            <div className="badge badge-outline">
+                                            <div
+                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                            >
                                                 Products
                                             </div>
+                                        </div>
+                                        {/* <p>{slide.description}</p> */}
+                                        <div className="card-actions">
+                                            <button class="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -194,44 +209,50 @@ const Home = () => {
                                                 Popular products
                                             </h3>
                                             <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                {Array.from(Array(4)).map(
-                                                    (index) => (
-                                                        <div
-                                                            className="card w-fit bg-base-100 shadow-xl m-5"
-                                                            key={index}
-                                                        >
-                                                            <figure>
-                                                                <img
-                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                    alt="Shoes"
-                                                                />
-                                                            </figure>
-                                                            <div className="card-body">
-                                                                <h2 className="card-title">
-                                                                    Shoes!
-                                                                    <div className="badge badge-primary">
-                                                                        NEW
-                                                                    </div>
-                                                                </h2>
-                                                                <p>
-                                                                    If a dog
-                                                                    chews shoes
-                                                                    whose shoes
-                                                                    does he
-                                                                    choose?
-                                                                </p>
-                                                                <div className="card-actions justify-end">
-                                                                    <div className="badge badge-outline">
-                                                                        Fashion
-                                                                    </div>
-                                                                    <div className="badge badge-outline">
-                                                                        Products
-                                                                    </div>
+                                                {slides.map((slide) => (
+                                                    <div
+                                                        className="card w-fit bg-base-100 shadow-xl m-5"
+                                                        key={slide.id}
+                                                    >
+                                                        <figure>
+                                                            <img
+                                                                src={slide.img}
+                                                                alt={
+                                                                    slide.title
+                                                                }
+                                                            />
+                                                        </figure>
+                                                        <div className="card-body">
+                                                            <h2 className="card-title">
+                                                                {slide.title}
+                                                            </h2>
+                                                            <div className="justify-start">
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                                >
+                                                                    electronics
+                                                                </div>
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                                >
+                                                                    Products
                                                                 </div>
                                                             </div>
+                                                            <p>
+                                                                {slide.description}
+                                                            </p>
+                                                            <div className="card-actions">
+                                                                <button class="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    )
-                                                )}
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
                                         <div id="phones">

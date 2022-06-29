@@ -19,7 +19,7 @@ const PrimaryNavbar = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-50 bg-base-100 w-full">
+        <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-40 bg-base-100 w-full">
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start flex-auto w-1/2">
                     <a className="btn btn-ghost normal-case text-2xl">

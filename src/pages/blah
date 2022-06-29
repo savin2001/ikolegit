@@ -1,0 +1,380 @@
+<article className="flex-auto w-3/4">
+    <div className="sm:hidden lg:block">
+        <h3 className="lg:text-2xl sm:text-xl text-primary pb-6">
+            Popular products
+        </h3>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="card w-64 bg-base-100 shadow-xl m-5">
+                <figure>
+                    <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Shoes!
+                        <div className="badge badge-primary">
+                            NEW
+                        </div>
+                    </h2>
+                    <p>
+                        If a dog chews shoes whose
+                        shoes does he choose?
+                    </p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">
+                            Fashion
+                        </div>
+                        <div className="badge badge-outline">
+                            Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div className="flex  mt-6 relative">
+        <div className="drawer">
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+                <div className=" flex justify-start ">
+                    <label htmlFor="my-drawer"
+                        className="btn sticky btn-outline border-primary text-primary btn-sm  drawer-button mr-6">
+                        <AiOutlineMenu className="h-5 w-5" />
+                    </label>
+                    <h3 className="lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                        Popular products
+                    </h3>
+                </div>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+                    {Array.from(Array(6)).map(index => (
+                    <div className="card w-64 bg-base-100 shadow-xl m-5">
+                        <figure>
+                            <img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">
+                                Shoes!
+                                <div className="badge badge-primary">
+                                    NEW
+                                </div>
+                            </h2>
+                            <p>
+                                If a dog chews shoes
+                                whose shoes does he
+                                choose?
+                            </p>
+                            <div className="card-actions justify-end">
+                                <div className="badge badge-outline">
+                                    Fashion
+                                </div>
+                                <div className="badge badge-outline">
+                                    Products
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+            </div>
+            <div className="drawer-side">
+                <label htmlFor="my-drawer" className="drawer-overlay" />
+                <ul className="menu p-4 overflow-y-auto w-1/2 bg-base-100 text-base-content">
+                    <h3 className="lg:text-2xl sm:text-xl text-primary">
+                        Categories
+                    </h3>
+                    <li>
+                        <a>Phones</a>
+                    </li>
+                    <li>
+                        <a>Sidebar Item 2</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</article>

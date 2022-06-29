@@ -88,7 +88,7 @@ const Home = () => {
                                     </a>
                                 ) : (
                                     <a
-                                        href={`#slide${slide.id - 1}`}
+                                        href={`#slide1`}
                                         className="btn btn-circle bg-grey shadow-lg btn-disabled"
                                     >
                                         ❮
@@ -108,117 +108,382 @@ const Home = () => {
             </header>
 
             {/* categories section */}
-            <main className="w-full py-9 relative">
+            <main className="w-full relative">
                 <div className="max-w-7xl mx-auto">
                     <div class="divider"></div>
                 </div>
-                <div className="max-w-7xl mx-auto py-9">
+                <div className="max-w-7xl mx-auto py-4  px-6">
                     <h3 className="lg:text-2xl sm:text-xl text-primary text-center mb-6">
                         Latest Products
                     </h3>
-                    <div className="carousel carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
-                        <div
-                            className="carousel-item w-64"
-                            // style={{ width: "256px" }}
-                        >
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=8B7BCDC2"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=500B67FB"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=A89D0DE6"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=225E6693"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=9D9539E7"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=BDC01094"
-                                className="rounded-box"
-                            />
-                        </div>
-                        <div className="carousel-item  w-64">
-                            <img
-                                src="https://api.lorem.space/image/furniture?w=250&h=180&hash=7F5AE56A"
-                                className="rounded-box"
-                            />
+                    <div className="sm:block md:hidden lg:hidden">
+                        <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
+                            {slides.map((slide) => (
+                                <>
+                                    <div className="carousel-item w-64">
+                                        <div id={`latest${slide.id}`}></div>
+                                        <img
+                                            src="https://api.lorem.space/image/furniture?w=250&h=180&hash=8B7BCDC2"
+                                            className="rounded-box"
+                                        />
+                                    </div>
+                                </>
+                            ))}
                         </div>
                     </div>
-                </div>
-                <div className="w-full bg-secondary  py-9">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-row w-full px-6">
-                            <aside className="flex-auto lg:w-1/4 sm:hidden lg:block">
-                                <h3 className="lg:text-2xl sm:text-xl text-primary">
-                                    Categories
-                                </h3>
-                                <div className="flex flex-column mt-6">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing.
-                                </div>
-                            </aside>
-                            <div class="divider lg:divider-horizontal"></div>
-                            <article className="flex-auto w-3/4">
-                                <h3 className="lg:text-2xl sm:text-xl text-primary sm:hidden lg:block">
-                                    Popular products
-                                </h3>
-                                <div className="flex  mt-6 relative">
-                                    <div className="drawer sticky overflow-hidden lg:hidden">
-                                        <input
-                                            id="my-drawer"
-                                            type="checkbox"
-                                            className="drawer-toggle"
+                    <div className="mx-auto sm:hidden md:block lg:block">
+                        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                            {Array.from(Array(4)).map((index) => (
+                                <div
+                                    className="card w-64 bg-base-100 shadow-xl m-5"
+                                    key={index}
+                                >
+                                    <figure>
+                                        <img
+                                            src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                            alt="Shoes"
                                         />
-                                        <div className="drawer-content flex justify-start ">
-                                            <label
-                                                htmlFor="my-drawer"
-                                                className="btn btn-outline border-primary text-primary btn-sm  drawer-button mr-6"
-                                            >
-                                                <AiOutlineMenu className="h-5 w-5" />
-                                            </label>
-                                            <h3 className="lg:text-2xl sm:text-xl text-primary">
-                                                Popular products
-                                            </h3>
-                                        </div>
-                                        <div className="drawer-side">
-                                            <label
-                                                htmlFor="my-drawer"
-                                                className="drawer-overlay"
-                                            />
-                                            <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-                                                <h3 className="lg:text-2xl sm:text-xl text-primary">
-                                                    Categories
-                                                </h3>
-                                                <li>
-                                                    <a>Sidebar Item 1</a>
-                                                </li>
-                                                <li>
-                                                    <a>Sidebar Item 2</a>
-                                                </li>
-                                            </ul>
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title">
+                                            Shoes!
+                                            <div className="badge badge-primary">
+                                                NEW
+                                            </div>
+                                        </h2>
+                                        <p>
+                                            If a dog chews shoes whose shoes
+                                            does he choose?
+                                        </p>
+                                        <div className="card-actions justify-end">
+                                            <div className="badge badge-outline">
+                                                Fashion
+                                            </div>
+                                            <div className="badge badge-outline">
+                                                Products
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </article>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="hidden lg:block"></div>
+                </div>
+                <div className="w-full bg-secondary  py-4">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="flex  mt-6 relative">
+                            <div className="drawer">
+                                <input
+                                    id="my-drawer"
+                                    type="checkbox"
+                                    className="drawer-toggle"
+                                />
+                                <div className="drawer-content relative">
+                                    <div className=" flex justify-start sticky top-6 left-0 z-50 ">
+                                        <label
+                                            htmlFor="my-drawer"
+                                            className="btn btn-primary text-white rounded-full btn-md sm:btn-sm drawer-button"
+                                        >
+                                            <AiOutlineMenu className="h-5 w-5 rounded-full" />
+                                        </label>
+                                    </div>
+                                    <div className="">
+                                        <div id="popular">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Popular products
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div
+                                                            className="card w-fit bg-base-100 shadow-xl m-5"
+                                                            key={index}
+                                                        >
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div id="phones">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Phones and Tablets
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div id="laptops">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Laptops
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div id="comps">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Computers and Monitors
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div id="access">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Computer Accessories
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div id="tvs">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                TVs and Sound Systems
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {Array.from(Array(4)).map(
+                                                    (index) => (
+                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
+                                                            <figure>
+                                                                <img
+                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
+                                                                    alt="Shoes"
+                                                                />
+                                                            </figure>
+                                                            <div className="card-body">
+                                                                <h2 className="card-title">
+                                                                    Shoes!
+                                                                    <div className="badge badge-primary">
+                                                                        NEW
+                                                                    </div>
+                                                                </h2>
+                                                                <p>
+                                                                    If a dog
+                                                                    chews shoes
+                                                                    whose shoes
+                                                                    does he
+                                                                    choose?
+                                                                </p>
+                                                                <div className="card-actions justify-end">
+                                                                    <div className="badge badge-outline">
+                                                                        Fashion
+                                                                    </div>
+                                                                    <div className="badge badge-outline">
+                                                                        Products
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="drawer-side">
+                                    <label
+                                        htmlFor="my-drawer"
+                                        className="drawer-overlay"
+                                    />
+                                    <ul className="menu p-4 overflow-y-auto lg:w-1/5 sm:w-1/2 bg-base-100 text-base-content">
+                                        <h3 className="lg:text-2xl sm:text-xl text-primary">
+                                            Categories
+                                        </h3>
+                                        <li>
+                                            <a href="#popular">Popular</a>
+                                        </li>
+                                        <li>
+                                            <a href="#phones">
+                                                Phones and Tablets
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#laptops">Laptops</a>
+                                        </li>
+                                        <li>
+                                            <a href="#comps">
+                                                Computers and Monitors
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#access">
+                                                Computer Accessories
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#tvs">
+                                                TVs and Sound Systems
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -477,6 +477,9 @@ const Home = () => {
                                             Categories
                                         </h3>
                                         <li>
+                                            <a href="#" className="text-primary">All categories</a>
+                                        </li>
+                                        <li>
                                             <a href="#popular">Popular</a>
                                         </li>
                                         <li>

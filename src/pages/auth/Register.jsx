@@ -5,7 +5,7 @@ const Register = () => {
     return (
         <div className="container mx-auto">
             <div className="min-h-full max-w-7xl flex items-center justify-center py-12 lg:px-8">
-                <div className="mx-3 sm:w-full md:max-w-md w-full space-y-8">
+                <div className="mx-3 sm:w-full  md:max-w-md w-full space-y-8">
                     <div>
                         <img
                             className="mx-auto h-12 w-auto"

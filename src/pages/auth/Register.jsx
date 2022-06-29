@@ -82,10 +82,11 @@ const Register = () => {
                                 <label htmlFor="phone" className="sr-only">
                                     Phone number
                                 </label>
+                                
                                 <input
                                     id="phone"
                                     name="phone"
-                                    type="phone"
+                                    type="tel"
                                     required
                                     placeholder="Phone number"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"

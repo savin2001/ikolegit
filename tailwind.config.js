@@ -26,9 +26,7 @@ module.exports = {
                     neutral: "#757575",
                     "base-100": "#ffffff",
                 },
-            },
-            "dark",
-            "black",
+            }
         ],
     },
 };

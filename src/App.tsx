@@ -1,6 +1,9 @@
 import { useState } from "react";
-import PrimaryNavbar from "./components/navbars/PrimaryNavbar";
-import Home from "./pages/Home"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home.jsx";
+import Login from "./pages/auth/Login.jsx";
+import Register from "./pages/auth/Register.jsx";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -8,8 +11,13 @@ function App() {
     return (
         <div className="App">
             <div className="bg-base-100 w-full mx-auto">
-                <PrimaryNavbar />
-                <Home/>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                    </Routes>
+                </Router>
             </div>
         </div>
     );

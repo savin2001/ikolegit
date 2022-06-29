@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import {
+    AiOutlineSearch,
+    AiOutlineClose,
+    AiOutlineMenu,
+    AiOutlineShoppingCart,
+    AiOutlineBell
+} from "react-icons/ai";
 
 const PrimaryNavbar = () => {
     const [open, setOpen] = useState(false);
@@ -16,29 +23,24 @@ const PrimaryNavbar = () => {
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start flex-auto w-1/2">
                     <a className="btn btn-ghost normal-case text-2xl">
+                        <img
+                            className="mx-auto h-8 w-auto mr-3"
+                            src="https://avatars.dicebear.com/api/identicon/your-custd.svg"
+                            alt="Logo"
+                        />
                         <span>Iko</span>
                         <span className="text-primary">Legit</span>
                     </a>
                 </div>
 
                 <div className="navbar-end  flex-auto  w-1/2">
-                    <label className="swap swap-rotate">
+                    <label className="btn btn-ghost btn-circle swap swap-rotate">
                         <input type="checkbox" />
                         <div className="swap-on" onClick={handleOpenSearch}>
-                            {/* <button
-                                class="btn btn-ghost btn-circle"
-                                // 
-                            > */}
-                            <AiOutlineClose className="h-5 w-5" />
-                            {/* </button> */}
+                            <AiOutlineClose className=" h-5 w-5 lg:h-7 lg:w-7 " />
                         </div>
                         <div className="swap-off" onClick={handleCloseSearch}>
-                            {/* <button
-                                class="btn btn-ghost btn-circle"
-                                // onClick={handleOpenSearch}
-                            > */}
-                            <AiOutlineSearch className="h-5 w-5" />
-                            {/* </button> */}
+                            <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
                         </div>
                     </label>
 
@@ -48,20 +50,7 @@ const PrimaryNavbar = () => {
                             className="btn btn-ghost btn-circle"
                         >
                             <div className="indicator">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                    />
-                                </svg>
+                                <AiOutlineShoppingCart className=" h-5 w-5 lg:h-7 lg:w-7" />
                                 <span className="badge badge-sm badge-primary indicator-item">
                                     8
                                 </span>
@@ -88,20 +77,7 @@ const PrimaryNavbar = () => {
                     </div>
                     <button class="btn btn-ghost btn-circle">
                         <div class="indicator">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                />
-                            </svg>
+                            <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7"/>
                             <span class="badge badge-sm badge-primary indicator-item">
                                 2
                             </span>
@@ -110,28 +86,42 @@ const PrimaryNavbar = () => {
                     <div className="dropdown dropdown-end">
                         <label
                             tabIndex={0}
-                            className="btn btn-ghost btn-circle avatar"
+                            className="btn btn-ghost btn-circle avatar  swap swap-rotate"
                         >
-                            <div className="w-10 rounded-full">
-                                <img src="https://avatars.dicebear.com/api/adventurer/john.svg" />
+                            <input type="checkbox" />
+                            <div className="swap-on">
+                                <AiOutlineMenu className=" h-5 w-5 lg:h-7 lg:w-7" />
+                            </div>
+                            <div className="swap-off">
+                                <AiOutlineMenu className="  h-5 w-5 lg:h-7 lg:w-7" />
                             </div>
                         </label>
                         <ul
                             tabIndex={0}
-                            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
+                                <Link
+                                    to="/login"
+                                    className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                >
+                                    Sign in
+                                    {/* <span className="badge">New</span> */}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/register"
+                                    className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                >
+                                    New customer
+                                </Link>
+                            </li>
+                            {/* <li>
+                                <a className="justify-center font-bold uppercase text-xs hover:text-primary">
+                                    Become a seller
                                 </a>
-                            </li>
-                            <li>
-                                <a>Settings</a>
-                            </li>
-                            <li>
-                                <a>Logout</a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
@@ -142,7 +132,7 @@ const PrimaryNavbar = () => {
                         <div className="form-control">
                             <input
                                 type="text"
-                                placeholder="Search"
+                                placeholder="I am looking for ..."
                                 className="input input-bordered border-primary rounded-full focus:ring-2 focus:ring-inset focus:ring-primary"
                             />
                         </div>

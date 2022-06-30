@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { AiFillLock, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Register = () => {
+    const [email, setEmail] = useState(null);
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [phone, setPhone] = useState(null);
+
     return (
         <div className="container mx-auto">
             <div className="min-h-full max-w-7xl flex items-center justify-center py-12 lg:px-8">
@@ -82,7 +90,7 @@ const Register = () => {
                                 <label htmlFor="phone" className="sr-only">
                                     Phone number
                                 </label>
-                                
+
                                 <input
                                     id="phone"
                                     name="phone"

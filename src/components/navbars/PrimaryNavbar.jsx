@@ -75,10 +75,10 @@ const PrimaryNavbar = () => {
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-ghost btn-circle">
-                        <div class="indicator">
+                    <button className="btn btn-ghost btn-circle">
+                        <div className="indicator">
                             <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7"/>
-                            <span class="badge badge-sm badge-primary indicator-item">
+                            <span className="badge badge-sm badge-primary indicator-item">
                                 2
                             </span>
                         </div>

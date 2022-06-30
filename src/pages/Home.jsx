@@ -1,6 +1,15 @@
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar";
 import { AiOutlineMenu } from "react-icons/ai";
 
+const categories = [
+    { id: "all", name: "All categories" },
+    { id: "latest", name: "Latest" },
+    { id: "popular", name: "Popular" },
+    { id: "phones", name: "Phones and Tablets" },
+    { id: "comps", name: "Computers and Monitors" },
+    { id: "access", name: "Computer Accessories" },
+    { id: "tvs", name: "TVs and Sound Systems" },
+];
 const slides = [
     {
         id: 0,
@@ -110,21 +119,23 @@ const Home = () => {
             {/* categories section */}
             <main className="w-full relative">
                 <div className="max-w-7xl mx-auto">
-                    <div class="divider"></div>
+                    <div className="divider"></div>
                 </div>
                 <div className="max-w-7xl mx-auto py-4  px-6">
                     <h3 className="lg:text-2xl sm:text-xl text-primary text-center mb-6">
-                        Latest Products
+                        Special for you
                     </h3>
                     <div className="sm:block md:hidden lg:hidden">
                         <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
                             {slides.map((slide) => (
                                 <>
                                     <div
-                                        className="carousel-item w-64"
+                                        className="carousel-item w-64 relative"
                                         key={slide.id}
                                     >
-                                        <div></div>
+                                        <div className="absolute">
+                                            <h3></h3>
+                                        </div>
                                         <img
                                             src={slide.img}
                                             alt={slide.title}
@@ -146,16 +157,15 @@ const Home = () => {
                                         <img
                                             src={slide.img}
                                             alt={slide.title}
-
                                         />
                                     </figure>
                                     <div className="card-body">
-                                        <h2 className="card-title">
+                                        <h3 className="card-title">
                                             {slide.title}
-                                            <div className="badge badge-primary">
+                                            <div className="badge badge-primary sm:hidden lg:block">
                                                 NEW
                                             </div>
-                                        </h2>
+                                        </h3>
                                         <div className="justify-start">
                                             <div
                                                 className="badge badge-outline badge-sm text-accent
@@ -173,11 +183,6 @@ const Home = () => {
                                             </div>
                                         </div>
                                         {/* <p>{slide.description}</p> */}
-                                        <div className="card-actions">
-                                            <button class="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                Add to cart
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -188,7 +193,7 @@ const Home = () => {
                 <div className="w-full bg-secondary  py-4">
                     <div className="max-w-7xl mx-auto">
                         <div className="flex  mt-6 relative">
-                            <div className="drawer">
+                            <div className="drawer lg:grid sm:hidden">
                                 <input
                                     id="my-drawer"
                                     type="checkbox"
@@ -204,6 +209,59 @@ const Home = () => {
                                         </label>
                                     </div>
                                     <div className="">
+                                        <div id="latest">
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Latest
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {slides.map((slide) => (
+                                                    <div
+                                                        className="card w-fit bg-base-100 shadow-xl m-5"
+                                                        key={slide.id}
+                                                    >
+                                                        <figure>
+                                                            <img
+                                                                src={slide.img}
+                                                                alt={
+                                                                    slide.title
+                                                                }
+                                                            />
+                                                        </figure>
+                                                        <div className="card-body">
+                                                            <h3 className="card-title">
+                                                                {slide.title}
+                                                            </h3>
+                                                            <div className="justify-start">
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                                >
+                                                                    electronics
+                                                                </div>
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                                >
+                                                                    Products
+                                                                </div>
+                                                            </div>
+                                                            <p>
+                                                                {
+                                                                    slide.description
+                                                                }
+                                                            </p>
+                                                            <div className="card-actions">
+                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
                                         <div id="popular">
                                             <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
                                                 Popular products
@@ -223,9 +281,9 @@ const Home = () => {
                                                             />
                                                         </figure>
                                                         <div className="card-body">
-                                                            <h2 className="card-title">
+                                                            <h3 className="card-title">
                                                                 {slide.title}
-                                                            </h2>
+                                                            </h3>
                                                             <div className="justify-start">
                                                                 <div
                                                                     className="badge badge-outline badge-sm text-accent
@@ -243,10 +301,12 @@ const Home = () => {
                                                                 </div>
                                                             </div>
                                                             <p>
-                                                                {slide.description}
+                                                                {
+                                                                    slide.description
+                                                                }
                                                             </p>
                                                             <div className="card-actions">
-                                                                <button class="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                                     Add to cart
                                                                 </button>
                                                             </div>
@@ -339,132 +399,6 @@ const Home = () => {
                                                 )}
                                             </div>
                                         </div>
-                                        <div id="comps">
-                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                Computers and Monitors
-                                            </h3>
-                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                {Array.from(Array(4)).map(
-                                                    (index) => (
-                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
-                                                            <figure>
-                                                                <img
-                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                    alt="Shoes"
-                                                                />
-                                                            </figure>
-                                                            <div className="card-body">
-                                                                <h2 className="card-title">
-                                                                    Shoes!
-                                                                    <div className="badge badge-primary">
-                                                                        NEW
-                                                                    </div>
-                                                                </h2>
-                                                                <p>
-                                                                    If a dog
-                                                                    chews shoes
-                                                                    whose shoes
-                                                                    does he
-                                                                    choose?
-                                                                </p>
-                                                                <div className="card-actions justify-end">
-                                                                    <div className="badge badge-outline">
-                                                                        Fashion
-                                                                    </div>
-                                                                    <div className="badge badge-outline">
-                                                                        Products
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div id="access">
-                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                Computer Accessories
-                                            </h3>
-                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                {Array.from(Array(4)).map(
-                                                    (index) => (
-                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
-                                                            <figure>
-                                                                <img
-                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                    alt="Shoes"
-                                                                />
-                                                            </figure>
-                                                            <div className="card-body">
-                                                                <h2 className="card-title">
-                                                                    Shoes!
-                                                                    <div className="badge badge-primary">
-                                                                        NEW
-                                                                    </div>
-                                                                </h2>
-                                                                <p>
-                                                                    If a dog
-                                                                    chews shoes
-                                                                    whose shoes
-                                                                    does he
-                                                                    choose?
-                                                                </p>
-                                                                <div className="card-actions justify-end">
-                                                                    <div className="badge badge-outline">
-                                                                        Fashion
-                                                                    </div>
-                                                                    <div className="badge badge-outline">
-                                                                        Products
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div id="tvs">
-                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                TVs and Sound Systems
-                                            </h3>
-                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                {Array.from(Array(4)).map(
-                                                    (index) => (
-                                                        <div className="card w-fit bg-base-100 shadow-xl m-5">
-                                                            <figure>
-                                                                <img
-                                                                    src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                    alt="Shoes"
-                                                                />
-                                                            </figure>
-                                                            <div className="card-body">
-                                                                <h2 className="card-title">
-                                                                    Shoes!
-                                                                    <div className="badge badge-primary">
-                                                                        NEW
-                                                                    </div>
-                                                                </h2>
-                                                                <p>
-                                                                    If a dog
-                                                                    chews shoes
-                                                                    whose shoes
-                                                                    does he
-                                                                    choose?
-                                                                </p>
-                                                                <div className="card-actions justify-end">
-                                                                    <div className="badge badge-outline">
-                                                                        Fashion
-                                                                    </div>
-                                                                    <div className="badge badge-outline">
-                                                                        Products
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                )}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="drawer-side">
@@ -476,36 +410,244 @@ const Home = () => {
                                         <h3 className="lg:text-2xl sm:text-xl text-primary">
                                             Categories
                                         </h3>
-                                        <li>
-                                            <a href="#" className="text-primary">All categories</a>
-                                        </li>
-                                        <li>
-                                            <a href="#popular">Popular</a>
-                                        </li>
-                                        <li>
-                                            <a href="#phones">
-                                                Phones and Tablets
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#laptops">Laptops</a>
-                                        </li>
-                                        <li>
-                                            <a href="#comps">
-                                                Computers and Monitors
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#access">
-                                                Computer Accessories
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#tvs">
-                                                TVs and Sound Systems
-                                            </a>
-                                        </li>
+                                        {categories.map((cat) => (
+                                            <li key={cat.id}>
+                                                <a
+                                                    href={`#${cat.id}`}
+                                                    className="text-neutral hover:text-primary"
+                                                >
+                                                    {cat.name}
+                                                </a>
+                                            </li>
+                                        ))}
                                     </ul>
+                                </div>
+                            </div>
+                            <div className="lg:hidden sm:block px-6 mx-auto">
+                                <h3 className="lg:text-2xl sm:text-xl text-primary mb-6 text-center">
+                                    Categories
+                                </h3>
+                                <div className="carousel carousel-center sm:w-72 md:w-96 lg:max-w-7xl p-4 space-x-4 rounded-box">
+                                    {categories.map((cat) => (
+                                        <div
+                                            className="carousel-item"
+                                            key={cat.id}
+                                        >
+                                            <div className="rounded-box">
+                                                <a
+                                                    href={`#${cat.id}`}
+                                                    className="btn btn-circle border-none text-xs bg-base-100 text-neutral w-fit px-2 hover:border-primary hover:text-primary focus:bg-primary focus:text-base-100"
+                                                >
+                                                    {cat.name}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="w-fit">
+                                    {categories.map((cat) => (
+                                        <div id={cat.id} key={cat.id}>
+                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                                Latest
+                                            </h3>
+                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                {slides.map((slide) => (
+                                                    <div
+                                                        className="card w-fit bg-base-100 shadow-xl m-5"
+                                                        key={slide.id}
+                                                    >
+                                                        <figure>
+                                                            <img
+                                                                src={slide.img}
+                                                                alt={
+                                                                    slide.title
+                                                                }
+                                                            />
+                                                        </figure>
+                                                        <div className="card-body">
+                                                            <h3 className="card-title">
+                                                                {slide.title}
+                                                            </h3>
+                                                            <div className="justify-start">
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+mr-2"
+                                                                >
+                                                                    electronics
+                                                                </div>
+                                                                <div
+                                                                    className="badge badge-outline badge-sm text-accent
+
+mr-2"
+                                                                >
+                                                                    Products
+                                                                </div>
+                                                            </div>
+                                                            <p>
+                                                                {
+                                                                    slide.description
+                                                                }
+                                                            </p>
+                                                            <div className="card-actions">
+                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    <div id="popular">
+                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                            Popular products
+                                        </h3>
+                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                            {slides.map((slide) => (
+                                                <div
+                                                    className="card w-fit bg-base-100 shadow-xl m-5"
+                                                    key={slide.id}
+                                                >
+                                                    <figure>
+                                                        <img
+                                                            src={slide.img}
+                                                            alt={slide.title}
+                                                        />
+                                                    </figure>
+                                                    <div className="card-body">
+                                                        <h3 className="card-title">
+                                                            {slide.title}
+                                                        </h3>
+                                                        <div className="justify-start">
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                electronics
+                                                            </div>
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                Products
+                                                            </div>
+                                                        </div>
+                                                        <p>
+                                                            {slide.description}
+                                                        </p>
+                                                        <div className="card-actions">
+                                                            <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                Add to cart
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div id="phones">
+                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                            Phones and Tablets
+                                        </h3>
+                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                            {slides.map((slide) => (
+                                                <div
+                                                    className="card w-fit bg-base-100 shadow-xl m-5"
+                                                    key={slide.id}
+                                                >
+                                                    <figure>
+                                                        <img
+                                                            src={slide.img}
+                                                            alt={slide.title}
+                                                        />
+                                                    </figure>
+                                                    <div className="card-body">
+                                                        <h3 className="card-title">
+                                                            {slide.title}
+                                                        </h3>
+                                                        <div className="justify-start">
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                electronics
+                                                            </div>
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                Products
+                                                            </div>
+                                                        </div>
+                                                        <p>
+                                                            {slide.description}
+                                                        </p>
+                                                        <div className="card-actions">
+                                                            <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                Add to cart
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div id="laptops">
+                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                            Laptops
+                                        </h3>
+                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                            {slides.map((slide) => (
+                                                <div
+                                                    className="card w-fit bg-base-100 shadow-xl m-5"
+                                                    key={slide.id}
+                                                >
+                                                    <figure>
+                                                        <img
+                                                            src={slide.img}
+                                                            alt={slide.title}
+                                                        />
+                                                    </figure>
+                                                    <div className="card-body">
+                                                        <h3 className="card-title">
+                                                            {slide.title}
+                                                        </h3>
+                                                        <div className="justify-start">
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                electronics
+                                                            </div>
+                                                            <div
+                                                                className="badge badge-outline badge-sm text-accent
+
+ mr-2"
+                                                            >
+                                                                Products
+                                                            </div>
+                                                        </div>
+                                                        <p>
+                                                            {slide.description}
+                                                        </p>
+                                                        <div className="card-actions">
+                                                            <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                Add to cart
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

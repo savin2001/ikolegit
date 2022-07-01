@@ -1,1 +1,1 @@
-export const api = "http://qs-ecomm.herokuapp.com/codejava";
+export const api = "https://qs-ecomm.herokuapp.com/codejava";

@@ -65,8 +65,10 @@ const Home = () => {
     // Fetching categories from the api
 
     useEffect(() => {
-        setCategories(response);
-        console.log(categories);
+        if (response !== null) {
+            setCategories(response);
+            console.log(categories);
+        }
     }, [response]);
 
     return (
@@ -452,9 +454,9 @@ const Home = () => {
                                                     <div className="rounded-box">
                                                         <a
                                                             href={`#${cat.id}`}
-                                                            className="btn btn-circle border-none text-xs bg-base-100 text-neutral w-fit px-2 hover:border-primary hover:text-primary focus:bg-primary focus:text-base-100"
+                                                            className="btn btn-circle border-none text-xs bg-base-100 text-neutral w-fit px-2 hover:bg-primary hover:text-base-100"
                                                         >
-                                                            {cat.name}
+                                                            {cat.categoryName}
                                                         </a>
                                                     </div>
                                                 </div>

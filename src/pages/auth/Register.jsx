@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { MdPersonOutline } from "react-icons/md";
 
-import useForm from "../../components/custom-hooks/useForm";
+import useForm from "../../components/custom-hooks/useSignUpForm";
 
 const Register = () => {
     const [visibility, setVisibility] = useState(false);
@@ -27,13 +27,11 @@ const Register = () => {
     // Password visible
     const checkPassword = () => {
         setVisibility(true);
-        console.log(visibility);
     };
 
     // Password hidden
     const hidePassword = () => {
         setVisibility(false);
-        console.log(visibility);
     };
 
     return (
@@ -251,6 +249,14 @@ const Register = () => {
                                     name="terms"
                                     type="checkbox"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Accept terms to continue"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                                 />
                                 <label
@@ -277,8 +283,8 @@ const Register = () => {
                             </div>
                         </div>
 
-                        {/* {errors} */}
-                        <div>
+                        {Object.keys(errors).length === 0 ? (
+                            <div>
                             <button
                                 type="submit"
                                 className="group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-primary hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
@@ -292,6 +298,24 @@ const Register = () => {
                                 Sign up
                             </button>
                         </div>
+                        ) : (
+                            <div>
+                            <button
+                                type="button"
+                                disabled
+                                className="animate-pulse group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-neutral"
+                            >
+                                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                    <AiFillLock
+                                        className="h-5 w-5 text-base group-hover:opacity-70"
+                                        aria-hidden="true"
+                                    />
+                                </span>
+                                Confirm your details
+                            </button>
+                        </div>
+                        )}
+                        
                         <div>
                             <Link
                                 to="/"

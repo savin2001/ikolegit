@@ -146,7 +146,8 @@ const useForm = (callback) => {
         ) {
             callback();
         } else {
-            console.log(errors);
+            console.log(Object.keys(errors).length) 
+            
         }
     };
 

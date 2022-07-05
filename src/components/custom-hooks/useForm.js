@@ -34,6 +34,7 @@ const useForm = (callback) => {
                     });
                 }
                 break;
+
             case "lastName":
                 if (new RegExp(/^[a-zA-Z]*$/).test(value)) {
                     // Checking if there is an error
@@ -72,6 +73,7 @@ const useForm = (callback) => {
                     setErrors(newObj);
                 }
                 break;
+
             case "contact":
                 if (new RegExp(/^[0-9\b]+$/).test(value)) {
                     // Checking if there is an error
@@ -144,7 +146,7 @@ const useForm = (callback) => {
         ) {
             callback();
         } else {
-            console.log("There is an Error!");
+            console.log(errors);
         }
     };
 

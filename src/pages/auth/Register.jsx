@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiFillLock, AiOutlineArrowLeft } from "react-icons/ai";
+import {
+    AiFillLock,
+    AiOutlineArrowLeft,
+    AiFillEyeInvisible,
+    AiOutlineEye,
+    AiOutlinePhone,
+    AiOutlineMail,
+} from "react-icons/ai";
+import { MdPersonOutline } from "react-icons/md";
 
 import useForm from "../../components/custom-hooks/useForm";
 
 const Register = () => {
-    // Checking if the inputs are filled before submitting
+    const [visibility, setVisibility] = useState(false);
 
     // Form submission
     const handleSignUp = () => {
@@ -15,6 +23,18 @@ const Register = () => {
     // Adding the input to states
     const { handleChange, values, errors, handleSubmit } =
         useForm(handleSignUp);
+
+    // Password visible
+    const checkPassword = () => {
+        setVisibility(true);
+        console.log(visibility);
+    };
+
+    // Password hidden
+    const hidePassword = () => {
+        setVisibility(false);
+        console.log(visibility);
+    };
 
     return (
         <div className="container mx-auto">
@@ -46,9 +66,12 @@ const Register = () => {
                             defaultValue="true"
                         />
                         <div className="rounded-md shadow-sm ">
-                            <div className="mb-9">
+                            <div className="mb-9 relative">
                                 <label htmlFor="first_name" className="sr-only">
                                     First name
+                                </label>
+                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                    <MdPersonOutline className="w-5 h-5 text-neutral" />
                                 </label>
                                 <input
                                     id="first_name"
@@ -57,19 +80,32 @@ const Register = () => {
                                     onChange={handleChange}
                                     type="text"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Enter first name Here"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     placeholder="First name"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
-                                {errors.firstName && (
-                                    <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.firstName}</h4>
-                                )}
                             </div>
-                            <div className="mb-9">
+                            {errors.firstName && (
+                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                    {errors.firstName}
+                                </h4>
+                            )}
+                            <div className="mb-9 relative">
                                 <label
                                     htmlFor="second_name"
                                     className="sr-only"
                                 >
                                     Second name
+                                </label>
+                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                    <MdPersonOutline className="w-5 h-5 text-neutral" />
                                 </label>
                                 <input
                                     id="second_name"
@@ -78,17 +114,32 @@ const Register = () => {
                                     onChange={handleChange}
                                     type="text"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Enter last name Here"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     placeholder="Last name"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
-                                {errors.lastName && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl" >{errors.lastName}</h4>}
                             </div>
-                            <div className="mb-9">
+                            {errors.lastName && (
+                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                    {errors.lastName}
+                                </h4>
+                            )}
+                            <div className="mb-9 relative">
                                 <label
                                     htmlFor="email-address"
                                     className="sr-only"
                                 >
                                     Email address
+                                </label>
+                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                    <AiOutlineMail className="w-5 h-5 text-neutral" />
                                 </label>
                                 <input
                                     id="email-address"
@@ -98,16 +149,30 @@ const Register = () => {
                                     onChange={handleChange}
                                     autoComplete="email"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Enter valid email"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     placeholder="Email address"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
-                                {errors.email && <h4  className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.email}</h4>}
                             </div>
-                            <div className="mb-9">
+                            {errors.email && (
+                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                    {errors.email}
+                                </h4>
+                            )}
+                            <div className="mb-9 relative">
                                 <label htmlFor="phone" className="sr-only">
                                     Phone number
                                 </label>
-
+                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                    <AiOutlinePhone className="w-5 h-5 text-neutral" />
+                                </label>
                                 <input
                                     id="phone"
                                     name="contact"
@@ -115,28 +180,68 @@ const Register = () => {
                                     onChange={handleChange}
                                     type="tel"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Enter valid phone number"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     placeholder="Phone number"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
-                                {errors.contact && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.contact}</h4>}
                             </div>
-                            <div>
+                            {errors.contact && (
+                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                    {errors.contact}
+                                </h4>
+                            )}
+                            <div className="relative">
                                 <label htmlFor="password" className="sr-only">
                                     Password
                                 </label>
+                                <label className="swap swap-rotate cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 z-50">
+                                    <input type="checkbox" />
+                                    <div className="swap-on">
+                                        <AiFillEyeInvisible
+                                            className="w-5 h-5 text-neutral hover:text-primary"
+                                            onClick={checkPassword}
+                                        />
+                                    </div>
+                                    <div className="swap-off ">
+                                        <AiOutlineEye
+                                            className="w-5 h-5 text-neutral hover:text-primary"
+                                            onClick={hidePassword}
+                                        />
+                                    </div>
+                                </label>
+
                                 <input
                                     id="password"
                                     name="password"
-                                    type="password"
+                                    type={!visibility ? "password" : "text"}
                                     // value={signUp.password}
                                     onChange={handleChange}
                                     // autoComplete="current-password"
                                     required
+                                    onInvalid={(e) =>
+                                        e.target.setCustomValidity(
+                                            "Enter your password"
+                                        )
+                                    }
+                                    onInput={(e) =>
+                                        e.target.setCustomValidity("")
+                                    }
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                     placeholder="Password"
                                 />
-                                {errors.password && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.password}</h4>}
                             </div>
+                            {errors.password && (
+                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                    {errors.password}
+                                </h4>
+                            )}
                         </div>
 
                         <div className="flex items-center  justify-between md:flex-row sm:flex-col">
@@ -172,6 +277,7 @@ const Register = () => {
                             </div>
                         </div>
 
+                        {/* {errors} */}
                         <div>
                             <button
                                 type="submit"

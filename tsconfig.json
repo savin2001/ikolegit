@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/components/axios/useAxios.js"],
+  "include": ["src", "src/components/custom-hooks/useAxios.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

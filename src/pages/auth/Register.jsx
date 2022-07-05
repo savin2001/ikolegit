@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { AiFillLock, AiOutlineArrowLeft } from "react-icons/ai";
 
+import useForm from "../../components/custom-hooks/useForm";
+
 const Register = () => {
-    const [email, setEmail] = useState(null);
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [phone, setPhone] = useState(null);
+    // Checking if the inputs are filled before submitting
+
+    // Form submission
+    const handleSignUp = () => {
+        console.log("Callback function when form is submitted!");
+        console.log("Form Values ", values);
+    };
+    // Adding the input to states
+    const { handleChange, values, errors, handleSubmit } =
+        useForm(handleSignUp);
 
     return (
         <div className="container mx-auto">
@@ -33,7 +39,7 @@ const Register = () => {
                             </Link>
                         </p>
                     </div>
-                    <form className="mt-8 space-y-6" action="#" method="POST">
+                    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                         <input
                             type="hidden"
                             name="remember"
@@ -46,12 +52,17 @@ const Register = () => {
                                 </label>
                                 <input
                                     id="first_name"
-                                    name="first_name"
-                                    type="email"
+                                    name="firstName"
+                                    // value={signUp.firstName}
+                                    onChange={handleChange}
+                                    type="text"
                                     required
                                     placeholder="First name"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
+                                {errors.firstName && (
+                                    <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.firstName}</h4>
+                                )}
                             </div>
                             <div className="mb-9">
                                 <label
@@ -62,12 +73,15 @@ const Register = () => {
                                 </label>
                                 <input
                                     id="second_name"
-                                    name="second_name"
-                                    type="email"
+                                    name="lastName"
+                                    // value={signUp.lastName}
+                                    onChange={handleChange}
+                                    type="text"
                                     required
-                                    placeholder="Second name"
+                                    placeholder="Last name"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
+                                {errors.lastName && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl" >{errors.lastName}</h4>}
                             </div>
                             <div className="mb-9">
                                 <label
@@ -80,11 +94,14 @@ const Register = () => {
                                     id="email-address"
                                     name="email"
                                     type="email"
+                                    // value={signUp.email}
+                                    onChange={handleChange}
                                     autoComplete="email"
                                     required
                                     placeholder="Email address"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
+                                {errors.email && <h4  className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.email}</h4>}
                             </div>
                             <div className="mb-9">
                                 <label htmlFor="phone" className="sr-only">
@@ -93,12 +110,15 @@ const Register = () => {
 
                                 <input
                                     id="phone"
-                                    name="phone"
+                                    name="contact"
+                                    // value={signUp.contact}
+                                    onChange={handleChange}
                                     type="tel"
                                     required
                                     placeholder="Phone number"
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                 />
+                                {errors.contact && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.contact}</h4>}
                             </div>
                             <div>
                                 <label htmlFor="password" className="sr-only">
@@ -108,20 +128,24 @@ const Register = () => {
                                     id="password"
                                     name="password"
                                     type="password"
-                                    autoComplete="current-password"
+                                    // value={signUp.password}
+                                    onChange={handleChange}
+                                    // autoComplete="current-password"
                                     required
                                     className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                     placeholder="Password"
                                 />
+                                {errors.password && <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">{errors.password}</h4>}
                             </div>
                         </div>
 
                         <div className="flex items-center  justify-between md:flex-row sm:flex-col">
                             <div className="flex items-center py-3">
                                 <input
-                                    id="remember-me"
-                                    name="remember-me"
+                                    id="terms"
+                                    name="terms"
                                     type="checkbox"
+                                    required
                                     className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                                 />
                                 <label

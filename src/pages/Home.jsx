@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxios from "../components/axios/useAxios";
+import useAxios from "../components/custom-hooks/useAxios";
 
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -67,7 +67,7 @@ const Home = () => {
     useEffect(() => {
         if (response !== null) {
             setCategories(response);
-            console.log(categories);
+            // console.log(categories);
         }
     }, [response]);
 

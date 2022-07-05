@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { api } from "./Api.js";
+import { api } from "../server-api/Api.js";
 
 // The default URL from backend
 axios.defaults.baseURL = api;

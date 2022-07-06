@@ -91,9 +91,9 @@ const Register = () => {
                                 />
                             </div>
                             {errors.firstName && (
-                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
                                     {errors.firstName}
-                                </h4>
+                                </p>
                             )}
                             <div className="mb-9 relative">
                                 <label
@@ -125,9 +125,9 @@ const Register = () => {
                                 />
                             </div>
                             {errors.lastName && (
-                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
                                     {errors.lastName}
-                                </h4>
+                                </p>
                             )}
                             <div className="mb-9 relative">
                                 <label
@@ -160,9 +160,9 @@ const Register = () => {
                                 />
                             </div>
                             {errors.email && (
-                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
                                     {errors.email}
-                                </h4>
+                                </p>
                             )}
                             <div className="mb-9 relative">
                                 <label htmlFor="phone" className="sr-only">
@@ -191,9 +191,9 @@ const Register = () => {
                                 />
                             </div>
                             {errors.contact && (
-                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
                                     {errors.contact}
-                                </h4>
+                                </p>
                             )}
                             <div className="relative">
                                 <label htmlFor="password" className="sr-only">
@@ -236,9 +236,9 @@ const Register = () => {
                                 />
                             </div>
                             {errors.password && (
-                                <h4 className="my-4 bg-error p-4 text-base-100 rounded-xl">
+                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
                                     {errors.password}
-                                </h4>
+                                </p>
                             )}
                         </div>
 
@@ -285,37 +285,37 @@ const Register = () => {
 
                         {Object.keys(errors).length === 0 ? (
                             <div>
-                            <button
-                                type="submit"
-                                className="group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-primary hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-                            >
-                                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <AiFillLock
-                                        className="h-5 w-5 text-base group-hover:opacity-70"
-                                        aria-hidden="true"
-                                    />
-                                </span>
-                                Sign up
-                            </button>
-                        </div>
+                                <button
+                                    type="submit"
+                                    className="group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-primary hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <AiFillLock
+                                            className="h-5 w-5 text-base group-hover:opacity-70"
+                                            aria-hidden="true"
+                                        />
+                                    </span>
+                                    Sign up
+                                </button>
+                            </div>
                         ) : (
                             <div>
-                            <button
-                                type="button"
-                                disabled
-                                className="animate-pulse group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-neutral"
-                            >
-                                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <AiFillLock
-                                        className="h-5 w-5 text-base group-hover:opacity-70"
-                                        aria-hidden="true"
-                                    />
-                                </span>
-                                Confirm your details
-                            </button>
-                        </div>
+                                <button
+                                    type="button"
+                                    disabled
+                                    className="animate-pulse group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-neutral"
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <AiFillLock
+                                            className="h-5 w-5 text-base group-hover:opacity-70"
+                                            aria-hidden="true"
+                                        />
+                                    </span>
+                                    Confirm your details
+                                </button>
+                            </div>
                         )}
-                        
+
                         <div>
                             <Link
                                 to="/"

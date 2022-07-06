@@ -64,137 +64,148 @@ const Register = () => {
                             defaultValue="true"
                         />
                         <div className="rounded-md shadow-sm ">
-                            <div className="mb-9 relative">
-                                <label htmlFor="first_name" className="sr-only">
-                                    First name
-                                </label>
-                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
-                                    <MdPersonOutline className="w-5 h-5 text-neutral" />
-                                </label>
-                                <input
-                                    id="first_name"
-                                    name="firstName"
-                                    // value={signUp.firstName}
-                                    onChange={handleChange}
-                                    type="text"
-                                    required
-                                    onInvalid={(e) =>
-                                        e.target.setCustomValidity(
-                                            "Enter first name Here"
-                                        )
-                                    }
-                                    onInput={(e) =>
-                                        e.target.setCustomValidity("")
-                                    }
-                                    placeholder="First name"
-                                    className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
-                                />
+                            <div className="mb-9 ">
+                                <div className="relative">
+                                    <label
+                                        htmlFor="first_name"
+                                        className="sr-only"
+                                    >
+                                        First name
+                                    </label>
+                                    <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                        <MdPersonOutline className="w-5 h-5 text-neutral" />
+                                    </label>
+                                    <input
+                                        id="first_name"
+                                        name="firstName"
+                                        // value={signUp.firstName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        required
+                                        onInvalid={(e) =>
+                                            e.target.setCustomValidity(
+                                                "Enter first name Here"
+                                            )
+                                        }
+                                        onInput={(e) =>
+                                            e.target.setCustomValidity("")
+                                        }
+                                        placeholder="First name"
+                                        className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
+                                    />
+                                </div>
+                                {errors.firstName && (
+                                    <p className=" mt-2 ml-3 text-sm p-2 text-error ">
+                                        {errors.firstName}
+                                    </p>
+                                )}
                             </div>
-                            {errors.firstName && (
-                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
-                                    {errors.firstName}
-                                </p>
-                            )}
-                            <div className="mb-9 relative">
-                                <label
-                                    htmlFor="second_name"
-                                    className="sr-only"
-                                >
-                                    Second name
-                                </label>
-                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
-                                    <MdPersonOutline className="w-5 h-5 text-neutral" />
-                                </label>
-                                <input
-                                    id="second_name"
-                                    name="lastName"
-                                    // value={signUp.lastName}
-                                    onChange={handleChange}
-                                    type="text"
-                                    required
-                                    onInvalid={(e) =>
-                                        e.target.setCustomValidity(
-                                            "Enter last name Here"
-                                        )
-                                    }
-                                    onInput={(e) =>
-                                        e.target.setCustomValidity("")
-                                    }
-                                    placeholder="Last name"
-                                    className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
-                                />
+                            <div className="mb-9">
+                                <div className="relative">
+                                    <label
+                                        htmlFor="second_name"
+                                        className="sr-only"
+                                    >
+                                        Second name
+                                    </label>
+                                    <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                        <MdPersonOutline className="w-5 h-5 text-neutral" />
+                                    </label>
+                                    <input
+                                        id="second_name"
+                                        name="lastName"
+                                        // value={signUp.lastName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        required
+                                        onInvalid={(e) =>
+                                            e.target.setCustomValidity(
+                                                "Enter last name Here"
+                                            )
+                                        }
+                                        onInput={(e) =>
+                                            e.target.setCustomValidity("")
+                                        }
+                                        placeholder="Last name"
+                                        className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
+                                    />
+                                </div>
+                                {errors.lastName && (
+                                    <p className=" mt-2 ml-3 text-sm p-2 text-error ">
+                                        {errors.lastName}
+                                    </p>
+                                )}
                             </div>
-                            {errors.lastName && (
-                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
-                                    {errors.lastName}
-                                </p>
-                            )}
-                            <div className="mb-9 relative">
-                                <label
-                                    htmlFor="email-address"
-                                    className="sr-only"
-                                >
-                                    Email address
-                                </label>
-                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
-                                    <AiOutlineMail className="w-5 h-5 text-neutral" />
-                                </label>
-                                <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"
-                                    // value={signUp.email}
-                                    onChange={handleChange}
-                                    autoComplete="email"
-                                    required
-                                    onInvalid={(e) =>
-                                        e.target.setCustomValidity(
-                                            "Enter valid email"
-                                        )
-                                    }
-                                    onInput={(e) =>
-                                        e.target.setCustomValidity("")
-                                    }
-                                    placeholder="Email address"
-                                    className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
-                                />
+                            <div className="mb-9 ">
+                                <div className="relative">
+                                    <label
+                                        htmlFor="email-address"
+                                        className="sr-only"
+                                    >
+                                        Email address
+                                    </label>
+                                    <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                        <AiOutlineMail className="w-5 h-5 text-neutral" />
+                                    </label>
+                                    <input
+                                        id="email-address"
+                                        name="email"
+                                        type="email"
+                                        // value={signUp.email}
+                                        onChange={handleChange}
+                                        autoComplete="email"
+                                        required
+                                        onInvalid={(e) =>
+                                            e.target.setCustomValidity(
+                                                "Enter valid email"
+                                            )
+                                        }
+                                        onInput={(e) =>
+                                            e.target.setCustomValidity("")
+                                        }
+                                        placeholder="Email address"
+                                        className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
+                                    />
+                                </div>
+                                {errors.email && (
+                                    <p className="mt-2 ml-3  text-sm p-2 text-error ">
+                                        {errors.email}
+                                    </p>
+                                )}
                             </div>
-                            {errors.email && (
-                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
-                                    {errors.email}
-                                </p>
-                            )}
-                            <div className="mb-9 relative">
-                                <label htmlFor="phone" className="sr-only">
-                                    Phone number
-                                </label>
-                                <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
-                                    <AiOutlinePhone className="w-5 h-5 text-neutral" />
-                                </label>
-                                <input
-                                    id="phone"
-                                    name="contact"
-                                    // value={signUp.contact}
-                                    onChange={handleChange}
-                                    type="tel"
-                                    required
-                                    onInvalid={(e) =>
-                                        e.target.setCustomValidity(
-                                            "Enter valid phone number"
-                                        )
-                                    }
-                                    onInput={(e) =>
-                                        e.target.setCustomValidity("")
-                                    }
-                                    placeholder="Phone number"
-                                    className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
-                                />
+                            <div className="mb-9">
+                                <div className="relative">
+                                    <label htmlFor="phone" className="sr-only">
+                                        Phone number
+                                    </label>
+                                    <label className="cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 flex justify-center items-center">
+                                        <AiOutlinePhone className="w-5 h-5 text-neutral" />
+                                    </label>
+                                    <input
+                                        id="phone"
+                                        name="contact"
+                                        // value={signUp.contact}
+                                        onChange={handleChange}
+                                        type="tel"
+                                        required
+                                        onInvalid={(e) =>
+                                            e.target.setCustomValidity(
+                                                "Enter valid phone number"
+                                            )
+                                        }
+                                        onInput={(e) =>
+                                            e.target.setCustomValidity("")
+                                        }
+                                        placeholder="Phone number"
+                                        className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
+                                    />
+                                </div>
+                                {errors.contact && (
+                                    <p className="mt-2 ml-3  text-sm p-2 text-error ">
+                                        {errors.contact}
+                                    </p>
+                                )}
                             </div>
-                            {errors.contact && (
-                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
-                                    {errors.contact}
-                                </p>
-                            )}
                             <div className="relative">
                                 <label htmlFor="password" className="sr-only">
                                     Password
@@ -209,7 +220,7 @@ const Register = () => {
                                     </div>
                                     <div className="swap-off ">
                                         <AiOutlineEye
-                                            className="w-5 h-5 text-neutral hover:text-primary"
+                                            className="w-5 h-5 text-neutral hover:text-primary animate-bounce"
                                             onClick={hidePassword}
                                         />
                                     </div>
@@ -236,7 +247,7 @@ const Register = () => {
                                 />
                             </div>
                             {errors.password && (
-                                <p className="my-4 bg-error text-xs p-4 text-base-100 rounded-xl">
+                                <p className="mt-2 ml-3  text-sm p-2 text-error ">
                                     {errors.password}
                                 </p>
                             )}

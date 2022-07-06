@@ -32,3 +32,13 @@ const usePost = ({ url, method, headers, body }) => {
 };
 
 export default usePost;
+
+// To be used later or never
+// const { response, loading, error } = usePost({
+//     method: "post",
+//     url: "/user/singup",
+//     headers: {
+//         "Content-Type": "application/json",
+//     },
+//     data: handleSignUp(),
+// });

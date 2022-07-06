@@ -3,6 +3,54 @@ import { AiFillLock, AiOutlineArrowLeft } from "react-icons/ai";
 import useForm from "../../components/form-validation/useSignUpForm";
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
+    const [serverError, setServerError] = useState("");
+    const [visibility, setVisibility] = useState(false);
+    let errorMessage = null;
+
+    // Form submission
+    const handleSignIn = (e) => {
+        e && e.preventDefault();
+        setLoading(true);
+
+        // Setting the validated values as payload
+        let payload = { contact: values.contact };
+        payload["email"] = values.email;
+        payload["password"] = values.password;
+
+        const headers = {
+            "Content-Type": "application/json",
+        };
+
+        // posting to database
+        axios
+            .post(`${api}/user/singup`, payload, headers)
+            .then((response) => {
+                console.log(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.log(error.response) ;
+                errorMessage = error.response.data;
+                setServerError(errorMessage);
+            });
+    };
+
+    // Adding the input to states
+    const { handleChange, values, errors, handleSubmit } =
+        useForm(handleSignIn);
+
+    // Password visible
+    const checkPassword = () => {
+        setVisibility(true);
+    };
+
+    // Password hidden
+    const hidePassword = () => {
+        setVisibility(false);
+    };
+
     return (
         <div className="container mx-auto ">
             <div className="min-h-full flex max-w-7xl items-center justify-center py-12 lg:px-8">

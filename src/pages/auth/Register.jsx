@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
     AiFillLock,
@@ -17,10 +17,11 @@ import useForm from "../../components/form-validation/useSignUpForm";
 import { api } from "../../components/server-api/Api";
 
 const Register = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [serverError, setServerError] = useState("");
     const [visibility, setVisibility] = useState(false);
     let errorMessage = null;
+    const navigate = useNavigate();
 
     // Form submission
     const handleSignUp = (e) => {
@@ -44,6 +45,7 @@ const Register = () => {
             .then((response) => {
                 console.log(response.data);
                 setLoading(false);
+                navigate("/login");
             })
             .catch((error) => {
                 setLoading(false);
@@ -70,23 +72,24 @@ const Register = () => {
         <div className="container mx-auto">
             <div className="min-h-full max-w-7xl flex items-center justify-center py-12 lg:px-8">
                 <div className="mx-3 sm:w-full  md:max-w-md w-full space-y-8">
+                    <img
+                        className="mx-auto h-12 w-auto"
+                        src="https://avatars.dicebear.com/api/identicon/your-custd.svg"
+                        alt="Logo"
+                    />
                     {loading ? (
-                        <div className="shadow-xl">
+                        <div className="shadow-xl p-10 h-96 max-h-screen">
                             <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                               Almost there...
+                                Almost there...
                             </h3>
-                            <div className="flex justify-center items-center">
+
+                            <div className="flex justify-center items-center h-3/4">
                                 <FaSpinner className="h-1/4 w-1/4 text-primary animate-spin" />
                             </div>
                         </div>
                     ) : (
                         <>
                             <div>
-                                <img
-                                    className="mx-auto h-12 w-auto"
-                                    src="https://avatars.dicebear.com/api/identicon/your-custd.svg"
-                                    alt="Logo"
-                                />
                                 <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-base-100">
                                     Create your account
                                 </h2>

@@ -5,7 +5,7 @@ import { api } from "../server-api/Api.js";
 // The default URL from backend
 axios.defaults.baseURL = api;
 
-const useAxios = ({ url, method }) => {
+const useFetch = ({ url, method }) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState("");
     const [loading, setloading] = useState(true);
@@ -30,4 +30,4 @@ const useAxios = ({ url, method }) => {
     return { response, error, loading };
 };
 
-export default useAxios;
+export default useFetch;

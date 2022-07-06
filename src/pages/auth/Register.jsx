@@ -10,15 +10,28 @@ import {
 } from "react-icons/ai";
 import { MdPersonOutline } from "react-icons/md";
 
-import useForm from "../../components/custom-hooks/useSignUpForm";
+
+import useForm from "../../components/form-validation/useSignUpForm";
+import useAxios from "../../components/axios-custom-hooks/useFetch"
+
+
 
 const Register = () => {
     const [visibility, setVisibility] = useState(false);
 
     // Form submission
     const handleSignUp = () => {
-        console.log("Callback function when form is submitted!");
-        console.log("Form Values ", values);
+        const signUpData = new FormData();
+        signUpData.append("contact", values.contact);
+        signUpData.append("email", values.email);
+        signUpData.append("firstName", values.firstName);
+        signUpData.append("lastName", values.lastName);
+        signUpData.append("password", values.password);
+
+        var object = {};
+        signUpData.forEach((value, key) => object[key] = value);
+        let json = JSON.stringify(object);
+        console.log(json)
     };
     // Adding the input to states
     const { handleChange, values, errors, handleSubmit } =
@@ -218,9 +231,9 @@ const Register = () => {
                                             onClick={checkPassword}
                                         />
                                     </div>
-                                    <div className="swap-off ">
+                                    <div className="swap-off">
                                         <AiOutlineEye
-                                            className="w-5 h-5 text-neutral hover:text-primary animate-bounce"
+                                            className="w-5 h-5 text-neutral hover:text-primary"
                                             onClick={hidePassword}
                                         />
                                     </div>
@@ -268,7 +281,7 @@ const Register = () => {
                                     onInput={(e) =>
                                         e.target.setCustomValidity("")
                                     }
-                                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+                                    className="checkbox checkbox-primary"
                                 />
                                 <label
                                     htmlFor="remember-me"

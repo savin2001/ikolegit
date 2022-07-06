@@ -38,7 +38,7 @@ const useForm = (callback) => {
             case "lastName":
                 if (new RegExp(/^[a-zA-Z]*$/).test(value)) {
                     // Checking if there is an error
-                    if (value.length <= 3) {
+                    if (value.length <= 2) {
                         setErrors({
                             ...errors,
                             lastName: "Last  name is too short.",

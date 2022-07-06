@@ -11,9 +11,10 @@ const usePost = ({ url, method, headers, body }) => {
     const [loading, setloading] = useState(true);
 
     const fetchData = () => {
-        axios[method](url, JSON.parse(headers), JSON.parse(body))
+        axios[method](url, headers, body)
             .then((res) => {
                 setResponse(res.data);
+                console.log(res.data);
             })
             .catch((err) => {
                 setError(err);

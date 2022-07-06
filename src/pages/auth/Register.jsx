@@ -17,7 +17,7 @@ import useForm from "../../components/form-validation/useSignUpForm";
 import { api } from "../../components/server-api/Api";
 
 const Register = () => {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const [visibility, setVisibility] = useState(false);
     let errorMessage = null;

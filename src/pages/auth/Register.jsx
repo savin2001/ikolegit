@@ -9,8 +9,8 @@ import {
     AiOutlinePhone,
     AiOutlineMail,
 } from "react-icons/ai";
-import { MdPersonOutline } from "react-icons/md";
 import { FaSpinner } from "react-icons/fa";
+import { MdPersonOutline } from "react-icons/md";
 
 import useForm from "../../components/form-validation/useSignUpForm";
 // import usePost from "../../components/axios-custom-hooks/usePost";
@@ -127,7 +127,6 @@ const Register = () => {
                                             <input
                                                 id="first_name"
                                                 name="firstName"
-                                                // value={signUp.firstName}
                                                 onChange={handleChange}
                                                 type="text"
                                                 required

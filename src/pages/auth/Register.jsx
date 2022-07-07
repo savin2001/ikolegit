@@ -272,21 +272,6 @@ const Register = () => {
                                         >
                                             Password
                                         </label>
-                                        <label className="swap swap-rotate cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 z-50">
-                                            <input type="checkbox" />
-                                            <div className="swap-on">
-                                                <AiFillEyeInvisible
-                                                    className="w-5 h-5 text-neutral hover:text-primary"
-                                                    onClick={checkPassword}
-                                                />
-                                            </div>
-                                            <div className="swap-off">
-                                                <AiOutlineEye
-                                                    className="w-5 h-5 text-neutral hover:text-primary"
-                                                    onClick={hidePassword}
-                                                />
-                                            </div>
-                                        </label>
 
                                         <input
                                             id="password"
@@ -311,6 +296,21 @@ const Register = () => {
                                             className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                             placeholder="Password"
                                         />
+                                        <label className="swap swap-rotate cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 z-50">
+                                            <input type="checkbox" />
+                                            <div className="swap-on">
+                                                <AiFillEyeInvisible
+                                                    className="w-5 h-5 text-neutral hover:text-primary"
+                                                    onClick={checkPassword}
+                                                />
+                                            </div>
+                                            <div className="swap-off">
+                                                <AiOutlineEye
+                                                    className="w-5 h-5 text-neutral hover:text-primary"
+                                                    onClick={hidePassword}
+                                                />
+                                            </div>
+                                        </label>
                                     </div>
                                     {errors.password && (
                                         <p className="mt-2 ml-3  text-sm p-2 text-error ">

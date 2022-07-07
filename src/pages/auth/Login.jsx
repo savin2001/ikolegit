@@ -39,8 +39,14 @@ const Login = () => {
             .then((response) => {
                 if (response.data.status === "success") {
                     setLoading(false);
-                    localStorage.setItem("accessToken", response.data.token)
-                    navigate(`/my-profile/${response.data.token}`);
+                    localStorage.setItem(
+                        "accessToken",
+                        JSON.stringify(response.data.token)
+                    );
+                    const user = JSON.parse(
+                        localStorage.getItem("accessToken")
+                    );
+                    navigate(`/my-profile/${user}`);
                 }
             })
             .catch((error) => {
@@ -77,7 +83,7 @@ const Login = () => {
                     {loading ? (
                         <div className="shadow-xl p-10 h-96 max-h-screen">
                             <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                Almost there...
+                                Authenticating user...
                             </h3>
 
                             <div className="flex justify-center items-center h-3/4">
@@ -157,21 +163,6 @@ const Login = () => {
                                             >
                                                 Password
                                             </label>
-                                            <label className="swap swap-rotate cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 z-50">
-                                                <input type="checkbox" />
-                                                <div className="swap-on">
-                                                    <AiFillEyeInvisible
-                                                        className="w-5 h-5 text-neutral hover:text-primary"
-                                                        onClick={checkPassword}
-                                                    />
-                                                </div>
-                                                <div className="swap-off">
-                                                    <AiOutlineEye
-                                                        className="w-5 h-5 text-neutral hover:text-primary"
-                                                        onClick={hidePassword}
-                                                    />
-                                                </div>
-                                            </label>
 
                                             <input
                                                 id="password"
@@ -198,6 +189,21 @@ const Login = () => {
                                                 className="input input-bordered input-neutral w-full rounded-full focus:input-primary"
                                                 placeholder="Password"
                                             />
+                                            <label className="swap swap-rotate cursor-pointer w-8 h-8 absolute top-1/2 transform -translate-y-1/2 right-3 z-50">
+                                                <input type="checkbox" />
+                                                <div className="swap-on">
+                                                    <AiFillEyeInvisible
+                                                        className="w-5 h-5 text-neutral hover:text-primary"
+                                                        onClick={checkPassword}
+                                                    />
+                                                </div>
+                                                <div className="swap-off">
+                                                    <AiOutlineEye
+                                                        className="w-5 h-5 text-neutral hover:text-primary"
+                                                        onClick={hidePassword}
+                                                    />
+                                                </div>
+                                            </label>
                                         </div>
                                         {errors.password && (
                                             <p className="mt-2 ml-3  text-sm p-2 text-error ">
@@ -209,7 +215,7 @@ const Login = () => {
 
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center">
-                                    <input
+                                        <input
                                             id="terms"
                                             name="terms"
                                             type="checkbox"
@@ -241,20 +247,44 @@ const Login = () => {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-primary hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    >
-                                        <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                            <AiFillLock
-                                                className="h-5 w-5 text-primary group-hover:opacity-70"
-                                                aria-hidden="true"
-                                            />
-                                        </span>
-                                        Sign in
-                                    </button>
-                                </div>
+                                {serverError.length !== 0 && (
+                                    <div className=" text-sm uppercase p-4 text-base-100 bg-error text-center rounded-3xl">
+                                        <h4></h4>
+                                        <p className="mt-2">{serverError}</p>
+                                    </div>
+                                )}
+                                {Object.keys(errors).length === 0 ? (
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-primary hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                                        >
+                                            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                                <AiFillLock
+                                                    className="h-5 w-5 text-base group-hover:opacity-70"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                            Sign in
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <button
+                                            type="button"
+                                            disabled
+                                            className="animate-pulse group relative w-full flex justify-center p-3 border border-transparent text-sm font-medium rounded-full text-base-100 bg-neutral"
+                                        >
+                                            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                                <AiFillLock
+                                                    className="h-5 w-5 text-base group-hover:opacity-70"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                            Confirm your details
+                                        </button>
+                                    </div>
+                                )}
                                 <div>
                                     <Link
                                         to="/"

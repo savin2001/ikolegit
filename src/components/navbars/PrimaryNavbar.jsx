@@ -68,9 +68,9 @@ const PrimaryNavbar = () => {
                                     Subtotal: $999
                                 </span>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary btn-block">
-                                        View cart
-                                    </button>
+                                    <Link to="/cart" className="btn btn-primary btn-block rounded-full">
+                                        View full cart
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -117,11 +117,11 @@ const PrimaryNavbar = () => {
                                     New customer
                                 </Link>
                             </li>
-                            {/* <li>
+                            <li>
                                 <a className="justify-center font-bold uppercase text-xs hover:text-primary">
                                     Become a seller
                                 </a>
-                            </li> */}
+                            </li>
                         </ul>
                     </div>
                 </div>

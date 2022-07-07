@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";
 
 const Profile = () => {
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const navigate = useNavigate();
 
-    const user = JSON.parse(localStorage.getItem("accessToken"));
-    const handleLogOut = (e) => {
+    const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
+    const handleLogOut = (e: { preventDefault: () => any }) => {
         e && e.preventDefault();
         setLoading(true);
         localStorage.removeItem("accessToken");

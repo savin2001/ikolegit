@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Profile from "./pages/customer-pages/Profile.jsx";
+import Cart from "./pages/Cart.jsx"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 <Router>
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/cart" element={<Cart />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/my-profile/:accessToken" element={<Profile />} />

@@ -12,9 +12,9 @@ import {
 import { FaSpinner } from "react-icons/fa";
 import { MdPersonOutline } from "react-icons/md";
 
-import useForm from "../../components/form-validation/useSignUpForm";
+import useForm from "../../components/form-validation/useSignUpForm.js";
 // import usePost from "../../components/axios-custom-hooks/usePost";
-import { api } from "../../components/server-api/Api";
+import { api } from "../../components/server-api/Api.js";
 
 const Register = () => {
     const [loading, setLoading] = useState(false);

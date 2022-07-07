@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useFetch from "../components/axios-custom-hooks/useFetch";
-import PrimaryNavbar from "../components/navbars/PrimaryNavbar";
+import useFetch from "../components/axios-custom-hooks/useFetch.js";
+import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
@@ -61,7 +61,7 @@ const Home = () => {
         method: "get",
         url: "/category/list",
     });
-    const [categories, setCategories] = useState();
+    const [categories, setCategories] = useState<any[]>([]);
 
     // Fetching categories from the api
 
@@ -71,6 +71,12 @@ const Home = () => {
             // console.log(categories);
         }
     }, [response]);
+
+    // Adding items to cart
+
+    const handleAddCart = () => {
+        const cart = localStorage.getItem("cartItems");
+    };
 
     return (
         <>
@@ -144,7 +150,7 @@ const Home = () => {
                                     key={slide.id}
                                 >
                                     <div className="absolute">
-                                        <h3></h3>
+                                        <p></p>
                                     </div>
                                     <img
                                         src={slide.img}
@@ -169,12 +175,40 @@ const Home = () => {
                                         />
                                     </figure>
                                     <div className="card-body">
-                                        <h3 className="card-title">
+                                        <p className="card-title text-base">
                                             {slide.title}
                                             <div className="badge badge-primary sm:hidden lg:block">
                                                 NEW
                                             </div>
-                                        </h3>
+                                        </p>
+                                        <div className="rating md:rating-sm sm:rating-xs ">
+                                            <input
+                                                type="radio"
+                                                name="rating-1"
+                                                className="mask mask-star bg-primary"
+                                            />
+                                            <input
+                                                type="radio"
+                                                name="rating-1"
+                                                className="mask mask-star bg-primary"
+                                            />
+                                            <input
+                                                type="radio"
+                                                name="rating-1"
+                                                className="mask mask-star bg-primary"
+                                                defaultChecked
+                                            />
+                                            <input
+                                                type="radio"
+                                                name="rating-1"
+                                                className="mask mask-star bg-primary"
+                                            />
+                                            <input
+                                                type="radio"
+                                                name="rating-1"
+                                                className="mask mask-star bg-primary"
+                                            />
+                                        </div>
                                         <div className="justify-start">
                                             <div
                                                 className="badge badge-outline badge-sm text-accent
@@ -191,6 +225,7 @@ const Home = () => {
                                                 Products
                                             </div>
                                         </div>
+
                                         <div className="card-actions">
                                             <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                 Add to cart
@@ -243,10 +278,10 @@ const Home = () => {
                     <>
                         {error && (
                             <div>
-                                <p>{error.message}</p>
+                                <p>{error.response.data}</p>
                             </div>
                         )}
-                        <div className="w-full bg-secondary  py-4">
+                        <div className="w-full bg-secondary  pb-4">
                             <div className="max-w-7xl mx-auto">
                                 <div className="flex  mt-6 relative">
                                     <div className="drawer lg:grid sm:hidden">
@@ -259,9 +294,9 @@ const Home = () => {
                                             <div className=" flex justify-start sticky top-6 left-0 z-50 ">
                                                 <label
                                                     htmlFor="my-drawer"
-                                                    className="btn btn-primary text-white rounded-full btn-md sm:btn-sm drawer-button"
+                                                    className="btn btn-primary flex relative justify-between text-white rounded-full btn-md sm:btn-sm drawer-button"
                                                 >
-                                                    <AiOutlineMenu className="h-5 w-5 rounded-full" />
+                                                    <AiOutlineMenu className="h-5 w-5 hover rounded-full" />
                                                 </label>
                                             </div>
                                             <div className="">
@@ -286,11 +321,39 @@ const Home = () => {
                                                                     />
                                                                 </figure>
                                                                 <div className="card-body">
-                                                                    <h3 className="card-title">
+                                                                    <p className="card-title text-base">
                                                                         {
                                                                             slide.title
                                                                         }
-                                                                    </h3>
+                                                                    </p>
+                                                                    <div className="rating md:rating-sm sm:rating-xs ">
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="rating-1"
+                                                                            className="mask mask-star bg-primary"
+                                                                        />
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="rating-1"
+                                                                            className="mask mask-star bg-primary"
+                                                                        />
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="rating-1"
+                                                                            className="mask mask-star bg-primary"
+                                                                            defaultChecked
+                                                                        />
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="rating-1"
+                                                                            className="mask mask-star bg-primary"
+                                                                        />
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="rating-1"
+                                                                            className="mask mask-star bg-primary"
+                                                                        />
+                                                                    </div>
                                                                     <div className="justify-start">
                                                                         <div
                                                                             className="badge badge-outline badge-sm text-accent
@@ -307,11 +370,7 @@ const Home = () => {
                                                                             Products
                                                                         </div>
                                                                     </div>
-                                                                    <p>
-                                                                        {
-                                                                            slide.description
-                                                                        }
-                                                                    </p>
+
                                                                     <div className="card-actions">
                                                                         <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                                             Add
@@ -345,11 +404,11 @@ const Home = () => {
                                                                     />
                                                                 </figure>
                                                                 <div className="card-body">
-                                                                    <h3 className="card-title">
+                                                                    <p className="card-title text-base">
                                                                         {
                                                                             slide.title
                                                                         }
-                                                                    </h3>
+                                                                    </p>
                                                                     <div className="justify-start">
                                                                         <div
                                                                             className="badge badge-outline badge-sm text-accent
@@ -358,6 +417,34 @@ const Home = () => {
                                                                         >
                                                                             electronics
                                                                         </div>
+                                                                        <div className="rating md:rating-sm sm:rating-xs ">
+                                                                            <input
+                                                                                type="radio"
+                                                                                name="rating-1"
+                                                                                className="mask mask-star bg-primary"
+                                                                            />
+                                                                            <input
+                                                                                type="radio"
+                                                                                name="rating-1"
+                                                                                className="mask mask-star bg-primary"
+                                                                            />
+                                                                            <input
+                                                                                type="radio"
+                                                                                name="rating-1"
+                                                                                className="mask mask-star bg-primary"
+                                                                                defaultChecked
+                                                                            />
+                                                                            <input
+                                                                                type="radio"
+                                                                                name="rating-1"
+                                                                                className="mask mask-star bg-primary"
+                                                                            />
+                                                                            <input
+                                                                                type="radio"
+                                                                                name="rating-1"
+                                                                                className="mask mask-star bg-primary"
+                                                                            />
+                                                                        </div>
                                                                         <div
                                                                             className="badge badge-outline badge-sm text-accent
 
@@ -366,108 +453,12 @@ const Home = () => {
                                                                             Products
                                                                         </div>
                                                                     </div>
-                                                                    <p>
-                                                                        {
-                                                                            slide.description
-                                                                        }
-                                                                    </p>
                                                                     <div className="card-actions">
                                                                         <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                                             Add
                                                                             to
                                                                             cart
                                                                         </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div id="phones">
-                                                    <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                        Phones and Tablets
-                                                    </h3>
-                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                        {Array.from(
-                                                            Array(4)
-                                                        ).map((index) => (
-                                                            <div
-                                                                key={index}
-                                                                className="card w-fit bg-base-100 shadow-xl m-5"
-                                                            >
-                                                                <figure>
-                                                                    <img
-                                                                        src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                        alt="Shoes"
-                                                                    />
-                                                                </figure>
-                                                                <div className="card-body">
-                                                                    <h2 className="card-title">
-                                                                        Shoes!
-                                                                        <div className="badge badge-primary">
-                                                                            NEW
-                                                                        </div>
-                                                                    </h2>
-                                                                    <p>
-                                                                        If a dog
-                                                                        chews
-                                                                        shoes
-                                                                        whose
-                                                                        shoes
-                                                                        does he
-                                                                        choose?
-                                                                    </p>
-                                                                    <div className="card-actions justify-end">
-                                                                        <div className="badge badge-outline">
-                                                                            Fashion
-                                                                        </div>
-                                                                        <div className="badge badge-outline">
-                                                                            Products
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div id="laptops">
-                                                    <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                        Laptops
-                                                    </h3>
-                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                        {Array.from(
-                                                            Array(4)
-                                                        ).map((index) => (
-                                                            <div className="card w-fit bg-base-100 shadow-xl m-5">
-                                                                <figure>
-                                                                    <img
-                                                                        src="https://api.lorem.space/image/shoes?w=400&h=225"
-                                                                        alt="Shoes"
-                                                                    />
-                                                                </figure>
-                                                                <div className="card-body">
-                                                                    <h2 className="card-title">
-                                                                        Shoes!
-                                                                        <div className="badge badge-primary">
-                                                                            NEW
-                                                                        </div>
-                                                                    </h2>
-                                                                    <p>
-                                                                        If a dog
-                                                                        chews
-                                                                        shoes
-                                                                        whose
-                                                                        shoes
-                                                                        does he
-                                                                        choose?
-                                                                    </p>
-                                                                    <div className="card-actions justify-end">
-                                                                        <div className="badge badge-outline">
-                                                                            Fashion
-                                                                        </div>
-                                                                        <div className="badge badge-outline">
-                                                                            Products
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -529,125 +520,79 @@ const Home = () => {
                                                 </div>
 
                                                 <div className="w-fit">
-                                                    {categories.map((cat) => (
-                                                        <div
-                                                            id={cat.id}
-                                                            key={cat.id}
-                                                        >
-                                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                                Latest
-                                                            </h3>
-                                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                                {slides.map(
-                                                                    (slide) => (
-                                                                        <div
-                                                                            className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                            key={
-                                                                                slide.id
-                                                                            }
-                                                                        >
-                                                                            <figure>
-                                                                                <img
-                                                                                    src={
-                                                                                        slide.img
-                                                                                    }
-                                                                                    alt={
-                                                                                        slide.title
-                                                                                    }
+                                                    <div>
+                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
+                                                            latest
+                                                        </h3>
+                                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
+                                                            {slides.map(
+                                                                (slide) => (
+                                                                    <div
+                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
+                                                                        key={
+                                                                            slide.id
+                                                                        }
+                                                                    >
+                                                                        <figure>
+                                                                            <img
+                                                                                src={
+                                                                                    slide.img
+                                                                                }
+                                                                                alt={
+                                                                                    slide.title
+                                                                                }
+                                                                            />
+                                                                        </figure>
+                                                                        <div className="card-body">
+                                                                            <p className="card-title text-base">
+                                                                                {
+                                                                                    slide.title
+                                                                                }
+                                                                            </p>
+                                                                            <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
                                                                                 />
-                                                                            </figure>
-                                                                            <div className="card-body">
-                                                                                <h3 className="card-title">
-                                                                                    {
-                                                                                        slide.title
-                                                                                    }
-                                                                                </h3>
-                                                                                <div className="justify-start">
-                                                                                    <div
-                                                                                        className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                    >
-                                                                                        electronics
-                                                                                    </div>
-                                                                                    <div
-                                                                                        className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                    >
-                                                                                        Products
-                                                                                    </div>
-                                                                                </div>
-                                                                                <p>
-                                                                                    {
-                                                                                        slide.description
-                                                                                    }
-                                                                                </p>
-                                                                                <div className="card-actions">
-                                                                                    <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                                        Add
-                                                                                        to
-                                                                                        cart
-                                                                                    </button>
-                                                                                </div>
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                    defaultChecked
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
                                                                             </div>
-                                                                        </div>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    ))}
-
-                                                    <div id="popular">
-                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                            Popular products
-                                                        </h3>
-                                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                            {slides.map(
-                                                                (slide) => (
-                                                                    <div
-                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                        key={
-                                                                            slide.id
-                                                                        }
-                                                                    >
-                                                                        <figure>
-                                                                            <img
-                                                                                src={
-                                                                                    slide.img
-                                                                                }
-                                                                                alt={
-                                                                                    slide.title
-                                                                                }
-                                                                            />
-                                                                        </figure>
-                                                                        <div className="card-body">
-                                                                            <h3 className="card-title">
-                                                                                {
-                                                                                    slide.title
-                                                                                }
-                                                                            </h3>
                                                                             <div className="justify-start">
                                                                                 <div
                                                                                     className="badge badge-outline badge-sm text-accent
 
- mr-2"
+mr-2"
                                                                                 >
                                                                                     electronics
                                                                                 </div>
                                                                                 <div
                                                                                     className="badge badge-outline badge-sm text-accent
 
- mr-2"
+mr-2"
                                                                                 >
                                                                                     Products
                                                                                 </div>
                                                                             </div>
-                                                                            <p>
-                                                                                {
-                                                                                    slide.description
-                                                                                }
-                                                                            </p>
                                                                             <div className="card-actions">
                                                                                 <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                                                     Add
@@ -661,9 +606,9 @@ mr-2"
                                                             )}
                                                         </div>
                                                     </div>
-                                                    <div id="phones">
-                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                            Phones and Tablets
+                                                    <div>
+                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
+                                                            popular
                                                         </h3>
                                                         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
                                                             {slides.map(
@@ -685,95 +630,53 @@ mr-2"
                                                                             />
                                                                         </figure>
                                                                         <div className="card-body">
-                                                                            <h3 className="card-title">
-                                                                                {
-                                                                                    slide.title
-                                                                                }
-                                                                            </h3>
+                                                                            <p className="card-title text-base">
+                                                                                {slide.title}
+                                                                            </p>
+                                                                            <div className="rating md:rating-sm sm:rating-xs">
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                    defaultChecked
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                                <input
+                                                                                    type="radio"
+                                                                                    name="rating-1"
+                                                                                    className="mask mask-star bg-primary"
+                                                                                />
+                                                                            </div>
                                                                             <div className="justify-start">
                                                                                 <div
                                                                                     className="badge badge-outline badge-sm text-accent
 
- mr-2"
+mr-2"
                                                                                 >
                                                                                     electronics
                                                                                 </div>
                                                                                 <div
                                                                                     className="badge badge-outline badge-sm text-accent
 
- mr-2"
+mr-2"
                                                                                 >
                                                                                     Products
                                                                                 </div>
                                                                             </div>
-                                                                            <p>
-                                                                                {
-                                                                                    slide.description
-                                                                                }
-                                                                            </p>
-                                                                            <div className="card-actions">
-                                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                                    Add
-                                                                                    to
-                                                                                    cart
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                    <div id="laptops">
-                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                            Laptops
-                                                        </h3>
-                                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                            {slides.map(
-                                                                (slide) => (
-                                                                    <div
-                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                        key={
-                                                                            slide.id
-                                                                        }
-                                                                    >
-                                                                        <figure>
-                                                                            <img
-                                                                                src={
-                                                                                    slide.img
-                                                                                }
-                                                                                alt={
-                                                                                    slide.title
-                                                                                }
-                                                                            />
-                                                                        </figure>
-                                                                        <div className="card-body">
-                                                                            <h3 className="card-title">
-                                                                                {
-                                                                                    slide.title
-                                                                                }
-                                                                            </h3>
-                                                                            <div className="justify-start">
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                                                                >
-                                                                                    electronics
-                                                                                </div>
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                                                                >
-                                                                                    Products
-                                                                                </div>
-                                                                            </div>
-                                                                            <p>
-                                                                                {
-                                                                                    slide.description
-                                                                                }
-                                                                            </p>
                                                                             <div className="card-actions">
                                                                                 <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
                                                                                     Add

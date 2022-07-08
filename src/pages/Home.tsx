@@ -61,13 +61,26 @@ const Home = () => {
         method: "get",
         url: "/category/list",
     });
+    const {
+        response: isProduct,
+        loading: isLoading,
+        error: isError,
+    } = useFetch({
+        method: "get",
+        url: "/product/",
+    });
     const [categories, setCategories] = useState<any[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
 
     // Fetching categories from the api
 
     useEffect(() => {
         if (response !== null) {
             setCategories(response);
+            // console.log(categories);
+        }
+        if (isProduct !== null) {
+            setProducts(isProduct);
             // console.log(categories);
         }
     }, [response]);
@@ -83,53 +96,105 @@ const Home = () => {
             <PrimaryNavbar />
             {/* Landing section */}
             <header className="mt-36 w-full mb-9">
-                <div className="carousel w-full h-full lg:h-72 max-w-7xl mx-auto">
-                    {slides.map((slide) => (
-                        <div
-                            id={`slide${slide.id}`}
-                            className="carousel-item relative w-full flex lg:flex-row sm:flex-col-reverse"
-                            key={slide.id}
-                        >
-                            <div className="lg:ml-24 my-auto w-1/2 sm:w-2/3 lg:w-1/2 sm:mx-auto sm:text-center lg:text-left p-4">
-                                <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-primary">
-                                    {slide.title}
-                                </h1>
-                                <p className="text-neutral">
-                                    {slide.description}
-                                </p>
-                            </div>
-                            <img
-                                src={slide.img}
-                                className="w-fit lg:right-0 lg:mr-24 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit "
-                            />
+                {isLoading ? (
+                    <>
+                        <div id="loading ">
+                            <div className="carousel-item relative w-full flex lg:flex-row sm:flex-col-reverse animate-pulse">
+                                <div className="lg:ml-24 my-auto w-1/2 sm:w-2/3 lg:w-1/2 sm:mx-auto sm:text-center lg:text-left p-4">
+                                    <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-neutral sm:text-left">
+                                        Loading offers...
+                                    </h1>
+                                    <div className="text-neutral h-4  w-1/2 bg-secondary"></div>
+                                    <br />
+                                    <div className="text-neutral h-4  w-3/4 bg-secondary"></div>
+                                    <br />
+                                    <div className="text-neutral h-4  w-full bg-secondary"></div>
+                                </div>
+                                <figure className="h-60 w-fit lg:right-0 lg:mr-48 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit  flex justify-center items-center">
+                                    <FaSpinner className="lg:h-24 lg:w-24 sm:h-12 sm:w-12 animate-spin text-neutral" />
+                                </figure>
 
-                            <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                {slide.id > 0 ? (
-                                    <a
-                                        href={`#slide${slide.id - 1}`}
-                                        className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
-                                    >
-                                        ❮
-                                    </a>
-                                ) : (
+                                <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                     <a
                                         href={`#slide1`}
-                                        className="btn btn-circle bg-grey shadow-lg btn-disabled"
+                                        className="btn btn-circle bg-secondary shadow-lg btn-disabled"
                                     >
                                         ❮
                                     </a>
-                                )}
-                                {/* {slide.id } */}
-                                <a
-                                    href={`#slide${slide.id + 1}`}
-                                    className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
-                                >
-                                    ❯
-                                </a>
+
+                                    <a
+                                        href="#"
+                                        className="btn btn-circle bg-secondary shadow-lg btn-disabled"
+                                    >
+                                        ❯
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </>
+                ) : (
+                    <>
+                        {isError && (
+                            <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                <p className="text-centertext-base-100">
+                                    {isError.response.data}
+                                </p>
+                            </div>
+                        )}
+
+                        {products.length > 0 && (
+                            <div className="carousel w-full h-full lg:h-72 max-w-7xl mx-auto">
+                                {products.map((item) => (
+                                    <div
+                                        id={`slide${item.id}`}
+                                        className="carousel-item relative w-full flex lg:flex-row sm:flex-col-reverse"
+                                        key={item.id}
+                                    >
+                                        <div className="lg:ml-24 my-auto w-1/2 sm:w-2/3 lg:w-1/2 sm:mx-auto sm:text-center lg:text-left p-4">
+                                            <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-primary">
+                                                {item.name}
+                                            </h1>
+                                            <p className="text-neutral">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                        <img
+                                            src={item.imageUrl}
+                                            className="w-fit lg:right-0 lg:mr-24 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit "
+                                        />
+
+                                        <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                            {item.id > 1 ? (
+                                                <a
+                                                    href={`#slide${
+                                                        item.id - 1
+                                                    }`}
+                                                    className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
+                                                >
+                                                    ❮
+                                                </a>
+                                            ) : (
+                                                <a
+                                                    href={`#slide1`}
+                                                    className="btn btn-circle bg-secondary shadow-lg btn-disabled"
+                                                >
+                                                    ❮
+                                                </a>
+                                            )}
+                                            {/* {slide.id } */}
+                                            <a
+                                                href={`#slide${item.id + 1}`}
+                                                className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
+                                            >
+                                                ❯
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </>
+                )}
             </header>
 
             {/* categories section */}
@@ -139,28 +204,71 @@ const Home = () => {
                     <div className="divider"></div>
                 </div>
                 <div className="max-w-7xl mx-auto py-4  px-6">
-                    <h3 className="lg:text-2xl sm:text-xl text-primary text-center mb-6">
-                        Special for you
-                    </h3>
-                    <div className="sm:block md:hidden lg:hidden">
-                        <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
-                            {slides.map((slide) => (
-                                <div
-                                    className="carousel-item w-64 relative"
-                                    key={slide.id}
-                                >
-                                    <div className="absolute">
-                                        <p></p>
-                                    </div>
-                                    <img
-                                        src={slide.img}
-                                        alt={slide.title}
-                                        className="rounded-box"
-                                    />
+                    {isLoading ? (
+                        <>
+                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                <span className="flex justify-center">
+                                    <FaSpinner className="h-8 w-8 animate-spin" />
+                                    <span className="ml-6">
+                                        Products will load in a few...
+                                    </span>
+                                </span>
+                            </h3>
+                            <div className="sm:block md:hidden lg:hidden">
+                                <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box animate-pulse">
+                                    {Array.from(Array(6)).map((_, index) => (
+                                        <div
+                                            className="carousel-item h-32 w-64 bg-secondary rounded-lg"
+                                            key={index}
+                                        >
+                                            <div className="text-neutral h-4  w-1/2 bg-base-100"></div>
+                                            <br />
+                                            <div className="text-neutral h-4  w-3/4 bg-base-100"></div>
+                                            <br />
+                                            <div className="text-neutral h-4  w-full bg-base-100"></div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            {isError && (
+                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                    <p className="text-centertext-base-100">
+                                        {isError.response.data}
+                                    </p>
+                                </div>
+                            )}
+                            {products.length > 0 && (
+                                <div>
+                                    <h3 className="lg:text-2xl sm:text-xl text-primary text-center mb-6">
+                                        Special for you
+                                    </h3>
+                                    <div className="sm:block md:hidden lg:hidden">
+                                        <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
+                                            {products.map((item) => (
+                                                <div
+                                                    className="carousel-item w-64 relative"
+                                                    key={item.id}
+                                                >
+                                                    <div className="absolute">
+                                                        <h4>{item.name}</h4>
+                                                        <p>{item.price}</p>
+                                                    </div>
+                                                    <img
+                                                        src={item.imageUrl}
+                                                        alt={item.name}
+                                                        className="rounded-box"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </>
+                    )}
                     <div className="mx-auto sm:hidden md:block lg:block">
                         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
                             {slides.map((slide) => (
@@ -277,8 +385,10 @@ const Home = () => {
                 ) : (
                     <>
                         {error && (
-                            <div>
-                                <p>{error.response.data}</p>
+                            <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                <p className="text-centertext-base-100">
+                                    {error.response.data}
+                                </p>
                             </div>
                         )}
                         <div className="w-full bg-secondary  pb-4">
@@ -631,7 +741,9 @@ mr-2"
                                                                         </figure>
                                                                         <div className="card-body">
                                                                             <p className="card-title text-base">
-                                                                                {slide.title}
+                                                                                {
+                                                                                    slide.title
+                                                                                }
                                                                             </p>
                                                                             <div className="rating md:rating-sm sm:rating-xs">
                                                                                 <input

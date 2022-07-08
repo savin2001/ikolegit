@@ -79,11 +79,13 @@ const Home = () => {
             setCategories(response);
             // console.log(categories);
         }
+    }, [response]);
+    useEffect(() => {
         if (isProduct !== null) {
             setProducts(isProduct);
-            // console.log(categories);
+            console.log(products);
         }
-    }, [response]);
+    }, [isProduct]);
 
     // Adding items to cart
 
@@ -249,17 +251,13 @@ const Home = () => {
                                         <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
                                             {products.map((item) => (
                                                 <div
-                                                    className="carousel-item w-64 relative"
+                                                    className="carousel-item w-64 h-64 bg-secondary rounded-box "
                                                     key={item.id}
                                                 >
-                                                    <div className="absolute">
-                                                        <h4>{item.name}</h4>
-                                                        <p>{item.price}</p>
-                                                    </div>
                                                     <img
                                                         src={item.imageUrl}
                                                         alt={item.name}
-                                                        className="rounded-box"
+                                                        className="w-full h-full object-cover"
                                                     />
                                                 </div>
                                             ))}

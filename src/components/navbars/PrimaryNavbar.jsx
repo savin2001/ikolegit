@@ -33,7 +33,7 @@ const PrimaryNavbar = () => {
     return (
         <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-40 bg-base-100 w-full">
             <div className="navbar max-w-7xl mx-auto">
-                <div className="navbar-start flex-auto w-1/2">
+                <div className="navbar-start flex-auto w-1/3">
                     <a className="btn btn-ghost normal-case text-2xl">
                         <img
                             className="mx-auto h-8 w-auto mr-3"
@@ -44,8 +44,30 @@ const PrimaryNavbar = () => {
                         <span className="text-primary">Legit</span>
                     </a>
                 </div>
+                {open && (
+                    <div className="navbar-center sm:hidden md:flex lg:flex flex-auto">
+                        <div className="container mx-2 w-full">
+                            <div className="max-w-2xl mx-auto">
+                                <div className="form-control">
+                                    <div className="form-control">
+                                        <div className="flex shadow-md rounded-full w-full">
+                                            <input
+                                                type="text"
+                                                placeholder="I am looking for ..."
+                                                className="input input-bordered border-primary flex-auto rounded-l-full  focus:ring-2 focus:ring-inset focus:ring-primary"
+                                            />
+                                            <button className="btn bg-primary text-base-100 border-none  rounded-r-full hover:border">
+                                                <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
-                <div className="navbar-end  flex-auto  w-1/2">
+                <div className="navbar-end  flex-auto  w-1/3">
                     <label className="btn btn-ghost btn-circle swap swap-rotate">
                         <input type="checkbox" />
                         <div className="swap-on" onClick={handleOpenSearch}>
@@ -109,7 +131,10 @@ const PrimaryNavbar = () => {
                                     <button
                                         className="btn btn-sm btn-secondary text-neutral btn-block rounded-full"
                                         onClick={() => emptyCart()}
-                                    > Clear cart</button>
+                                    >
+                                        {" "}
+                                        Clear cart
+                                    </button>
                                     <Link
                                         to="/cart"
                                         className="btn btn-sm btn-primary btn-block rounded-full"
@@ -172,18 +197,26 @@ const PrimaryNavbar = () => {
                 </div>
             </div>
             {open && (
-                <div className="container py-4">
-                    <div className="max-w-2xl mx-auto">
-                        <div className="form-control">
-                            <input
-                                type="text"
-                                placeholder="I am looking for ..."
-                                className="input input-bordered border-primary rounded-full focus:ring-2 focus:ring-inset focus:ring-primary"
-                            />
+                        <div className="container sm:flex md:hidden lg:hidden">
+                            <div className="max-w-2xl mx-auto">
+                                <div className="form-control">
+                                    <div className="form-control">
+                                        <div className="flex shadow-md rounded-full w-full">
+                                            <input
+                                                type="text"
+                                                placeholder="I am looking for ..."
+                                                className="input input-bordered border-primary flex-auto rounded-l-full  focus:ring-2 focus:ring-inset focus:ring-primary"
+                                            />
+                                            <button className="btn bg-primary text-base-100 border-none  rounded-r-full">
+                                                <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                   
+                )}
         </div>
     );
 };

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { CartProvider, useCart } from "react-use-cart";
+
 import useFetch from "../components/axios-custom-hooks/useFetch.js";
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
-
 
 const Home = () => {
     const { response, loading, error } = useFetch({
@@ -26,7 +27,7 @@ const Home = () => {
 
     useEffect(() => {
         if (response !== null) {
-            setCategories(response);;
+            setCategories(response);
         }
     }, [response]);
     useEffect(() => {
@@ -37,9 +38,7 @@ const Home = () => {
 
     // Adding items to cart
 
-    const handleAddCart = () => {
-        const cart = localStorage.getItem("cartItems");
-    };
+    const { addItem } = useCart();
 
     return (
         <>
@@ -104,9 +103,12 @@ const Home = () => {
                                             <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-primary">
                                                 {item.name}
                                             </h1>
-                                            <p className="text-neutral">
+                                            <p className="text-neutral my-2">
                                                 {item.description}
                                             </p>
+                                            <button className="btn btn-primary text-sm rounded-xl mt-2">
+                                                Check it out
+                                            </button>
                                         </div>
                                         <img
                                             src={item.imageUrl}
@@ -309,7 +311,12 @@ const Home = () => {
                                                         $ {item.price}
                                                     </p>
                                                     <div className="card-actions">
-                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                        <button
+                                                            className="btn  w-full btn-primary text-sm rounded-full btn-sm"
+                                                            onClick={() =>
+                                                                addItem(item)
+                                                            }
+                                                        >
                                                             Add to cart
                                                         </button>
                                                     </div>
@@ -330,6 +337,33 @@ const Home = () => {
                                 <span className="ml-6">Wait a moment...</span>
                             </span>
                         </h3>
+                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
+                            {Array.from(Array(4)).map((_, index) => (
+                                <div
+                                    className="card bg-base-100 shadow-2xl border-2 m-5"
+                                    key={index}
+                                >
+                                    <figure className="h-48 bg-secondary"></figure>
+                                    <div className="card-body">
+                                        <h3 className="card-title"></h3>
+                                        <div className="justify-start">
+                                            <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                product
+                                            </div>
+                                            <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                tag
+                                            </div>
+                                        </div>
+                                        <p></p>
+                                        <div className="card-actions">
+                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                Loading...
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ) : (
                     <>
@@ -372,46 +406,9 @@ const Home = () => {
                                                                             cat.categoryName
                                                                         }
                                                                     </h3>
-                                                                    {loading ? (
-                                                                        <div id="loading ">
-                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
-                                                                                {Array.from(
-                                                                                    Array(
-                                                                                        4
-                                                                                    )
-                                                                                ).map(
-                                                                                    (
-                                                                                        _,
-                                                                                        index
-                                                                                    ) => (
-                                                                                        <div
-                                                                                            className="card bg-base-100 shadow-2xl border-2 m-5"
-                                                                                            key={
-                                                                                                index
-                                                                                            }
-                                                                                        >
-                                                                                            <figure className="h-48 bg-secondary"></figure>
-                                                                                            <div className="card-body">
-                                                                                                <h3 className="card-title"></h3>
-                                                                                                <div className="justify-start">
-                                                                                                    <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                                                                        product
-                                                                                                    </div>
-                                                                                                    <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                                                                        tag
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <p></p>
-                                                                                                <div className="card-actions">
-                                                                                                    <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
-                                                                                                        Loading...
-                                                                                                    </button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    )
-                                                                                )}
-                                                                            </div>
+                                                                    {isLoading ? (
+                                                                        <div className="text-primary text-center">
+                                                                            <FaSpinner className="h-8 w-8 animate-spin" />
                                                                         </div>
                                                                     ) : (
                                                                         <>
@@ -463,9 +460,6 @@ const Home = () => {
                                                                                                                 {
                                                                                                                     item.name
                                                                                                                 }
-                                                                                                                <div className="badge badge-primary sm:hidden lg:block">
-                                                                                                                    NEW
-                                                                                                                </div>
                                                                                                             </p>
 
                                                                                                             <div className="rating md:rating-sm sm:rating-xs ">
@@ -503,7 +497,14 @@ const Home = () => {
                                                                                                                 }
                                                                                                             </p>
                                                                                                             <div className="card-actions">
-                                                                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                                                                <button
+                                                                                                                    className="btn  w-full btn-primary text-sm rounded-full btn-sm"
+                                                                                                                    onClick={() =>
+                                                                                                                        addItem(
+                                                                                                                            item
+                                                                                                                        )
+                                                                                                                    }
+                                                                                                                >
                                                                                                                     Add
                                                                                                                     to
                                                                                                                     cart

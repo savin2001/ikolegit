@@ -5,57 +5,7 @@ import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
 
-const slides = [
-    {
-        id: 0,
-        title: "Amazon Fire TV 43 inch smart TV",
-        description:
-            "Amazon Fire TV 4-Series comes with a 1-year limited warranty and a 30-day Amazon Device return policy.",
-        img: "https://m.media-amazon.com/images/I/51EPd38RHQL._AC_SL1000_.jpg",
-    },
-    {
-        id: 1,
-        title: "iPhone XR, 64GB, Black",
-        description:
-            "The product is refurbished, is fully functional and in excellent condition. Backed by the 90-day Amazon Renewed Guarantee.",
-        img: "https://m.media-amazon.com/images/I/717KHGCJ6eL._AC_SL1500_.jpg",
-    },
-    {
-        id: 2,
-        title: "Acoustic Bluetooth Speaker",
-        description:
-            "Enhanced bass boost design, front panel controls, illuminated display, bass, treble and main volume controls, stereo auxiliary input, pro surround function.",
-        img: "https://m.media-amazon.com/images/I/51M5O+wl7dL._AC_SL1000_.jpg",
-    },
-    {
-        id: 3,
-        title: "Computer Intel Core-i5",
-        description:
-            "2022 Newest HP 15.6 HD Laptop Computer, Intel Core-i5 Quad-Core N4120(up to 2.6GHz), 8GB DDR4 RAM, 128GB SSD, HDMI, Bluetooth, Webcam, USB-C, RJ45 Ethernet, Windows 11S, Silver, JVQ Mousepad",
-        img: "https://m.media-amazon.com/images/I/71IyteItZhL._AC_SL1500_.jpg",
-    },
-    {
-        id: 4,
-        title: "EVGA Z12 RGB Gaming Keyboard",
-        description:
-            "RGB Backlit LED, 5 Programmable Macro Keys, Dedicated Media Keys, Water Resistant, 834-W0-12US-KR",
-        img: "https://m.media-amazon.com/images/I/61mko8+Uf6L._AC_SL1500_.jpg",
-    },
-    {
-        id: 5,
-        title: "LED Wireless Mouse",
-        description:
-            "Uiosmuph G12 Slim Rechargeable Wireless Silent Mouse, 2.4G Portable USB Optical Wireless Computer Mice with USB Receiver and Type C Adapter (Matte Black)",
-        img: "https://m.media-amazon.com/images/I/51KCV2cdDsS._AC_SL1500_.jpg",
-    },
-    {
-        id: 6,
-        title: "Sony Wired Headphones",
-        description:
-            "Lightweight 1.38 in neodymium dynamic drivers deliver a punchy, rhythmic response to even the most demanding tracks. Driver Unit: Dome type",
-        img: "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhlYWRwaG9uZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    },
-];
+
 const Home = () => {
     const { response, loading, error } = useFetch({
         method: "get",

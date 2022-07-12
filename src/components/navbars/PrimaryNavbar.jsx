@@ -1,14 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CartProvider, useCart } from "react-use-cart";
+
 import {
     AiOutlineSearch,
     AiOutlineClose,
     AiOutlineMenu,
     AiOutlineShoppingCart,
-    AiOutlineBell
+    AiOutlineBell,
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
+    const {
+        isEmpty,
+        totalUniqueItems,
+        items,
+        cartTotal,
+        totalItems,
+        removeItem,
+    } = useCart();
+
     const [open, setOpen] = useState(false);
 
     const handleOpenSearch = () => {
@@ -52,7 +63,11 @@ const PrimaryNavbar = () => {
                             <div className="indicator">
                                 <AiOutlineShoppingCart className=" h-5 w-5 lg:h-7 lg:w-7" />
                                 <span className="badge badge-sm badge-primary indicator-item">
-                                    8
+                                    {isEmpty ? (
+                                        <>{totalItems}</>
+                                    ) : (
+                                        <>{totalItems}</>
+                                    )}
                                 </span>
                             </div>
                         </label>
@@ -62,13 +77,38 @@ const PrimaryNavbar = () => {
                         >
                             <div className="card-body">
                                 <span className="font-bold text-lg">
-                                    8 Items
+                                    {totalUniqueItems} Items
                                 </span>
                                 <span className="text-info">
-                                    Subtotal: $999
+                                    Subtotal: $ {cartTotal}
                                 </span>
+                                <div className="items py-2">
+                                    {items.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className="flex justify-between pb-1"
+                                        >
+                                            <span className="badge badge-sm badge-neutral mr-1">
+                                                {item.quantity}
+                                            </span>
+                                            <p>{item.name}</p>
+
+                                            <button
+                                                onClick={() =>
+                                                    removeItem(item.id)
+                                                }
+                                                className="btn border-none btn-xs bg-primary text-base-100"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
                                 <div className="card-actions">
-                                    <Link to="/cart" className="btn btn-primary btn-block rounded-full">
+                                    <Link
+                                        to="/cart"
+                                        className="btn btn-primary btn-block rounded-full"
+                                    >
                                         View full cart
                                     </Link>
                                 </div>
@@ -77,7 +117,7 @@ const PrimaryNavbar = () => {
                     </div>
                     <button className="btn btn-ghost btn-circle">
                         <div className="indicator">
-                            <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7"/>
+                            <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7" />
                             <span className="badge badge-sm badge-primary indicator-item">
                                 2
                             </span>

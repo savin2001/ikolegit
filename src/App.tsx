@@ -7,6 +7,7 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Profile from "./pages/customer-pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx"
+import Footer from "./components/footer/Footer.jsx"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </Router>
+                <Footer/>
             </div>
         </div>
     );

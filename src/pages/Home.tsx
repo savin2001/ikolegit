@@ -407,9 +407,15 @@ const Home = () => {
                                                                         }
                                                                     </h3>
                                                                     {isLoading ? (
-                                                                        <div className="text-primary text-center">
-                                                                            <FaSpinner className="h-8 w-8 animate-spin" />
-                                                                        </div>
+                                                                        <p className="mt-9 lg:text-sm sm:text-xs text-primary pb-6 text-center">
+                                                                            <span className="flex justify-center">
+                                                                                <FaSpinner className="h-8 w-8 animate-spin" />
+                                                                                <span className="ml-6 text-neutral">
+                                                                                    Loading
+                                                                                    items...
+                                                                                </span>
+                                                                            </span>
+                                                                        </p>
                                                                     ) : (
                                                                         <>
                                                                             {error && (

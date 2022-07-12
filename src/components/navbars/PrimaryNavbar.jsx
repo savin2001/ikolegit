@@ -18,6 +18,7 @@ const PrimaryNavbar = () => {
         cartTotal,
         totalItems,
         removeItem,
+        emptyCart,
     } = useCart();
 
     const [open, setOpen] = useState(false);
@@ -105,9 +106,13 @@ const PrimaryNavbar = () => {
                                     ))}
                                 </div>
                                 <div className="card-actions">
+                                    <button
+                                        className="btn btn-sm btn-secondary text-neutral btn-block rounded-full"
+                                        onClick={() => emptyCart()}
+                                    > Clear cart</button>
                                     <Link
                                         to="/cart"
-                                        className="btn btn-primary btn-block rounded-full"
+                                        className="btn btn-sm btn-primary btn-block rounded-full"
                                     >
                                         View full cart
                                     </Link>

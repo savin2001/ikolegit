@@ -76,14 +76,12 @@ const Home = () => {
 
     useEffect(() => {
         if (response !== null) {
-            setCategories(response);
-            // console.log(categories);
+            setCategories(response);;
         }
     }, [response]);
     useEffect(() => {
         if (isProduct !== null) {
             setProducts(isProduct);
-            console.log(products);
         }
     }, [isProduct]);
 
@@ -267,82 +265,112 @@ const Home = () => {
                             )}
                         </>
                     )}
-                    <div className="mx-auto sm:hidden md:block lg:block">
-                        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-                            {slides.map((slide) => (
-                                <div
-                                    className="card w-fit bg-base-100 shadow-xl m-5"
-                                    key={slide.id}
-                                >
-                                    <figure>
-                                        <img
-                                            src={slide.img}
-                                            alt={slide.title}
-                                        />
-                                    </figure>
-                                    <div className="card-body">
-                                        <p className="card-title text-base">
-                                            {slide.title}
-                                            <div className="badge badge-primary sm:hidden lg:block">
-                                                NEW
-                                            </div>
-                                        </p>
-                                        <div className="rating md:rating-sm sm:rating-xs ">
-                                            <input
-                                                type="radio"
-                                                name="rating-1"
-                                                className="mask mask-star bg-primary"
-                                            />
-                                            <input
-                                                type="radio"
-                                                name="rating-1"
-                                                className="mask mask-star bg-primary"
-                                            />
-                                            <input
-                                                type="radio"
-                                                name="rating-1"
-                                                className="mask mask-star bg-primary"
-                                                defaultChecked
-                                            />
-                                            <input
-                                                type="radio"
-                                                name="rating-1"
-                                                className="mask mask-star bg-primary"
-                                            />
-                                            <input
-                                                type="radio"
-                                                name="rating-1"
-                                                className="mask mask-star bg-primary"
-                                            />
-                                        </div>
-                                        <div className="justify-start">
-                                            <div
-                                                className="badge badge-outline badge-sm text-accent
 
- mr-2"
-                                            >
-                                                Electronics
+                    {loading ? (
+                        <div id="loading ">
+                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
+                                {Array.from(Array(4)).map((_, index) => (
+                                    <div
+                                        className="card bg-base-100 shadow-2xl border-2 m-5"
+                                        key={index}
+                                    >
+                                        <figure className="h-48 bg-secondary"></figure>
+                                        <div className="card-body">
+                                            <h3 className="card-title"></h3>
+                                            <div className="justify-start">
+                                                <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                    product
+                                                </div>
+                                                <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                    tag
+                                                </div>
                                             </div>
-                                            <div
-                                                className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                            >
-                                                Products
+                                            <p></p>
+                                            <div className="card-actions">
+                                                <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                    Loading...
+                                                </button>
                                             </div>
-                                        </div>
-
-                                        <div className="card-actions">
-                                            <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                Add to cart
-                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                    <div className="hidden lg:block"></div>
+                    ) : (
+                        <>
+                            {error && (
+                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                    <p className="text-centertext-base-100">
+                                        {error.response.data}
+                                    </p>
+                                </div>
+                            )}
+                            <div className="mx-auto sm:hidden md:block lg:block">
+                                {products.length > 0 && (
+                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                        {products.map((item) => (
+                                            <div
+                                                className="card w-fit bg-base-100 shadow-xl m-5"
+                                                key={item.id}
+                                            >
+                                                <figure>
+                                                    <img
+                                                        src={item.imageUrl}
+                                                        alt={item.name}
+                                                    />
+                                                </figure>
+                                                <div className="card-body">
+                                                    <p className="card-title text-base">
+                                                        {item.name}
+                                                        <div className="badge badge-primary sm:hidden lg:block">
+                                                            NEW
+                                                        </div>
+                                                    </p>
+
+                                                    <div className="rating md:rating-sm sm:rating-xs ">
+                                                        <input
+                                                            type="radio"
+                                                            name="rating-1"
+                                                            className="mask mask-star bg-primary"
+                                                        />
+                                                        <input
+                                                            type="radio"
+                                                            name="rating-1"
+                                                            className="mask mask-star bg-primary"
+                                                        />
+                                                        <input
+                                                            type="radio"
+                                                            name="rating-1"
+                                                            className="mask mask-star bg-primary"
+                                                            defaultChecked
+                                                        />
+                                                        <input
+                                                            type="radio"
+                                                            name="rating-1"
+                                                            className="mask mask-star bg-primary"
+                                                        />
+                                                        <input
+                                                            type="radio"
+                                                            name="rating-1"
+                                                            className="mask mask-star bg-primary"
+                                                        />
+                                                    </div>
+                                                    <p className="mt-2 text-primary font-bold">
+                                                        $ {item.price}
+                                                    </p>
+                                                    <div className="card-actions">
+                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                            Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </>
+                    )}
                 </div>
                 {loading ? (
                     <div id="loading ">
@@ -352,33 +380,6 @@ const Home = () => {
                                 <span className="ml-6">Wait a moment...</span>
                             </span>
                         </h3>
-                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
-                            {Array.from(Array(4)).map((_, index) => (
-                                <div
-                                    className="card bg-base-100 shadow-2xl border-2 m-5"
-                                    key={index}
-                                >
-                                    <figure className="h-48 bg-secondary"></figure>
-                                    <div className="card-body">
-                                        <h3 className="card-title"></h3>
-                                        <div className="justify-start">
-                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                product
-                                            </div>
-                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                tag
-                                            </div>
-                                        </div>
-                                        <p></p>
-                                        <div className="card-actions">
-                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
-                                                Loading...
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 ) : (
                     <>
@@ -389,10 +390,10 @@ const Home = () => {
                                 </p>
                             </div>
                         )}
-                        <div className="w-full bg-secondary  pb-4">
+                        <div className="w-full bg-secondary  pb-4 pt-2">
                             <div className="max-w-7xl mx-auto">
                                 <div className="flex  mt-6 relative">
-                                    <div className="drawer lg:grid sm:hidden">
+                                    <div className="drawer lg:grid md:grid sm:hidden">
                                         <input
                                             id="my-drawer"
                                             type="checkbox"
@@ -408,171 +409,170 @@ const Home = () => {
                                                 </label>
                                             </div>
                                             <div className="">
-                                                <div id="latest">
-                                                    <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                        Latest
-                                                    </h3>
-                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                        {slides.map((slide) => (
-                                                            <div
-                                                                className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                key={slide.id}
-                                                            >
-                                                                <figure>
-                                                                    <img
-                                                                        src={
-                                                                            slide.img
-                                                                        }
-                                                                        alt={
-                                                                            slide.title
-                                                                        }
-                                                                    />
-                                                                </figure>
-                                                                <div className="card-body">
-                                                                    <p className="card-title text-base">
+                                                {categories && (
+                                                    <>
+                                                        {categories.map(
+                                                            (cat) => (
+                                                                <div
+                                                                    id={cat.id}
+                                                                    key={cat.id}
+                                                                >
+                                                                    <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
                                                                         {
-                                                                            slide.title
+                                                                            cat.categoryName
                                                                         }
-                                                                    </p>
-                                                                    <div className="rating md:rating-sm sm:rating-xs ">
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-1"
-                                                                            className="mask mask-star bg-primary"
-                                                                        />
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-1"
-                                                                            className="mask mask-star bg-primary"
-                                                                        />
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-1"
-                                                                            className="mask mask-star bg-primary"
-                                                                            defaultChecked
-                                                                        />
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-1"
-                                                                            className="mask mask-star bg-primary"
-                                                                        />
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-1"
-                                                                            className="mask mask-star bg-primary"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="justify-start">
-                                                                        <div
-                                                                            className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                                                        >
-                                                                            electronics
+                                                                    </h3>
+                                                                    {loading ? (
+                                                                        <div id="loading ">
+                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
+                                                                                {Array.from(
+                                                                                    Array(
+                                                                                        4
+                                                                                    )
+                                                                                ).map(
+                                                                                    (
+                                                                                        _,
+                                                                                        index
+                                                                                    ) => (
+                                                                                        <div
+                                                                                            className="card bg-base-100 shadow-2xl border-2 m-5"
+                                                                                            key={
+                                                                                                index
+                                                                                            }
+                                                                                        >
+                                                                                            <figure className="h-48 bg-secondary"></figure>
+                                                                                            <div className="card-body">
+                                                                                                <h3 className="card-title"></h3>
+                                                                                                <div className="justify-start">
+                                                                                                    <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                                                                        product
+                                                                                                    </div>
+                                                                                                    <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                                                                        tag
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <p></p>
+                                                                                                <div className="card-actions">
+                                                                                                    <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                                                                        Loading...
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    )
+                                                                                )}
+                                                                            </div>
                                                                         </div>
-                                                                        <div
-                                                                            className="badge badge-outline badge-sm text-accent
+                                                                    ) : (
+                                                                        <>
+                                                                            {error && (
+                                                                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                                                                    <p className="text-centertext-base-100">
+                                                                                        {
+                                                                                            error
+                                                                                                .response
+                                                                                                .data
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            )}
+                                                                            <div className="mx-auto sm:hidden md:block lg:block">
+                                                                                {products.length >
+                                                                                    0 && (
+                                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                                                                        {products
+                                                                                            .filter(
+                                                                                                (
+                                                                                                    item
+                                                                                                ) =>
+                                                                                                    item.categoryId ===
+                                                                                                    cat.id
+                                                                                            )
+                                                                                            .map(
+                                                                                                (
+                                                                                                    item
+                                                                                                ) => (
+                                                                                                    <div
+                                                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
+                                                                                                        key={
+                                                                                                            item.id
+                                                                                                        }
+                                                                                                    >
+                                                                                                        <figure>
+                                                                                                            <img
+                                                                                                                src={
+                                                                                                                    item.imageUrl
+                                                                                                                }
+                                                                                                                alt={
+                                                                                                                    item.name
+                                                                                                                }
+                                                                                                            />
+                                                                                                        </figure>
+                                                                                                        <div className="card-body">
+                                                                                                            <p className="card-title text-base">
+                                                                                                                {
+                                                                                                                    item.name
+                                                                                                                }
+                                                                                                                <div className="badge badge-primary sm:hidden lg:block">
+                                                                                                                    NEW
+                                                                                                                </div>
+                                                                                                            </p>
 
- mr-2"
-                                                                        >
-                                                                            Products
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div className="card-actions">
-                                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                            Add
-                                                                            to
-                                                                            cart
-                                                                        </button>
-                                                                    </div>
+                                                                                                            <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                    defaultChecked
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                            <p className="mt-2 text-primary font-bold">
+                                                                                                                ${" "}
+                                                                                                                {
+                                                                                                                    item.price
+                                                                                                                }
+                                                                                                            </p>
+                                                                                                            <div className="card-actions">
+                                                                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                                                                    Add
+                                                                                                                    to
+                                                                                                                    cart
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                )
+                                                                                            )}
+                                                                                    </div>
+                                                                                )}
+                                                                            </div>
+                                                                        </>
+                                                                    )}
                                                                 </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div id="popular">
-                                                    <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                                        Popular products
-                                                    </h3>
-                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                        {slides.map((slide) => (
-                                                            <div
-                                                                className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                key={slide.id}
-                                                            >
-                                                                <figure>
-                                                                    <img
-                                                                        src={
-                                                                            slide.img
-                                                                        }
-                                                                        alt={
-                                                                            slide.title
-                                                                        }
-                                                                    />
-                                                                </figure>
-                                                                <div className="card-body">
-                                                                    <p className="card-title text-base">
-                                                                        {
-                                                                            slide.title
-                                                                        }
-                                                                    </p>
-                                                                    <div className="justify-start">
-                                                                        <div
-                                                                            className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                                                        >
-                                                                            electronics
-                                                                        </div>
-                                                                        <div className="rating md:rating-sm sm:rating-xs ">
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-1"
-                                                                                className="mask mask-star bg-primary"
-                                                                            />
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-1"
-                                                                                className="mask mask-star bg-primary"
-                                                                            />
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-1"
-                                                                                className="mask mask-star bg-primary"
-                                                                                defaultChecked
-                                                                            />
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-1"
-                                                                                className="mask mask-star bg-primary"
-                                                                            />
-                                                                            <input
-                                                                                type="radio"
-                                                                                name="rating-1"
-                                                                                className="mask mask-star bg-primary"
-                                                                            />
-                                                                        </div>
-                                                                        <div
-                                                                            className="badge badge-outline badge-sm text-accent
-
- mr-2"
-                                                                        >
-                                                                            Products
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="card-actions">
-                                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                            Add
-                                                                            to
-                                                                            cart
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                                            )
+                                                        )}
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="drawer-side">
@@ -589,7 +589,7 @@ const Home = () => {
                                                         <li key={cat.id}>
                                                             <a
                                                                 href={`#${cat.id}`}
-                                                                className="text-neutral hover:text-primary"
+                                                                className="text-neutral capitalize hover:text-primary"
                                                             >
                                                                 {
                                                                     cat.categoryName
@@ -601,13 +601,13 @@ const Home = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="lg:hidden sm:block px-6 mx-auto">
+                                    <div className="lg:hidden md:hidden sm:block px-6 mx-auto">
                                         <h3 className="lg:text-2xl sm:text-xl text-primary mb-6 text-center">
                                             Categories
                                         </h3>
                                         {categories && (
                                             <>
-                                                <div className="carousel carousel-center sm:w-72 md:w-96 lg:max-w-7xl p-4 space-x-4 rounded-box">
+                                                <div className="carousel carousel-center sm:w-80 sm:max-w-sm p-4 space-x-4 rounded-box">
                                                     {categories.map((cat) => (
                                                         <div
                                                             className="carousel-item"
@@ -616,7 +616,7 @@ const Home = () => {
                                                             <div className="rounded-box">
                                                                 <a
                                                                     href={`#${cat.id}`}
-                                                                    className="btn btn-circle border-none text-xs bg-base-100 text-neutral w-fit px-2 hover:bg-primary hover:text-base-100"
+                                                                    className="btn btn-circle border-none capitalize text-xs bg-base-100 text-neutral w-fit px-2 hover:bg-primary hover:text-base-100"
                                                                 >
                                                                     {
                                                                         cat.categoryName
@@ -628,178 +628,164 @@ const Home = () => {
                                                 </div>
 
                                                 <div className="w-fit">
-                                                    <div>
-                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
-                                                            latest
-                                                        </h3>
-                                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                            {slides.map(
-                                                                (slide) => (
-                                                                    <div
-                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                        key={
-                                                                            slide.id
-                                                                        }
-                                                                    >
-                                                                        <figure>
-                                                                            <img
-                                                                                src={
-                                                                                    slide.img
-                                                                                }
-                                                                                alt={
-                                                                                    slide.title
-                                                                                }
-                                                                            />
-                                                                        </figure>
-                                                                        <div className="card-body">
-                                                                            <p className="card-title text-base">
+                                                    {categories.map((cat) => (
+                                                        <div
+                                                            id={cat.id}
+                                                            key={cat.id}
+                                                        >
+                                                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
+                                                                {
+                                                                    cat.categoryName
+                                                                }
+                                                            </h3>
+                                                            {loading ? (
+                                                                <div id="loading ">
+                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
+                                                                        {Array.from(
+                                                                            Array(
+                                                                                1
+                                                                            )
+                                                                        ).map(
+                                                                            (
+                                                                                _,
+                                                                                index
+                                                                            ) => (
+                                                                                <div
+                                                                                    className="card bg-base-100 shadow-2xl border-2 m-5"
+                                                                                    key={
+                                                                                        index
+                                                                                    }
+                                                                                >
+                                                                                    <figure className="h-48 bg-secondary"></figure>
+                                                                                    <div className="card-body">
+                                                                                        <h3 className="card-title"></h3>
+                                                                                        <div className="justify-start">
+                                                                                            <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                                                                product
+                                                                                            </div>
+                                                                                            <div className="badge badge-outline badge-sm text-accent mr-2">
+                                                                                                tag
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p></p>
+                                                                                        <div className="card-actions">
+                                                                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                                                                Loading...
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            )
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                <>
+                                                                    {error && (
+                                                                        <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
+                                                                            <p className="text-centertext-base-100">
                                                                                 {
-                                                                                    slide.title
+                                                                                    error
+                                                                                        .response
+                                                                                        .data
                                                                                 }
                                                                             </p>
-                                                                            <div className="rating md:rating-sm sm:rating-xs ">
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                    defaultChecked
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="justify-start">
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                >
-                                                                                    electronics
-                                                                                </div>
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                >
-                                                                                    Products
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="card-actions">
-                                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                                    Add
-                                                                                    to
-                                                                                    cart
-                                                                                </button>
-                                                                            </div>
                                                                         </div>
+                                                                    )}
+                                                                    <div className="mx-auto sm:block md:hidden lg:hidden">
+                                                                        {products.length >
+                                                                            0 && (
+                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                                                                {products
+                                                                                    .filter(
+                                                                                        (
+                                                                                            item
+                                                                                        ) =>
+                                                                                            item.categoryId ===
+                                                                                            cat.id
+                                                                                    )
+                                                                                    .map(
+                                                                                        (
+                                                                                            item
+                                                                                        ) => (
+                                                                                            <div
+                                                                                                className="card w-fit bg-base-100 shadow-xl m-5"
+                                                                                                key={
+                                                                                                    item.id
+                                                                                                }
+                                                                                            >
+                                                                                                <figure>
+                                                                                                    <img
+                                                                                                        src={
+                                                                                                            item.imageUrl
+                                                                                                        }
+                                                                                                        alt={
+                                                                                                            item.name
+                                                                                                        }
+                                                                                                    />
+                                                                                                </figure>
+                                                                                                <div className="card-body">
+                                                                                                    <p className="card-title text-base">
+                                                                                                        {
+                                                                                                            item.name
+                                                                                                        }
+                                                                                                        <div className="badge badge-primary sm:hidden lg:block">
+                                                                                                            NEW
+                                                                                                        </div>
+                                                                                                    </p>
+
+                                                                                                    <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                            name="rating-1"
+                                                                                                            className="mask mask-star bg-primary"
+                                                                                                        />
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                            name="rating-1"
+                                                                                                            className="mask mask-star bg-primary"
+                                                                                                        />
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                            name="rating-1"
+                                                                                                            className="mask mask-star bg-primary"
+                                                                                                            defaultChecked
+                                                                                                        />
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                            name="rating-1"
+                                                                                                            className="mask mask-star bg-primary"
+                                                                                                        />
+                                                                                                        <input
+                                                                                                            type="radio"
+                                                                                                            name="rating-1"
+                                                                                                            className="mask mask-star bg-primary"
+                                                                                                        />
+                                                                                                    </div>
+                                                                                                    <p className="mt-2 text-primary font-bold">
+                                                                                                        ${" "}
+                                                                                                        {
+                                                                                                            item.price
+                                                                                                        }
+                                                                                                    </p>
+                                                                                                    <div className="card-actions">
+                                                                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                                                            Add
+                                                                                                            to
+                                                                                                            cart
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        )
+                                                                                    )}
+                                                                            </div>
+                                                                        )}
                                                                     </div>
-                                                                )
+                                                                </>
                                                             )}
                                                         </div>
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center capitalize">
-                                                            popular
-                                                        </h3>
-                                                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6">
-                                                            {slides.map(
-                                                                (slide) => (
-                                                                    <div
-                                                                        className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                        key={
-                                                                            slide.id
-                                                                        }
-                                                                    >
-                                                                        <figure>
-                                                                            <img
-                                                                                src={
-                                                                                    slide.img
-                                                                                }
-                                                                                alt={
-                                                                                    slide.title
-                                                                                }
-                                                                            />
-                                                                        </figure>
-                                                                        <div className="card-body">
-                                                                            <p className="card-title text-base">
-                                                                                {
-                                                                                    slide.title
-                                                                                }
-                                                                            </p>
-                                                                            <div className="rating md:rating-sm sm:rating-xs">
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                    defaultChecked
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                                <input
-                                                                                    type="radio"
-                                                                                    name="rating-1"
-                                                                                    className="mask mask-star bg-primary"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="justify-start">
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                >
-                                                                                    electronics
-                                                                                </div>
-                                                                                <div
-                                                                                    className="badge badge-outline badge-sm text-accent
-
-mr-2"
-                                                                                >
-                                                                                    Products
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="card-actions">
-                                                                                <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
-                                                                                    Add
-                                                                                    to
-                                                                                    cart
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                )
-                                                            )}
-                                                        </div>
-                                                    </div>
+                                                    ))}
                                                 </div>
                                             </>
                                         )}

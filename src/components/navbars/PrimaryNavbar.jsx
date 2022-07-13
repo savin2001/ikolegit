@@ -19,6 +19,7 @@ const PrimaryNavbar = () => {
         totalItems,
         removeItem,
         emptyCart,
+        
     } = useCart();
 
     const [open, setOpen] = useState(false);
@@ -96,52 +97,94 @@ const PrimaryNavbar = () => {
                         </label>
                         <div
                             tabIndex={0}
-                            className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+                            className="mt-5 card card-compact dropdown-content mx-auto bg-base-100 shadow-2xl  w-screen max-h-96 sm:max-w-xs md:max-w-md overflow-y-auto scroll-smooth hover:scroll-auto"
                         >
                             <div className="card-body">
                                 <span className="font-bold text-lg">
-                                    {totalUniqueItems} Items
+                                    {totalUniqueItems === 1 ? (
+                                        <>{totalUniqueItems} Item</>
+                                    ) : (
+                                        <>{totalUniqueItems} Items</>
+                                    )}
                                 </span>
-                                <span className="text-info">
-                                    Subtotal: $ {cartTotal}
-                                </span>
-                                <div className="items py-2">
+                                <ul
+                                    role="list"
+                                    className=" divide-y divide-gray-200"
+                                >
                                     {items.map((item) => (
-                                        <div
-                                            key={item.id}
-                                            className="flex justify-between pb-1"
-                                        >
-                                            <span className="badge badge-sm badge-neutral mr-1">
-                                                {item.quantity}
-                                            </span>
-                                            <p>{item.name}</p>
+                                        <li key={item.id} className="flex py-6">
+                                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                                <img
+                                                    src={item.imageUrl}
+                                                    alt={item.name}
+                                                    className="h-full w-full object-cover object-center"
+                                                />
+                                            </div>
 
-                                            <button
-                                                onClick={() =>
-                                                    removeItem(item.id)
-                                                }
-                                                className="btn border-none btn-xs bg-primary text-base-100"
-                                            >
-                                                &times;
-                                            </button>
-                                        </div>
+                                            <div className="ml-4 flex flex-1 flex-col">
+                                                <div>
+                                                    <div className="flex justify-between text-base font-medium text-neutral">
+                                                        <h3>
+                                                            <a href={item.id}>
+                                                                {" "}
+                                                                {item.name}{" "}
+                                                            </a>
+                                                        </h3>
+                                                        <p className="ml-4 text-primary text-right">
+                                                            $ {item.price}
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex flex-1 items-end justify-between text-sm mt-2">
+                                                        <p className="text-gray-500">
+                                                            Qty {item.quantity}
+                                                        </p>
+                                                        <div className="flex">
+                                                            <button
+                                                                onClick={() =>
+                                                                    removeItem(
+                                                                        item.id
+                                                                    )
+                                                                }
+                                                                type="button"
+                                                                className="font-medium text-error hover:text-neutral"
+                                                            >
+                                                                Remove
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
                                     ))}
+                                </ul>
+                                <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+                                    <div className="flex justify-between text-base text-primary font-medium">
+                                        <p>Subtotal</p>
+                                        <p>$ {cartTotal}</p>
+                                    </div>
                                 </div>
-                                <div className="card-actions">
-                                    <button
-                                        className="btn btn-sm btn-secondary text-neutral btn-block rounded-full"
-                                        onClick={() => emptyCart()}
-                                    >
-                                        {" "}
-                                        Clear cart
-                                    </button>
-                                    <Link
-                                        to="/cart"
-                                        className="btn btn-sm btn-primary btn-block rounded-full"
-                                    >
-                                        View full cart
-                                    </Link>
-                                </div>
+
+                                {isEmpty ? (
+                                    <></>
+                                ) : (
+                                    <>
+                                        <div className="card-actions">
+                                            <button
+                                                className="btn btn-sm btn-secondary text-neutral btn-block rounded-full mb-2"
+                                                onClick={() => emptyCart()}
+                                            >
+                                                {" "}
+                                                Clear cart
+                                            </button>
+                                            <Link
+                                                to="/cart"
+                                                className="btn btn-sm btn-primary btn-block rounded-full"
+                                            >
+                                                View full cart
+                                            </Link>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -197,26 +240,25 @@ const PrimaryNavbar = () => {
                 </div>
             </div>
             {open && (
-                        <div className="container sm:flex md:hidden lg:hidden">
-                            <div className="max-w-2xl mx-auto">
-                                <div className="form-control">
-                                    <div className="form-control">
-                                        <div className="flex shadow-md rounded-full w-full">
-                                            <input
-                                                type="text"
-                                                placeholder="I am looking for ..."
-                                                className="input input-bordered border-primary flex-auto rounded-l-full  focus:ring-2 focus:ring-inset focus:ring-primary"
-                                            />
-                                            <button className="btn bg-primary text-base-100 border-none  rounded-r-full">
-                                                <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
-                                            </button>
-                                        </div>
-                                    </div>
+                <div className="container sm:flex md:hidden lg:hidden">
+                    <div className="max-w-2xl mx-auto">
+                        <div className="form-control">
+                            <div className="form-control">
+                                <div className="flex shadow-md rounded-full w-full">
+                                    <input
+                                        type="text"
+                                        placeholder="I am looking for ..."
+                                        className="input input-bordered border-primary flex-auto rounded-l-full  focus:ring-2 focus:ring-inset focus:ring-primary"
+                                    />
+                                    <button className="btn bg-primary text-base-100 border-none  rounded-r-full">
+                                        <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                   
-                )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

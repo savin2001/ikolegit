@@ -8,10 +8,10 @@ import Register from "./pages/auth/Register.jsx";
 import Profile from "./pages/customer-pages/Profile.jsx";
 import Cart from "./pages/Cart.jsx"
 import Footer from "./components/footer/Footer.jsx"
+import ProductView from "./pages/ProductView.jsx"
 
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
         <div className="App">
@@ -19,6 +19,7 @@ function App() {
                 <Router>
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/product/:categoryId/:productId/:productName" element={<ProductView />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />

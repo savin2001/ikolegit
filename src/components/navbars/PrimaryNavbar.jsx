@@ -35,7 +35,8 @@ const PrimaryNavbar = () => {
         <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-40 bg-base-100 w-full">
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start flex-auto w-1/3">
-                    <a className="btn btn-ghost normal-case text-2xl">
+                    <Link to={`/`} className="btn btn-ghost normal-case text-2xl">
+                        
                         <img
                             className="mx-auto h-8 w-auto mr-3"
                             src="https://avatars.dicebear.com/api/identicon/your-custd.svg"
@@ -43,7 +44,7 @@ const PrimaryNavbar = () => {
                         />
                         <span>Iko</span>
                         <span className="text-primary">Legit</span>
-                    </a>
+                    </Link>
                 </div>
                 {open && (
                     <div className="navbar-center sm:hidden md:flex lg:flex flex-auto">
@@ -180,7 +181,7 @@ const PrimaryNavbar = () => {
                                                 to="/cart"
                                                 className="btn btn-sm btn-primary btn-block rounded-xl"
                                             >
-                                                View full cart
+                                                Checkout
                                             </Link>
                                         </div>
                                     </>

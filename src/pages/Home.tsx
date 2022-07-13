@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { CartProvider, useCart } from "react-use-cart";
+import { useCart } from "react-use-cart";
 
 import useFetch from "../components/axios-custom-hooks/useFetch.js";
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const { response, loading, error } = useFetch({
@@ -107,13 +108,21 @@ const Home = () => {
                                                 {item.description}
                                             </p>
                                             <button className="btn btn-primary text-sm rounded-xl mt-2">
-                                                Check it out
+                                                <Link
+                                                    to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                >
+                                                    Check it out
+                                                </Link>
                                             </button>
                                         </div>
-                                        <img
-                                            src={item.imageUrl}
-                                            className="w-fit lg:right-0 lg:mr-24 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit "
-                                        />
+                                        <Link
+                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                        >
+                                            <img
+                                                src={item.imageUrl}
+                                                className="w-fit lg:right-0 lg:mr-24 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit "
+                                            />
+                                        </Link>
 
                                         <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                             {item.id > 1 ? (
@@ -204,11 +213,15 @@ const Home = () => {
                                                     className="carousel-item w-64 h-64 bg-secondary rounded-box "
                                                     key={item.id}
                                                 >
-                                                    <img
-                                                        src={item.imageUrl}
-                                                        alt={item.name}
-                                                        className="w-full h-full object-cover"
-                                                    />
+                                                    <Link
+                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                    >
+                                                        <img
+                                                            src={item.imageUrl}
+                                                            alt={item.name}
+                                                            className="w-full h-full object-cover"
+                                                        />
+                                                    </Link>
                                                 </div>
                                             ))}
                                         </div>
@@ -253,7 +266,7 @@ const Home = () => {
                             {error && (
                                 <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
                                     <p className="text-centertext-base-100">
-                                        {error.response.data}
+                                        {error.response}
                                     </p>
                                 </div>
                             )}
@@ -269,51 +282,61 @@ const Home = () => {
                                                     className="card w-fit bg-base-100 shadow-xl m-5"
                                                     key={item.id}
                                                 >
-                                                    <figure>
-                                                        <img
-                                                            src={item.imageUrl}
-                                                            alt={item.name}
-                                                        />
-                                                    </figure>
+                                                    <Link
+                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                    >
+                                                        <figure>
+                                                            <img
+                                                                src={
+                                                                    item.imageUrl
+                                                                }
+                                                                alt={item.name}
+                                                            />
+                                                        </figure>
+                                                    </Link>
                                                     <div className="card-body">
-                                                        <p className="card-title text-base">
-                                                            {item.name}
-                                                            <div className="badge badge-primary sm:hidden lg:block">
-                                                                NEW
-                                                            </div>
-                                                        </p>
+                                                        <Link
+                                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                        >
+                                                            <p className="card-title text-base">
+                                                                {item.name}
+                                                                <div className="badge badge-primary sm:hidden lg:block">
+                                                                    NEW
+                                                                </div>
+                                                            </p>
 
-                                                        <div className="rating md:rating-sm sm:rating-xs ">
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-1"
-                                                                className="mask mask-star bg-primary"
-                                                            />
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-1"
-                                                                className="mask mask-star bg-primary"
-                                                            />
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-1"
-                                                                className="mask mask-star bg-primary"
-                                                                defaultChecked
-                                                            />
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-1"
-                                                                className="mask mask-star bg-primary"
-                                                            />
-                                                            <input
-                                                                type="radio"
-                                                                name="rating-1"
-                                                                className="mask mask-star bg-primary"
-                                                            />
-                                                        </div>
-                                                        <p className="mt-2 text-primary font-bold">
-                                                            $ {item.price}
-                                                        </p>
+                                                            <div className="rating md:rating-sm sm:rating-xs ">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating-1"
+                                                                    className="mask mask-star bg-primary"
+                                                                />
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating-1"
+                                                                    className="mask mask-star bg-primary"
+                                                                />
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating-1"
+                                                                    className="mask mask-star bg-primary"
+                                                                    defaultChecked
+                                                                />
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating-1"
+                                                                    className="mask mask-star bg-primary"
+                                                                />
+                                                                <input
+                                                                    type="radio"
+                                                                    name="rating-1"
+                                                                    className="mask mask-star bg-primary"
+                                                                />
+                                                            </div>
+                                                            <p className="mt-2 text-primary font-bold">
+                                                                $ {item.price}
+                                                            </p>
+                                                        </Link>
                                                         <div className="card-actions">
                                                             {alreadyAdded ? (
                                                                 <>
@@ -434,7 +457,7 @@ const Home = () => {
                         {error && (
                             <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
                                 <p className="text-centertext-base-100">
-                                    {error.response.data}
+                                    {error.response}
                                 </p>
                             </div>
                         )}
@@ -471,7 +494,7 @@ const Home = () => {
                                                                         }
                                                                     </h3>
                                                                     {isLoading ? (
-                                                                        <p className="mt-9 lg:text-sm sm:text-xs text-primary pb-6 text-center">
+                                                                        <div className="mt-9 lg:text-sm sm:text-xs text-primary pb-6 text-center">
                                                                             <span className="flex justify-center">
                                                                                 <FaSpinner className="h-8 w-8 animate-spin" />
                                                                                 <span className="ml-6 text-neutral">
@@ -479,16 +502,14 @@ const Home = () => {
                                                                                     items...
                                                                                 </span>
                                                                             </span>
-                                                                        </p>
+                                                                        </div>
                                                                     ) : (
                                                                         <>
                                                                             {error && (
                                                                                 <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
                                                                                     <p className="text-centertext-base-100">
                                                                                         {
-                                                                                            error
-                                                                                                .response
-                                                                                                .data
+                                                                                            error.response
                                                                                         }
                                                                                     </p>
                                                                                 </div>
@@ -496,7 +517,7 @@ const Home = () => {
                                                                             <div className="mx-auto sm:hidden md:block lg:block">
                                                                                 {products.length >
                                                                                     0 && (
-                                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 md:gap-4">
                                                                                         {products
                                                                                             .filter(
                                                                                                 (
@@ -520,57 +541,68 @@ const Home = () => {
                                                                                                                 item.id
                                                                                                             }
                                                                                                         >
-                                                                                                            <figure>
-                                                                                                                <img
-                                                                                                                    src={
-                                                                                                                        item.imageUrl
-                                                                                                                    }
-                                                                                                                    alt={
-                                                                                                                        item.name
-                                                                                                                    }
-                                                                                                                />
-                                                                                                            </figure>
+                                                                                                            <Link
+                                                                                                                to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                            >
+                                                                                                                <figure>
+                                                                                                                    <img
+                                                                                                                        src={
+                                                                                                                            item.imageUrl
+                                                                                                                        }
+                                                                                                                        alt={
+                                                                                                                            item.name
+                                                                                                                        }
+                                                                                                                    />
+                                                                                                                </figure>
+                                                                                                            </Link>
                                                                                                             <div className="card-body">
-                                                                                                                <p className="card-title text-base">
-                                                                                                                    {
-                                                                                                                        item.name
-                                                                                                                    }
-                                                                                                                </p>
+                                                                                                                <Link
+                                                                                                                    to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                                >
+                                                                                                                    <p className="card-title text-base">
+                                                                                                                        {
+                                                                                                                            item.name
+                                                                                                                        }
+                                                                                                                        <div className="badge badge-primary sm:hidden lg:block">
+                                                                                                                            NEW
+                                                                                                                        </div>
+                                                                                                                    </p>
 
-                                                                                                                <div className="rating md:rating-sm sm:rating-xs ">
-                                                                                                                    <input
-                                                                                                                        type="radio"
-                                                                                                                        name="rating-1"
-                                                                                                                        className="mask mask-star bg-primary"
-                                                                                                                    />
-                                                                                                                    <input
-                                                                                                                        type="radio"
-                                                                                                                        name="rating-1"
-                                                                                                                        className="mask mask-star bg-primary"
-                                                                                                                    />
-                                                                                                                    <input
-                                                                                                                        type="radio"
-                                                                                                                        name="rating-1"
-                                                                                                                        className="mask mask-star bg-primary"
-                                                                                                                        defaultChecked
-                                                                                                                    />
-                                                                                                                    <input
-                                                                                                                        type="radio"
-                                                                                                                        name="rating-1"
-                                                                                                                        className="mask mask-star bg-primary"
-                                                                                                                    />
-                                                                                                                    <input
-                                                                                                                        type="radio"
-                                                                                                                        name="rating-1"
-                                                                                                                        className="mask mask-star bg-primary"
-                                                                                                                    />
-                                                                                                                </div>
-                                                                                                                <p className="mt-2 text-primary font-bold">
-                                                                                                                    ${" "}
-                                                                                                                    {
-                                                                                                                        item.price
-                                                                                                                    }
-                                                                                                                </p>
+                                                                                                                    <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="rating-1"
+                                                                                                                            className="mask mask-star bg-primary"
+                                                                                                                        />
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="rating-1"
+                                                                                                                            className="mask mask-star bg-primary"
+                                                                                                                        />
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="rating-1"
+                                                                                                                            className="mask mask-star bg-primary"
+                                                                                                                            defaultChecked
+                                                                                                                        />
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="rating-1"
+                                                                                                                            className="mask mask-star bg-primary"
+                                                                                                                        />
+                                                                                                                        <input
+                                                                                                                            type="radio"
+                                                                                                                            name="rating-1"
+                                                                                                                            className="mask mask-star bg-primary"
+                                                                                                                        />
+                                                                                                                    </div>
+                                                                                                                    <p className="mt-2 text-primary font-bold">
+                                                                                                                        ${" "}
+                                                                                                                        {
+                                                                                                                            item.price
+                                                                                                                        }
+                                                                                                                    </p>
+                                                                                                                </Link>
                                                                                                                 <div className="card-actions">
                                                                                                                     {alreadyAdded ? (
                                                                                                                         <>
@@ -779,7 +811,7 @@ const Home = () => {
                                                                     <div className="mx-auto sm:block md:hidden lg:hidden">
                                                                         {products.length >
                                                                             0 && (
-                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 md:gap-4">
                                                                                 {products
                                                                                     .filter(
                                                                                         (
@@ -791,77 +823,155 @@ const Home = () => {
                                                                                     .map(
                                                                                         (
                                                                                             item
-                                                                                        ) => (
-                                                                                            <div
-                                                                                                className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                                                key={
+                                                                                        ) => {
+                                                                                            const alreadyAdded =
+                                                                                                inCart(
                                                                                                     item.id
-                                                                                                }
-                                                                                            >
-                                                                                                <figure>
-                                                                                                    <img
-                                                                                                        src={
-                                                                                                            item.imageUrl
-                                                                                                        }
-                                                                                                        alt={
-                                                                                                            item.name
-                                                                                                        }
-                                                                                                    />
-                                                                                                </figure>
-                                                                                                <div className="card-body">
-                                                                                                    <p className="card-title text-base">
-                                                                                                        {
-                                                                                                            item.name
-                                                                                                        }
-                                                                                                        <div className="badge badge-primary sm:hidden lg:block">
-                                                                                                            NEW
-                                                                                                        </div>
-                                                                                                    </p>
+                                                                                                );
+                                                                                            return (
+                                                                                                <div
+                                                                                                    className="card w-fit bg-base-100 shadow-xl m-5"
+                                                                                                    key={
+                                                                                                        item.id
+                                                                                                    }
+                                                                                                >
+                                                                                                    <Link
+                                                                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                    >
+                                                                                                        <figure>
+                                                                                                            <img
+                                                                                                                src={
+                                                                                                                    item.imageUrl
+                                                                                                                }
+                                                                                                                alt={
+                                                                                                                    item.name
+                                                                                                                }
+                                                                                                            />
+                                                                                                        </figure>
+                                                                                                    </Link>
+                                                                                                    <div className="card-body">
+                                                                                                        <Link
+                                                                                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                        >
+                                                                                                            <p className="card-title text-base">
+                                                                                                                {
+                                                                                                                    item.name
+                                                                                                                }
+                                                                                                                <div className="badge badge-primary sm:hidden lg:block">
+                                                                                                                    NEW
+                                                                                                                </div>
+                                                                                                            </p>
 
-                                                                                                    <div className="rating md:rating-sm sm:rating-xs ">
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="rating-1"
-                                                                                                            className="mask mask-star bg-primary"
-                                                                                                        />
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="rating-1"
-                                                                                                            className="mask mask-star bg-primary"
-                                                                                                        />
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="rating-1"
-                                                                                                            className="mask mask-star bg-primary"
-                                                                                                            defaultChecked
-                                                                                                        />
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="rating-1"
-                                                                                                            className="mask mask-star bg-primary"
-                                                                                                        />
-                                                                                                        <input
-                                                                                                            type="radio"
-                                                                                                            name="rating-1"
-                                                                                                            className="mask mask-star bg-primary"
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <p className="mt-2 text-primary font-bold">
-                                                                                                        ${" "}
-                                                                                                        {
-                                                                                                            item.price
-                                                                                                        }
-                                                                                                    </p>
-                                                                                                    <div className="card-actions">
-                                                                                                        <button className="btn  w-full btn-primary text-sm rounded-xl btn-sm">
-                                                                                                            Add
-                                                                                                            to
-                                                                                                            cart
-                                                                                                        </button>
+                                                                                                            <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                    defaultChecked
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                                <input
+                                                                                                                    type="radio"
+                                                                                                                    name="rating-1"
+                                                                                                                    className="mask mask-star bg-primary"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                            <p className="mt-2 text-primary font-bold">
+                                                                                                                ${" "}
+                                                                                                                {
+                                                                                                                    item.price
+                                                                                                                }
+                                                                                                            </p>
+                                                                                                        </Link>
+                                                                                                        <div className="card-actions">
+                                                                                                            {alreadyAdded ? (
+                                                                                                                <>
+                                                                                                                    {items
+                                                                                                                        .filter(
+                                                                                                                            (
+                                                                                                                                i
+                                                                                                                            ) =>
+                                                                                                                                i.id ===
+                                                                                                                                item.id
+                                                                                                                        )
+                                                                                                                        .map(
+                                                                                                                            (
+                                                                                                                                p
+                                                                                                                            ) => (
+                                                                                                                                <div
+                                                                                                                                    className="form-control w-full"
+                                                                                                                                    key={
+                                                                                                                                        p.id
+                                                                                                                                    }
+                                                                                                                                >
+                                                                                                                                    <label className="input-group input-group-sm">
+                                                                                                                                        <span
+                                                                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                                                            onClick={() =>
+                                                                                                                                                updateItemQuantity(
+                                                                                                                                                    p.id,
+                                                                                                                                                    p.quantity! -
+                                                                                                                                                        1
+                                                                                                                                                )
+                                                                                                                                            }
+                                                                                                                                        >
+                                                                                                                                            -
+                                                                                                                                        </span>
+                                                                                                                                        <span className=" w-full flex justify-center items-center">
+                                                                                                                                            {
+                                                                                                                                                p.quantity
+                                                                                                                                            }
+                                                                                                                                        </span>
+                                                                                                                                        <span
+                                                                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                                                            onClick={() =>
+                                                                                                                                                updateItemQuantity(
+                                                                                                                                                    p.id,
+                                                                                                                                                    p.quantity! +
+                                                                                                                                                        1
+                                                                                                                                                )
+                                                                                                                                            }
+                                                                                                                                        >
+                                                                                                                                            +
+                                                                                                                                        </span>
+                                                                                                                                    </label>
+                                                                                                                                </div>
+                                                                                                                            )
+                                                                                                                        )}
+                                                                                                                </>
+                                                                                                            ) : (
+                                                                                                                <button
+                                                                                                                    className="btn w-full btn-primary text-sm rounded-xl btn-sm"
+                                                                                                                    onClick={() =>
+                                                                                                                        addItem(
+                                                                                                                            item
+                                                                                                                        )
+                                                                                                                    }
+                                                                                                                >
+                                                                                                                    Add
+                                                                                                                    to
+                                                                                                                    cart
+                                                                                                                </button>
+                                                                                                            )}
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                        )
+                                                                                            );
+                                                                                        }
                                                                                     )}
                                                                             </div>
                                                                         )}

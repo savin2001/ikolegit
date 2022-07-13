@@ -137,12 +137,14 @@ const ProductView = () => {
                                     {products
                                         .filter((p) => p.id === id)
                                         .map((item) => (
-                                            <div className="mt-6 flex w-full" key={item.id}>
-                                                <div className="w-1/2">
-
+                                            <div
+                                                className="mt-6 flex sm:flex-col md:flex-row w-full"
+                                                key={item.id}
+                                            >
+                                                <div className="md:w-1/2 sm:w-full">
                                                     {item.imageUrl}
                                                 </div>
-                                                <div className="w-1/2">
+                                                <div className="md:w-1/2 sm:w-full">
                                                     {item.name}
                                                 </div>
                                             </div>

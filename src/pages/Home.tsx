@@ -239,7 +239,7 @@ const Home = () => {
                                             </div>
                                             <p></p>
                                             <div className="card-actions">
-                                                <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
                                                     Loading...
                                                 </button>
                                             </div>
@@ -329,7 +329,12 @@ const Home = () => {
                                                                             (
                                                                                 p
                                                                             ) => (
-                                                                                <div className="form-control w-full" key={p.id}>
+                                                                                <div
+                                                                                    className="form-control w-full"
+                                                                                    key={
+                                                                                        p.id
+                                                                                    }
+                                                                                >
                                                                                     <label className="input-group input-group-sm">
                                                                                         <span
                                                                                             className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
@@ -367,7 +372,7 @@ const Home = () => {
                                                                 </>
                                                             ) : (
                                                                 <button
-                                                                    className="btn w-full btn-primary text-sm rounded-full btn-sm"
+                                                                    className="btn w-full btn-primary text-sm rounded-xl btn-sm"
                                                                     onClick={() =>
                                                                         addItem(
                                                                             item
@@ -415,7 +420,7 @@ const Home = () => {
                                         </div>
                                         <p></p>
                                         <div className="card-actions">
-                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
                                                 Loading...
                                             </button>
                                         </div>
@@ -446,9 +451,9 @@ const Home = () => {
                                             <div className=" flex justify-start sticky top-6 left-0 z-50 ">
                                                 <label
                                                     htmlFor="my-drawer"
-                                                    className="btn btn-primary flex relative justify-between text-white rounded-full btn-md sm:btn-sm drawer-button"
+                                                    className="btn btn-primary flex relative justify-between text-white rounded-xl btn-md sm:btn-sm drawer-button"
                                                 >
-                                                    <AiOutlineMenu className="h-5 w-5 hover rounded-full" />
+                                                    <AiOutlineMenu className="h-5 w-5 hover rounded-xl" />
                                                 </label>
                                             </div>
                                             <div className="">
@@ -581,7 +586,12 @@ const Home = () => {
                                                                                                                                     (
                                                                                                                                         p
                                                                                                                                     ) => (
-                                                                                                                                        <div className="form-control w-full" key={p.id}>
+                                                                                                                                        <div
+                                                                                                                                            className="form-control w-full"
+                                                                                                                                            key={
+                                                                                                                                                p.id
+                                                                                                                                            }
+                                                                                                                                        >
                                                                                                                                             <label className="input-group input-group-sm">
                                                                                                                                                 <span
                                                                                                                                                     className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
@@ -619,7 +629,7 @@ const Home = () => {
                                                                                                                         </>
                                                                                                                     ) : (
                                                                                                                         <button
-                                                                                                                            className="btn w-full btn-primary text-sm rounded-full btn-sm"
+                                                                                                                            className="btn w-full btn-primary text-sm rounded-xl btn-sm"
                                                                                                                             onClick={() =>
                                                                                                                                 addItem(
                                                                                                                                     item
@@ -743,7 +753,7 @@ const Home = () => {
                                                                                         </div>
                                                                                         <p></p>
                                                                                         <div className="card-actions">
-                                                                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-full btn-sm">
+                                                                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
                                                                                                 Loading...
                                                                                             </button>
                                                                                         </div>
@@ -843,7 +853,7 @@ const Home = () => {
                                                                                                         }
                                                                                                     </p>
                                                                                                     <div className="card-actions">
-                                                                                                        <button className="btn  w-full btn-primary text-sm rounded-full btn-sm">
+                                                                                                        <button className="btn  w-full btn-primary text-sm rounded-xl btn-sm">
                                                                                                             Add
                                                                                                             to
                                                                                                             cart

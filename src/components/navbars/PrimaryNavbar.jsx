@@ -170,7 +170,7 @@ const PrimaryNavbar = () => {
                                     <>
                                         <div className="card-actions">
                                             <button
-                                                className="btn btn-sm btn-secondary text-neutral btn-block rounded-full mb-2"
+                                                className="btn btn-sm btn-secondary text-neutral btn-block rounded-xl mb-2"
                                                 onClick={() => emptyCart()}
                                             >
                                                 {" "}
@@ -178,7 +178,7 @@ const PrimaryNavbar = () => {
                                             </button>
                                             <Link
                                                 to="/cart"
-                                                className="btn btn-sm btn-primary btn-block rounded-full"
+                                                className="btn btn-sm btn-primary btn-block rounded-xl"
                                             >
                                                 View full cart
                                             </Link>

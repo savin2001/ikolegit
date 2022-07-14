@@ -340,8 +340,8 @@ const ProductView = () => {
                                                                                             }
                                                                                         >
                                                                                             <label className="input-group input-group-lg md:justify-start sm:justify-center">
-                                                                                                <span
-                                                                                                    className="md:w-1/6 sm:w-1/4 md:btn-md  flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                <button
+                                                                                                    className="md:w-1/6 sm:w-1/4 btn-md  flex justify-center text-xl items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
                                                                                                     onClick={() =>
                                                                                                         updateItemQuantity(
                                                                                                             p.id,
@@ -351,14 +351,14 @@ const ProductView = () => {
                                                                                                     }
                                                                                                 >
                                                                                                     -
-                                                                                                </span>
-                                                                                                <span className="md:w-1/6 sm:w-1/4 md:btn-md flex justify-center text-lg items-center">
+                                                                                                </button>
+                                                                                                <span className="md:w-2/6 sm:w-1/2 btn-md flex justify-center text-lg items-center">
                                                                                                     {
                                                                                                         p.quantity
                                                                                                     }
                                                                                                 </span>
-                                                                                                <span
-                                                                                                    className="md:w-1/6 sm:w-1/4 md:btn-md flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                <button
+                                                                                                    className="md:w-1/6 sm:w-1/4 btn-md flex justify-center text-xl items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
                                                                                                     onClick={() =>
                                                                                                         updateItemQuantity(
                                                                                                             p.id,
@@ -368,7 +368,7 @@ const ProductView = () => {
                                                                                                     }
                                                                                                 >
                                                                                                     +
-                                                                                                </span>
+                                                                                                </button>
                                                                                             </label>
                                                                                         </div>
                                                                                     )
@@ -377,7 +377,7 @@ const ProductView = () => {
                                                                     ) : (
                                                                         <div className="flex md:justify-start sm:justify-center">
                                                                             <button
-                                                                                className="btn w-1/2 btn-primary text-md rounded-2xl md:btn-md"
+                                                                                className="btn sm:w-full md:2/3 btn-primary text-md rounded-2xl"
                                                                                 onClick={() =>
                                                                                     addItem(
                                                                                         item

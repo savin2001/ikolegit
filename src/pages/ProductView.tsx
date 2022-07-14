@@ -47,7 +47,7 @@ const ProductView = () => {
     });
 
     // Cart functionality
-    const { addItem, inCart, updateItemQuantity, items } = useCart();
+    const { addItem, inCart, updateItemQuantity, items, isEmpty } = useCart();
 
     useEffect(() => {
         if (response !== null) {
@@ -73,7 +73,6 @@ const ProductView = () => {
                                                 <FaSpinner className="h-16 text-center w-16 animate-spin" />
                                             </span>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -370,6 +369,16 @@ const ProductView = () => {
                                                                                                     +
                                                                                                 </button>
                                                                                             </label>
+                                                                                            {!isEmpty && (
+                                                                                                <Link
+                                                                                                    to={`/cart`}
+                                                                                                    className="btn sm:w-full md:w-2/3 btn-outline border-primary hover:bg-primary hover:text-base-100 hover:border-none text-primary text-md rounded-2xl mt-6"
+                                                                                                >
+                                                                                                    Proceed
+                                                                                                    to
+                                                                                                    checkout
+                                                                                                </Link>
+                                                                                            )}
                                                                                         </div>
                                                                                     )
                                                                                 )}
@@ -377,7 +386,7 @@ const ProductView = () => {
                                                                     ) : (
                                                                         <div className="flex md:justify-start sm:justify-center">
                                                                             <button
-                                                                                className="btn sm:w-full md:2/3 btn-primary text-md rounded-2xl"
+                                                                                className="btn sm:w-full md:w-2/3 btn-primary text-md rounded-2xl"
                                                                                 onClick={() =>
                                                                                     addItem(
                                                                                         item
@@ -431,7 +440,34 @@ const ProductView = () => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="product-description md:w-1/4 sm:w-full flex flex-col mb-9"></div>
+                                                            <div className="divider divider-horizontal"></div>
+
+                                                            <div className="seller-description md:w-1/4 sm:w-full flex flex-col mb-9">
+                                                                <div className="md:ml-5 mb-4">
+                                                                    <figure className="bg-base-100 rounded-xl p-8">
+                                                                        <div className="avatar flex justify-center ">
+                                                                            <div className="w-24 rounded-full border ">
+                                                                                <img src="https://avatars.dicebear.com/api/adventurer/your.svg" />
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div className="pt-6 text-center space-y-4">
+                                                                            <blockquote>
+                                                                                <p className="text-lg font-medium">
+                                                                                    Shop
+                                                                                    name
+                                                                                </p>
+                                                                            </blockquote>
+                                                                            <figcaption className="font-medium">
+                                                                                <div className="text-primary">
+                                                                                    Seller
+                                                                                    name
+                                                                                </div>
+                                                                            </figcaption>
+                                                                        </div>
+                                                                    </figure>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </>

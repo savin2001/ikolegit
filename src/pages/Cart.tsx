@@ -31,6 +31,7 @@ const Cart = () => {
                             &times;
                         </button>
                     </li>
+                
                 ))}
             </ul>
         </>

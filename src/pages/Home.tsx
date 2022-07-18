@@ -208,18 +208,19 @@ const Home = () => {
                                     </h3>
                                     <div className="sm:block md:hidden lg:hidden">
                                         <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
-                                            {products.map((item) => (
+                                            {products.slice(0, 4).map((item) => (
                                                 <div
-                                                    className="carousel-item w-64 h-64 bg-secondary rounded-box "
+                                                    className="carousel-item w-64 h-64 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-box "
                                                     key={item.id}
                                                 >
                                                     <Link
                                                         to={`/product/${item.categoryId}/${item.id}/${item.name}`}
                                                     >
+
                                                         <img
                                                             src={item.imageUrl}
                                                             alt={item.name}
-                                                            className="w-full h-full object-cover"
+                                                            className="h-fit w-fit object-cover object-center m-auto"
                                                         />
                                                     </Link>
                                                 </div>
@@ -273,7 +274,7 @@ const Home = () => {
                             <div className="mx-auto sm:hidden md:block lg:block">
                                 {products.length > 0 && (
                                     <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-                                        {products.map((item) => {
+                                        {products.slice(0, 4).map((item) => {
                                             const alreadyAdded = inCart(
                                                 item.id
                                             );

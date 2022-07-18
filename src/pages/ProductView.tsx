@@ -316,6 +316,45 @@ const ProductView = () => {
                                                                     </div>
                                                                 </RadioGroup>
                                                             </div>
+                                                            <div className="mb-2">
+                                                                <div
+                                                                    tabIndex={0}
+                                                                    className="collapse collapse-arrow md:collapse-open"
+                                                                >
+                                                                    <div className="collapse-title text-primary pl-0 md:hidden sm:text-lg font-medium">
+                                                                        See more
+                                                                        details
+                                                                    </div>
+                                                                    <div className="collapse-content pl-0">
+                                                                        <h2 className="mb-2 md:text-xl sm:text-lg text-primary">
+                                                                            Product
+                                                                            Description
+                                                                        </h2>
+                                                                        <p className="mb-4">
+                                                                            {
+                                                                                item.description
+                                                                            }
+                                                                        </p>
+                                                                        .
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    tabIndex={0}
+                                                                    className="collapse collapse-arrow md:collapse-open"
+                                                                >
+                                                                    <div className="collapse-title text-primary pl-0 md:text-xl sm:text-lg font-medium">
+                                                                        Specifications
+                                                                    </div>
+                                                                    <div className="collapse-content pl-0">
+                                                                        <p className="mb-4">
+                                                                            {
+                                                                                item.description
+                                                                            }
+                                                                        </p>
+                                                                        .
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div className="mb-8">
                                                                 <div className="shop">
                                                                     {alreadyAdded ? (
@@ -403,69 +442,214 @@ const ProductView = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="mb-5">
-                                                        <div className="flex sm:flex-col md:flex-row w-full">
-                                                            <div className="product-description md:w-3/4 sm:w-full flex flex-col mb-9">
-                                                                <div
-                                                                    tabIndex={0}
-                                                                    className="collapse collapse-arrow md:collapse-open"
-                                                                >
-                                                                    <div className="collapse-title text-primary pl-0 md:text-xl sm:text-lg font-medium">
-                                                                        Product
-                                                                        Description
-                                                                    </div>
-                                                                    <div className="collapse-content pl-0">
-                                                                        <p className="mb-4">
-                                                                            {
-                                                                                item.description
-                                                                            }
-                                                                        </p>
-                                                                        .
-                                                                    </div>
-                                                                </div>
-                                                                <div
-                                                                    tabIndex={0}
-                                                                    className="collapse collapse-arrow md:collapse-open"
-                                                                >
-                                                                    <div className="collapse-title text-primary pl-0 md:text-xl sm:text-lg font-medium">
-                                                                        Specifications
-                                                                    </div>
-                                                                    <div className="collapse-content pl-0">
-                                                                        <p className="mb-4">
-                                                                            {
-                                                                                item.description
-                                                                            }
-                                                                        </p>
-                                                                        .
-                                                                    </div>
-                                                                </div>
+                                                    <div className="divider divider-vertical"></div>
+                                                    <div className="mt-1 mb-5 bg-secondary p-4 rounded-md">
+                                                        <div
+                                                            tabIndex={0}
+                                                            className="collapse collapse-arrow md:collapse-open"
+                                                        >
+                                                            <div className="collapse-title text-primary pl-0 md:hidden sm:text-lg font-medium">
+                                                                See more details
                                                             </div>
-                                                            <div className="divider divider-horizontal"></div>
+                                                            <div className="collapse-content pl-0">
+                                                                <div className="flex sm:flex-col-reverse md:flex-row w-full">
+                                                                    <div className="block">
+                                                                        <h2 className="mb-2 md:text-xl sm:text-lg text-primary">
+                                                                            More
+                                                                            from
+                                                                            this
+                                                                            seller
+                                                                        </h2>
 
-                                                            <div className="seller-description md:w-1/4 sm:w-full flex flex-col mb-9">
-                                                                <div className="md:ml-5 mb-4">
-                                                                    <figure className="bg-base-100 rounded-xl p-8">
-                                                                        <div className="avatar flex justify-center ">
-                                                                            <div className="w-24 rounded-full border ">
-                                                                                <img src="https://avatars.dicebear.com/api/adventurer/your.svg" />
-                                                                            </div>
+                                                                        <div className="product-description w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
+                                                                            {products
+                                                                                .slice(
+                                                                                    0,
+                                                                                    4
+                                                                                )
+                                                                                .map(
+                                                                                    (
+                                                                                        item
+                                                                                    ) => {
+                                                                                        const alreadyAdded =
+                                                                                            inCart(
+                                                                                                item.id
+                                                                                            );
+                                                                                        return (
+                                                                                            <div
+                                                                                                className="card w-fit bg-base-100 shadow-xl m-5"
+                                                                                                key={
+                                                                                                    item.id
+                                                                                                }
+                                                                                            >
+                                                                                                <Link
+                                                                                                    to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                >
+                                                                                                    <figure>
+                                                                                                        <img
+                                                                                                            src={
+                                                                                                                item.imageUrl
+                                                                                                            }
+                                                                                                            alt={
+                                                                                                                item.name
+                                                                                                            }
+                                                                                                        />
+                                                                                                    </figure>
+                                                                                                </Link>
+                                                                                                <div className="card-body">
+                                                                                                    <Link
+                                                                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
+                                                                                                    >
+                                                                                                        <p className="card-title text-base">
+                                                                                                            {
+                                                                                                                item.name
+                                                                                                            }
+                                                                                                            <div className="badge badge-primary sm:hidden lg:block">
+                                                                                                                NEW
+                                                                                                            </div>
+                                                                                                        </p>
+
+                                                                                                        <div className="rating md:rating-sm sm:rating-xs ">
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="rating-1"
+                                                                                                                className="mask mask-star bg-primary"
+                                                                                                            />
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="rating-1"
+                                                                                                                className="mask mask-star bg-primary"
+                                                                                                            />
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="rating-1"
+                                                                                                                className="mask mask-star bg-primary"
+                                                                                                                defaultChecked
+                                                                                                            />
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="rating-1"
+                                                                                                                className="mask mask-star bg-primary"
+                                                                                                            />
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="rating-1"
+                                                                                                                className="mask mask-star bg-primary"
+                                                                                                            />
+                                                                                                        </div>
+                                                                                                        <p className="mt-2 text-primary font-bold">
+                                                                                                            ${" "}
+                                                                                                            {
+                                                                                                                item.price
+                                                                                                            }
+                                                                                                        </p>
+                                                                                                    </Link>
+                                                                                                    <div className="card-actions">
+                                                                                                        {alreadyAdded ? (
+                                                                                                            <>
+                                                                                                                {items
+                                                                                                                    .filter(
+                                                                                                                        (
+                                                                                                                            i
+                                                                                                                        ) =>
+                                                                                                                            i.id ===
+                                                                                                                            item.id
+                                                                                                                    )
+                                                                                                                    .map(
+                                                                                                                        (
+                                                                                                                            p
+                                                                                                                        ) => (
+                                                                                                                            <div
+                                                                                                                                className="form-control w-full"
+                                                                                                                                key={
+                                                                                                                                    p.id
+                                                                                                                                }
+                                                                                                                            >
+                                                                                                                                <label className="input-group input-group-sm">
+                                                                                                                                    <span
+                                                                                                                                        className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                                                        onClick={() =>
+                                                                                                                                            updateItemQuantity(
+                                                                                                                                                p.id,
+                                                                                                                                                p.quantity! -
+                                                                                                                                                    1
+                                                                                                                                            )
+                                                                                                                                        }
+                                                                                                                                    >
+                                                                                                                                        -
+                                                                                                                                    </span>
+                                                                                                                                    <span className=" w-full flex justify-center items-center">
+                                                                                                                                        {
+                                                                                                                                            p.quantity
+                                                                                                                                        }
+                                                                                                                                    </span>
+                                                                                                                                    <span
+                                                                                                                                        className=" w-full flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
+                                                                                                                                        onClick={() =>
+                                                                                                                                            updateItemQuantity(
+                                                                                                                                                p.id,
+                                                                                                                                                p.quantity! +
+                                                                                                                                                    1
+                                                                                                                                            )
+                                                                                                                                        }
+                                                                                                                                    >
+                                                                                                                                        +
+                                                                                                                                    </span>
+                                                                                                                                </label>
+                                                                                                                            </div>
+                                                                                                                        )
+                                                                                                                    )}
+                                                                                                            </>
+                                                                                                        ) : (
+                                                                                                            <button
+                                                                                                                className="btn w-full btn-primary text-sm rounded-xl btn-sm"
+                                                                                                                onClick={() =>
+                                                                                                                    addItem(
+                                                                                                                        item
+                                                                                                                    )
+                                                                                                                }
+                                                                                                            >
+                                                                                                                Add
+                                                                                                                to
+                                                                                                                cart
+                                                                                                            </button>
+                                                                                                        )}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        );
+                                                                                    }
+                                                                                )}
                                                                         </div>
+                                                                    </div>
+                                                                    <div className="divider divider-horizontal"></div>
 
-                                                                        <div className="pt-6 text-center space-y-4">
-                                                                            <blockquote>
-                                                                                <p className="text-lg font-medium">
-                                                                                    Shop
-                                                                                    name
-                                                                                </p>
-                                                                            </blockquote>
-                                                                            <figcaption className="font-medium">
-                                                                                <div className="text-primary">
-                                                                                    Seller
-                                                                                    name
+                                                                    <div className="seller-description w-full flex flex-col mb-9">
+                                                                        <div className="md:ml-5 mb-4 shadow-xl">
+                                                                            <figure className="bg-base-100 rounded-xl p-8">
+                                                                                <div className="avatar flex justify-center ">
+                                                                                    <div className="w-24 rounded-full border ">
+                                                                                        <img src="https://avatars.dicebear.com/api/adventurer/your.svg" />
+                                                                                    </div>
                                                                                 </div>
-                                                                            </figcaption>
+
+                                                                                <div className="pt-6 text-center space-y-4">
+                                                                                    <blockquote>
+                                                                                        <p className="text-lg font-medium">
+                                                                                            Shop
+                                                                                            name
+                                                                                        </p>
+                                                                                    </blockquote>
+                                                                                    <figcaption className="font-medium">
+                                                                                        <div className="text-primary">
+                                                                                            Seller
+                                                                                            name
+                                                                                        </div>
+                                                                                    </figcaption>
+                                                                                </div>
+                                                                            </figure>
                                                                         </div>
-                                                                    </figure>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

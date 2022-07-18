@@ -8,6 +8,7 @@ import {
     AiOutlineMenu,
     AiOutlineShoppingCart,
     AiOutlineBell,
+    AiOutlineDelete
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
@@ -19,7 +20,6 @@ const PrimaryNavbar = () => {
         totalItems,
         removeItem,
         emptyCart,
-        
     } = useCart();
 
     const [open, setOpen] = useState(false);
@@ -35,8 +35,10 @@ const PrimaryNavbar = () => {
         <div className="flex flex-col justify-center align-middle shadow fixed top-0 left-0  z-40 bg-base-100 w-full">
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start flex-auto w-1/3">
-                    <Link to={`/`} className="btn btn-ghost normal-case text-2xl">
-                        
+                    <Link
+                        to={`/`}
+                        className="btn btn-ghost normal-case text-2xl"
+                    >
                         <img
                             className="mx-auto h-8 w-auto mr-3"
                             src="https://avatars.dicebear.com/api/identicon/your-custd.svg"
@@ -69,7 +71,7 @@ const PrimaryNavbar = () => {
                     </div>
                 )}
 
-                <div className="navbar-end  flex-auto  w-1/3">
+                <div className="navbar-end  flex-auto  w-1/3 ">
                     <label className="btn btn-ghost btn-circle swap swap-rotate">
                         <input type="checkbox" />
                         <div className="swap-on" onClick={handleOpenSearch}>
@@ -79,7 +81,6 @@ const PrimaryNavbar = () => {
                             <AiOutlineSearch className=" h-5 w-5 lg:h-7 lg:w-7" />
                         </div>
                     </label>
-
                     <div className="dropdown dropdown-end">
                         <label
                             tabIndex={0}
@@ -98,7 +99,7 @@ const PrimaryNavbar = () => {
                         </label>
                         <div
                             tabIndex={0}
-                            className="mt-5 card card-compact dropdown-content mx-auto bg-base-100 shadow-2xl  w-screen max-h-96 sm:max-w-xs md:max-w-md overflow-y-auto scroll-smooth hover:scroll-auto"
+                            className="mt-5  card card-compact dropdown-content mx-auto bg-base-100 shadow-2xl md:w-96 max-h-96 sm:w-72 md:max-w-md overflow-y-auto scroll-smooth hover:scroll-auto -mr-12"
                         >
                             <div className="card-body">
                                 <span className="font-bold text-lg">
@@ -114,11 +115,11 @@ const PrimaryNavbar = () => {
                                 >
                                     {items.map((item) => (
                                         <li key={item.id} className="flex py-6">
-                                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
                                                 <img
                                                     src={item.imageUrl}
                                                     alt={item.name}
-                                                    className="h-full w-full object-cover object-center"
+                                                    className="h-fit w-fit object-cover object-center m-auto"
                                                 />
                                             </div>
 
@@ -127,18 +128,18 @@ const PrimaryNavbar = () => {
                                                     <div className="flex justify-between text-base font-medium text-neutral">
                                                         <h3>
                                                             <a href={item.id}>
-                                                                {" "}
-                                                                {item.name}{" "}
+                                                                {item.name}
                                                             </a>
                                                         </h3>
-                                                        <p className="ml-4 text-primary text-right">
-                                                            $ {item.price}
-                                                        </p>
                                                     </div>
-                                                    <div className="flex flex-1 items-end justify-between text-sm mt-2">
-                                                        <p className="text-gray-500">
-                                                            Qty {item.quantity}
-                                                        </p>
+                                                    <div className="flex flex-1 justify-between items-center text-sm mt-2">
+                                                        <div className="text-gray-500 flex justify-start">
+                                                            <p className="ml-4 text-primary text-left pr-2">
+                                                                $ {item.price}
+                                                            </p>
+                                                            <span>&times;</span>
+                                                            {item.quantity}
+                                                        </div>
                                                         <div className="flex">
                                                             <button
                                                                 onClick={() =>
@@ -147,9 +148,9 @@ const PrimaryNavbar = () => {
                                                                     )
                                                                 }
                                                                 type="button"
-                                                                className="font-medium text-error hover:text-neutral"
+                                                                className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
                                                             >
-                                                                Remove
+                                                               <AiOutlineDelete className=" h-5 w-5" />
                                                             </button>
                                                         </div>
                                                     </div>

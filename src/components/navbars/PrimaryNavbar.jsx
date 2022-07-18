@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { CartProvider, useCart } from "react-use-cart";
+import { Link,useNavigate } from "react-router-dom";
+import {  useCart } from "react-use-cart";
 
 import {
     AiOutlineSearch,
@@ -8,10 +8,12 @@ import {
     AiOutlineMenu,
     AiOutlineShoppingCart,
     AiOutlineBell,
-    AiOutlineDelete
+    AiOutlineDelete,
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
+    const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
+    const navigate = useNavigate();
     const {
         isEmpty,
         totalUniqueItems,
@@ -29,6 +31,13 @@ const PrimaryNavbar = () => {
     };
     const handleCloseSearch = () => {
         setOpen(false);
+    };
+
+    // Log out
+    const handleLogOut = (e) => {
+        e && e.preventDefault();
+        localStorage.removeItem("accessToken");
+        navigate("/");
     };
 
     return (
@@ -150,7 +159,7 @@ const PrimaryNavbar = () => {
                                                                 type="button"
                                                                 className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
                                                             >
-                                                               <AiOutlineDelete className=" h-5 w-5" />
+                                                                <AiOutlineDelete className=" h-5 w-5" />
                                                             </button>
                                                         </div>
                                                     </div>
@@ -215,28 +224,63 @@ const PrimaryNavbar = () => {
                             tabIndex={0}
                             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                         >
-                            <li>
-                                <Link
-                                    to="/login"
-                                    className="justify-center font-bold uppercase text-xs hover:text-primary"
-                                >
-                                    Sign in
-                                    {/* <span className="badge">New</span> */}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/register"
-                                    className="justify-center font-bold uppercase text-xs hover:text-primary"
-                                >
-                                    New customer
-                                </Link>
-                            </li>
-                            <li>
-                                <a className="justify-center font-bold uppercase text-xs hover:text-primary">
-                                    Become a seller
-                                </a>
-                            </li>
+                            {user ? (
+                                <>
+                                    <li>
+                                        <Link
+                                            to={`/my-profile/${user}`}
+                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                        >
+                                            MY account
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/register"
+                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                        >
+                                            wishlist
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a className="justify-center font-bold uppercase text-xs hover:text-primary">
+                                            Become a seller
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleLogOut}
+                                            className="justify-center bg-error font-bold uppercase text-xs hover:text-primary"
+                                        >
+                                            Log out
+                                        </button>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                        >
+                                            Sign in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/register"
+                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                        >
+                                            New customer
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a className="justify-center font-bold uppercase text-xs hover:text-primary">
+                                            Become a seller
+                                        </a>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
+import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
+
 const Profile = () => {
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
@@ -31,6 +33,7 @@ const Profile = () => {
                         </div>
                     ) : (
                         <>
+                            <PrimaryNavbar />
                             <div>My profile</div>
                             <button onClick={handleLogOut}>Log out</button>
                         </>

@@ -3,12 +3,16 @@ import { Link, useParams } from "react-router-dom";
 import { RadioGroup } from "@headlessui/react";
 import { useCart } from "react-use-cart";
 
+import Api from "../components/server-api/Api.js";
 import useFetch from "../components/axios-custom-hooks/useFetch.js";
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
 
 import { FaSpinner } from "react-icons/fa";
+import axios from "axios";
 
 const ProductView = () => {
+    const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
+    const [serverError, setServerError] = useState("");
     const colors = [
         { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
         { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
@@ -24,6 +28,7 @@ const ProductView = () => {
     let { productId, categoryId, productName } = useParams();
     let id = parseInt(productId!);
     let category = parseInt(categoryId!);
+
     // Fetching the product
     const {
         response: isProduct,
@@ -47,13 +52,23 @@ const ProductView = () => {
     });
 
     // Cart functionality
-    const { addItem, inCart, updateItemQuantity, items, isEmpty } = useCart();
+    const {
+        addItem,
+        inCart,
+        updateItemQuantity,
+        items,
+        isEmpty,
+        totalUniqueItems,
+    } = useCart();
 
     useEffect(() => {
         if (response !== null) {
             setCategories(response);
         }
     }, [response]);
+
+    // Adding the product to database cart
+
     return (
         <>
             <PrimaryNavbar />
@@ -155,6 +170,52 @@ const ProductView = () => {
                                             const alreadyAdded = inCart(
                                                 item.id
                                             );
+                                            const handleAddToDBCart = (e: {
+                                                preventDefault: () => any;
+                                            }) => {
+                                                e && e.preventDefault();
+
+                                                // Setting the validated values as payload
+                                                let payload = {
+                                                    productId: item.id,
+                                                    quantity: totalUniqueItems,
+                                                };
+                                                const headers = {
+                                                    "content-type":
+                                                        "application/json",
+                                                    Authorization: `token ${user}`,
+                                                };
+
+                                                // posting to database
+                                                axios
+                                                    .post(
+                                                        `${Api}/cart/add`,
+                                                        payload,
+                                                        {
+                                                            headers: {
+                                                                "content-type":
+                                                                    "application/json",
+                                                                Authorization: `token ${user}`,
+                                                            },
+                                                        }
+                                                    )
+                                                    .then((response) => {
+                                                        console.log(
+                                                            response.data
+                                                        );
+                                                    })
+                                                    .catch((error) => {
+                                                        console.log(
+                                                            error.response
+                                                        );
+                                                        const errorMessage =
+                                                            error.response.data
+                                                                .error;
+                                                        setServerError(
+                                                            errorMessage
+                                                        );
+                                                    });
+                                            };
                                             return (
                                                 <>
                                                     <div
@@ -359,6 +420,17 @@ const ProductView = () => {
                                                                 <div className="shop">
                                                                     {alreadyAdded ? (
                                                                         <>
+                                                                            {serverError.length !==
+                                                                                0 && (
+                                                                                <div className=" text-sm uppercase p-4 mb-4 text-base-100 bg-error text-center rounded-3xl">
+                                                                                    <h4></h4>
+                                                                                    <p className="mt-2">
+                                                                                        {
+                                                                                            serverError
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            )}
                                                                             {items
                                                                                 .filter(
                                                                                     (
@@ -426,11 +498,18 @@ const ProductView = () => {
                                                                         <div className="flex md:justify-start sm:justify-center">
                                                                             <button
                                                                                 className="btn sm:w-full md:w-2/3 btn-primary text-md rounded-2xl"
-                                                                                onClick={() =>
-                                                                                    addItem(
-                                                                                        item
-                                                                                    )
-                                                                                }
+                                                                                onClick={(
+                                                                                    e
+                                                                                ) => {
+                                                                                    {
+                                                                                        handleAddToDBCart(
+                                                                                            e
+                                                                                        );
+                                                                                        addItem(
+                                                                                            item
+                                                                                        );
+                                                                                    }
+                                                                                }}
                                                                             >
                                                                                 Add
                                                                                 to

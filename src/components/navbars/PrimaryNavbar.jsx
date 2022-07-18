@@ -12,6 +12,7 @@ import {
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
+
     const user = JSON.parse(localStorage.getItem("accessToken"));
     const navigate = useNavigate();
     const {
@@ -32,6 +33,8 @@ const PrimaryNavbar = () => {
     const handleCloseSearch = () => {
         setOpen(false);
     };
+
+    
 
     // Log out
     const handleLogOut = (e) => {
@@ -110,6 +113,8 @@ const PrimaryNavbar = () => {
                             tabIndex={0}
                             className="mt-5  card card-compact dropdown-content mx-auto bg-base-100 shadow-2xl md:w-96 max-h-96 sm:w-72 md:max-w-md overflow-y-auto scroll-smooth hover:scroll-auto -mr-12"
                         >
+                            
+
                             <div className="card-body">
                                 <span className="font-bold text-lg">
                                     {totalUniqueItems === 1 ? (
@@ -122,51 +127,71 @@ const PrimaryNavbar = () => {
                                     role="list"
                                     className=" divide-y divide-gray-200"
                                 >
-                                    {items.map((item) => (
-                                        <li key={item.id} className="flex py-6">
-                                            <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
-                                                <img
-                                                    src={item.imageUrl}
-                                                    alt={item.name}
-                                                    className="h-fit w-fit object-cover object-center m-auto"
-                                                />
-                                            </div>
+                                    {user && (
+                                        <>
+                                            {items.map((item) => (
+                                                <li
+                                                    key={item.id}
+                                                    className="flex py-6"
+                                                >
+                                                    <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
+                                                        <img
+                                                            src={item.imageUrl}
+                                                            alt={item.name}
+                                                            className="h-fit w-fit object-cover object-center m-auto"
+                                                        />
+                                                    </div>
 
-                                            <div className="ml-4 flex flex-1 flex-col">
-                                                <div>
-                                                    <div className="flex justify-between text-base font-medium text-neutral">
-                                                        <h3>
-                                                            <a href={item.id}>
-                                                                {item.name}
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                    <div className="flex flex-1 justify-between items-center text-sm mt-2">
-                                                        <div className="text-gray-500 flex justify-start">
-                                                            <p className="ml-4 text-primary text-left pr-2">
-                                                                $ {item.price}
-                                                            </p>
-                                                            <span>&times;</span>
-                                                            {item.quantity}
+                                                    <div className="ml-4 flex flex-1 flex-col">
+                                                        <div>
+                                                            <div className="flex justify-between text-base font-medium text-neutral">
+                                                                <h3>
+                                                                    <a
+                                                                        href={
+                                                                            item.id
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            item.name
+                                                                        }
+                                                                    </a>
+                                                                </h3>
+                                                            </div>
+                                                            <div className="flex flex-1 justify-between items-center text-sm mt-2">
+                                                                <div className="text-gray-500 flex justify-start">
+                                                                    <p className="ml-4 text-primary text-left pr-2">
+                                                                        ${" "}
+                                                                        {
+                                                                            item.price
+                                                                        }
+                                                                    </p>
+                                                                    <span>
+                                                                        &times;
+                                                                    </span>
+                                                                    {
+                                                                        item.quantity
+                                                                    }
+                                                                </div>
+                                                                <div className="flex">
+                                                                    <button
+                                                                        onClick={() =>
+                                                                            removeItem(
+                                                                                item.id
+                                                                            )
+                                                                        }
+                                                                        type="button"
+                                                                        className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
+                                                                    >
+                                                                        <AiOutlineDelete className=" h-5 w-5" />
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div className="flex">
-                                                            <button
-                                                                onClick={() =>
-                                                                    removeItem(
-                                                                        item.id
-                                                                    )
-                                                                }
-                                                                type="button"
-                                                                className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
-                                                            >
-                                                                <AiOutlineDelete className=" h-5 w-5" />
-                                                            </button>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    ))}
+                                                </li>
+                                            ))}
+                                        </>
+                                    )}
                                 </ul>
                                 <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                                     <div className="flex justify-between text-base text-primary font-medium">

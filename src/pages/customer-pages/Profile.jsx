@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
 import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
+import Page404 from "../PageNotFound.tsx";
 
 const Profile = () => {
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const navigate = useNavigate();
 
-    const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
-    const handleLogOut = (e: { preventDefault: () => any }) => {
+    const user = JSON.parse(localStorage.getItem("accessToken" ));
+    const handleLogOut = (e) => {
         e && e.preventDefault();
         setLoading(true);
         localStorage.removeItem("accessToken");
@@ -40,7 +41,7 @@ const Profile = () => {
                     )}
                 </>
             ) : (
-                <>user not logged in</>
+                <><Page404/></>
             )}
         </>
     );

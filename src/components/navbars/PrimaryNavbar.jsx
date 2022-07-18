@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import {  useCart } from "react-use-cart";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "react-use-cart";
 
 import {
     AiOutlineSearch,
@@ -12,7 +12,7 @@ import {
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
-    const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
+    const user = JSON.parse(localStorage.getItem("accessToken"));
     const navigate = useNavigate();
     const {
         isEmpty,

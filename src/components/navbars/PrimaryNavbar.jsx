@@ -127,7 +127,7 @@ const PrimaryNavbar = () => {
                                     role="list"
                                     className=" divide-y divide-gray-200"
                                 >
-                                    {user && (
+                                    {/* {user && ( */}
                                         <>
                                             {items.map((item) => (
                                                 <li
@@ -158,8 +158,8 @@ const PrimaryNavbar = () => {
                                                                 </h3>
                                                             </div>
                                                             <div className="flex flex-1 justify-between items-center text-sm mt-2">
-                                                                <div className="text-gray-500 flex justify-start">
-                                                                    <p className="ml-4 text-primary text-left pr-2">
+                                                                <div className="text-accent flex justify-start">
+                                                                    <p className="text-primary text-left pr-2">
                                                                         ${" "}
                                                                         {
                                                                             item.price
@@ -191,7 +191,7 @@ const PrimaryNavbar = () => {
                                                 </li>
                                             ))}
                                         </>
-                                    )}
+                                    {/* )} */}
                                 </ul>
                                 <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                                     <div className="flex justify-between text-base text-primary font-medium">
@@ -216,7 +216,7 @@ const PrimaryNavbar = () => {
                                                 to="/cart"
                                                 className="btn btn-sm btn-primary btn-block rounded-xl"
                                             >
-                                                Checkout
+                                                view full cart
                                             </Link>
                                         </div>
                                     </>

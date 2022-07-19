@@ -502,9 +502,6 @@ const ProductView = () => {
                                                                                     e
                                                                                 ) => {
                                                                                     {
-                                                                                        handleAddToDBCart(
-                                                                                            e
-                                                                                        );
                                                                                         addItem(
                                                                                             item
                                                                                         );

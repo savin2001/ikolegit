@@ -606,9 +606,6 @@ const Home = () => {
                                                                                                                         {
                                                                                                                             item.name
                                                                                                                         }
-                                                                                                                        <div className="badge badge-primary sm:hidden lg:block">
-                                                                                                                            NEW
-                                                                                                                        </div>
                                                                                                                     </p>
 
                                                                                                                     <div className="rating md:rating-sm sm:rating-xs ">
@@ -740,15 +737,24 @@ const Home = () => {
                                                 className="drawer-overlay"
                                             />
                                             {categories && (
-                                                <ul className="menu p-4 overflow-y-auto lg:w-1/5 sm:w-1/2 bg-base-100 text-base-content">
-                                                    <h3 className="lg:text-2xl sm:text-xl text-primary">
+                                                <ul className="menu p-4 overflow-y-auto lg:w-1/4 sm:w-1/2 bg-base-100 text-base-content">
+                                                    <h3 className="lg:text-2xl sm:text-xl text-primary mb-7">
                                                         Categories
                                                     </h3>
                                                     {categories.map((cat) => (
-                                                        <li key={cat.id}>
+                                                        <li className="flex flex-row mb-3" key={cat.id}>
+                                                            <div className="ml-4 bg-accent shadow-lg p-2 rounded-xl max-w-fit justify-center items-center">
+                                                                <img
+                                                                    src={
+                                                                        cat.imageUrl
+                                                                    }
+                                                                    alt=""
+                                                                    className=" h-5 w-6"
+                                                                />
+                                                            </div>
                                                             <a
                                                                 href={`#${cat.id}`}
-                                                                className="text-neutral capitalize hover:text-primary"
+                                                                className="text-neutral capitalize hover:text-primary flex-auto"
                                                             >
                                                                 {
                                                                     cat.categoryName

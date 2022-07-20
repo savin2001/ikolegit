@@ -3,6 +3,14 @@ import { useCart } from "react-use-cart";
 
 import useFetch from "../components/axios-custom-hooks/useFetch.js";
 import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
+import ProductsLoading from "../components/loading/ProductsLoading.jsx";
+import CarouselLoading from "../components/loading/CarouselLoading.jsx";
+import HeaderLoading from "../components/loading/CarouselLoading.jsx";
+import ProductsError from "../components/error/ProductsError.jsx";
+import HeaderProductList from "../components/products/HeaderProductList.jsx";
+import CarouselProducts from "../components/products/CarouselProducts.jsx";
+import SpecialProducts from "../components/products/SpecialProducts.jsx";
+import CategoryProducts from "../components/products/CategoryProducts.jsx";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
@@ -48,462 +56,57 @@ const Home = () => {
             <header className="mt-36 w-full mb-9">
                 {isLoading ? (
                     <>
-                        <div id="loading ">
-                            <div className="carousel-item relative w-full flex lg:flex-row sm:flex-col-reverse animate-pulse">
-                                <div className="lg:ml-24 my-auto w-1/2 sm:w-2/3 lg:w-1/2 sm:mx-auto sm:text-center lg:text-left p-4">
-                                    <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-neutral sm:text-left">
-                                        Loading offers...
-                                    </h1>
-                                    <div className="text-neutral h-4  w-1/2 bg-secondary"></div>
-                                    <br />
-                                    <div className="text-neutral h-4  w-3/4 bg-secondary"></div>
-                                    <br />
-                                    <div className="text-neutral h-4  w-full bg-secondary"></div>
-                                </div>
-                                <figure className="h-60 w-fit lg:right-0 lg:mr-48 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit  flex justify-center items-center">
-                                    <FaSpinner className="lg:h-24 lg:w-24 sm:h-12 sm:w-12 animate-spin text-neutral" />
-                                </figure>
-
-                                <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                    <a
-                                        href={`#slide1`}
-                                        className="btn btn-circle bg-secondary shadow-lg btn-disabled"
-                                    >
-                                        ❮
-                                    </a>
-
-                                    <a
-                                        href="#"
-                                        className="btn btn-circle bg-secondary shadow-lg btn-disabled"
-                                    >
-                                        ❯
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <HeaderLoading />
                     </>
                 ) : (
                     <>
-                        {isError && (
-                            <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                <p className="text-centertext-base-100">
-                                    {isError.response.data}
-                                </p>
-                            </div>
-                        )}
-
-                        {products.length > 0 && (
-                            <div className="carousel w-full h-full lg:h-72 max-w-7xl mx-auto">
-                                {products.map((item) => (
-                                    <div
-                                        id={`slide${item.id}`}
-                                        className="carousel-item relative w-full flex lg:flex-row sm:flex-col-reverse"
-                                        key={item.id}
-                                    >
-                                        <div className="lg:ml-24 my-auto w-1/2 sm:w-2/3 lg:w-1/2 sm:mx-auto sm:text-center lg:text-left p-4">
-                                            <h1 className="lg:text-4xl md:text-3xl sm:text-2xl pb-4 text-primary">
-                                                {item.name}
-                                            </h1>
-                                            <p className="text-neutral my-2">
-                                                {item.description}
-                                            </p>
-                                            <button className="btn btn-primary text-sm rounded-xl mt-2">
-                                                <Link
-                                                    to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                >
-                                                    Check it out
-                                                </Link>
-                                            </button>
-                                        </div>
-                                        <Link
-                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                        >
-                                            <img
-                                                src={item.imageUrl}
-                                                className="w-fit lg:right-0 lg:mr-24 sm:mx-auto sm:w-2/3 lg:w-1/2 md:max-w-fit "
-                                            />
-                                        </Link>
-
-                                        <div className="absolute  flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                                            {item.id > 1 ? (
-                                                <a
-                                                    href={`#slide${
-                                                        item.id - 1
-                                                    }`}
-                                                    className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
-                                                >
-                                                    ❮
-                                                </a>
-                                            ) : (
-                                                <a
-                                                    href={`#slide1`}
-                                                    className="btn btn-circle bg-secondary shadow-lg btn-disabled"
-                                                >
-                                                    ❮
-                                                </a>
-                                            )}
-                                            {/* {slide.id } */}
-                                            <a
-                                                href={`#slide${item.id + 1}`}
-                                                className="btn btn-circle bg-primary shadow-lg hover:bg-white hover:text-primary border-none"
-                                            >
-                                                ❯
-                                            </a>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                        <ProductsError isError={isError} />
+                        <HeaderProductList products={products} />
                     </>
                 )}
             </header>
-
-            {/* categories section */}
 
             <main className="w-full relative">
                 <div className="max-w-7xl mx-auto">
                     <div className="divider"></div>
                 </div>
+                {/* special for you section */}
                 <div className="max-w-7xl mx-auto py-4  px-6">
                     {isLoading ? (
                         <>
-                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                <span className="flex justify-center">
-                                    <FaSpinner className="h-8 w-8 animate-spin" />
-                                    <span className="ml-6">
-                                        Products will load in a few...
-                                    </span>
-                                </span>
-                            </h3>
-                            <div className="sm:block md:hidden lg:hidden">
-                                <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box animate-pulse">
-                                    {Array.from(Array(6)).map((_, index) => (
-                                        <div
-                                            className="carousel-item h-32 w-64 bg-secondary rounded-lg"
-                                            key={index}
-                                        >
-                                            <div className="text-neutral h-4  w-1/2 bg-base-100"></div>
-                                            <br />
-                                            <div className="text-neutral h-4  w-3/4 bg-base-100"></div>
-                                            <br />
-                                            <div className="text-neutral h-4  w-full bg-base-100"></div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            <CarouselLoading
+                                sectionTitle={"Products will load in a few..."}
+                            />
                         </>
                     ) : (
                         <>
-                            {isError && (
-                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                    <p className="text-centertext-base-100">
-                                        {isError.response.data}
-                                    </p>
-                                </div>
-                            )}
-                            {products.length > 0 && (
-                                <div>
-                                    <div className="flex justify-between">
-                                        <h3 className="lg:text-2xl sm:text-xl text-primary text-center mb-6">
-                                            Special for you
-                                        </h3>
-                                        <a href="#" className="text-neutral">
-                                            See more
-                                        </a>
-                                    </div>
-                                    <div className="sm:block md:hidden lg:hidden">
-                                        <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box">
-                                            {products
-                                                .slice(0, 4)
-                                                .map((item) => (
-                                                    <div
-                                                        className="carousel-item w-64 h-64 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-box "
-                                                        key={item.id}
-                                                    >
-                                                        <Link
-                                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                        >
-                                                            <div className="card shadow-xl image-full h-fit w-fit object-cover object-center m-auto">
-                                                                <figure>
-                                                                    <img
-                                                                        src={
-                                                                            item.imageUrl
-                                                                        }
-                                                                        alt={
-                                                                            item.name
-                                                                        }
-                                                                        className="h-fit w-fit object-cover object-center m-auto"
-                                                                    />
-                                                                </figure>
-                                                                <div className="card-body">
-                                                                    <h2 className="card-title">
-                                                                        {
-                                                                            item.name
-                                                                        }
-                                                                    </h2>
-                                                                    <p>
-                                                                        ${" "}
-                                                                        {
-                                                                            item.price
-                                                                        }
-                                                                    </p>
-                                                                    <div className="card-actions justify-end">
-                                                                        <button className="btn btn-primary btn-sm text-xs">
-                                                                            check
-                                                                            it
-                                                                            out
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            {/* <img
-                                                                src={
-                                                                    item.imageUrl
-                                                                }
-                                                                alt={item.name}
-                                                                className="h-fit w-fit object-cover object-center m-auto"
-                                                            /> */}
-                                                        </Link>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
+                            <ProductsError isError={isError} />
+                            <CarouselProducts products={products} />
                         </>
                     )}
 
-                    {loading ? (
-                        <div id="loading ">
-                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
-                                {Array.from(Array(4)).map((_, index) => (
-                                    <div
-                                        className="card bg-base-100 shadow-2xl border-2 m-5"
-                                        key={index}
-                                    >
-                                        <figure className="h-48 bg-secondary"></figure>
-                                        <div className="card-body">
-                                            <h3 className="card-title"></h3>
-                                            <div className="justify-start">
-                                                <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                    product
-                                                </div>
-                                                <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                    tag
-                                                </div>
-                                            </div>
-                                            <p></p>
-                                            <div className="card-actions">
-                                                <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
-                                                    Loading...
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                    {isLoading ? (
+                        <div>
+                            <ProductsLoading
+                                sectionTitle={"Products will load in a few..."}
+                            />
                         </div>
                     ) : (
                         <>
-                            {error && (
-                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                    <p className="text-centertext-base-100">
-                                        {error.response}
-                                    </p>
-                                </div>
-                            )}
-                            <div className="mx-auto sm:hidden md:block lg:block">
-                                {products.length > 0 && (
-                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4">
-                                        {products.slice(0, 4).map((item) => {
-                                            const alreadyAdded = inCart(
-                                                item.id
-                                            );
-                                            return (
-                                                <div
-                                                    className="card w-fit bg-base-100 shadow-xl m-5"
-                                                    key={item.id}
-                                                >
-                                                    <Link
-                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                    >
-                                                        <figure>
-                                                            <img
-                                                                src={
-                                                                    item.imageUrl
-                                                                }
-                                                                alt={item.name}
-                                                            />
-                                                        </figure>
-                                                    </Link>
-                                                    <div className="card-body">
-                                                        <Link
-                                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                        >
-                                                            <p className="card-title text-base">
-                                                                {item.name}
-                                                                <div className="badge badge-primary sm:hidden lg:block">
-                                                                    NEW
-                                                                </div>
-                                                            </p>
-
-                                                            <div className="rating md:rating-sm sm:rating-xs ">
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-1"
-                                                                    className="mask mask-star bg-primary"
-                                                                />
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-1"
-                                                                    className="mask mask-star bg-primary"
-                                                                />
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-1"
-                                                                    className="mask mask-star bg-primary"
-                                                                    defaultChecked
-                                                                />
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-1"
-                                                                    className="mask mask-star bg-primary"
-                                                                />
-                                                                <input
-                                                                    type="radio"
-                                                                    name="rating-1"
-                                                                    className="mask mask-star bg-primary"
-                                                                />
-                                                            </div>
-                                                            <p className="mt-2 text-primary font-bold">
-                                                                $ {item.price}
-                                                            </p>
-                                                        </Link>
-                                                        <div className="card-actions">
-                                                            {alreadyAdded ? (
-                                                                <>
-                                                                    {items
-                                                                        .filter(
-                                                                            (
-                                                                                i
-                                                                            ) =>
-                                                                                i.id ===
-                                                                                item.id
-                                                                        )
-                                                                        .map(
-                                                                            (
-                                                                                p
-                                                                            ) => (
-                                                                                <div
-                                                                                    className="form-control w-full"
-                                                                                    key={
-                                                                                        p.id
-                                                                                    }
-                                                                                >
-                                                                                    <label className="input-group input-group-sm">
-                                                                                        <span
-                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                            onClick={() =>
-                                                                                                updateItemQuantity(
-                                                                                                    p.id,
-                                                                                                    p.quantity! -
-                                                                                                        1
-                                                                                                )
-                                                                                            }
-                                                                                        >
-                                                                                            -
-                                                                                        </span>
-                                                                                        <span className=" w-full flex justify-center items-center">
-                                                                                            {
-                                                                                                p.quantity
-                                                                                            }
-                                                                                        </span>
-                                                                                        <span
-                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                            onClick={() =>
-                                                                                                updateItemQuantity(
-                                                                                                    p.id,
-                                                                                                    p.quantity! +
-                                                                                                        1
-                                                                                                )
-                                                                                            }
-                                                                                        >
-                                                                                            +
-                                                                                        </span>
-                                                                                    </label>
-                                                                                </div>
-                                                                            )
-                                                                        )}
-                                                                </>
-                                                            ) : (
-                                                                <button
-                                                                    className="btn w-full btn-primary text-sm rounded-xl btn-sm"
-                                                                    onClick={() =>
-                                                                        addItem(
-                                                                            item
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Add to cart
-                                                                </button>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                )}
-                            </div>
+                            <ProductsError isError={error} />
+                            <SpecialProducts products={products} />
                         </>
                     )}
                 </div>
+
+                {/* products category section */}
                 {loading ? (
-                    <div id="loading ">
-                        <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                            <span className="flex justify-center">
-                                <FaSpinner className="h-8 w-8 animate-spin" />
-                                <span className="ml-6">Wait a moment...</span>
-                            </span>
-                        </h3>
-                        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
-                            {Array.from(Array(4)).map((_, index) => (
-                                <div
-                                    className="card bg-base-100 shadow-2xl border-2 m-5"
-                                    key={index}
-                                >
-                                    <figure className="h-48 bg-secondary"></figure>
-                                    <div className="card-body">
-                                        <h3 className="card-title"></h3>
-                                        <div className="justify-start">
-                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                product
-                                            </div>
-                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                tag
-                                            </div>
-                                        </div>
-                                        <p></p>
-                                        <div className="card-actions">
-                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
-                                                Loading...
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div>
+                        <ProductsLoading sectionTitle={"Wait a moment..."} />
                     </div>
                 ) : (
                     <>
-                        {error && (
-                            <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                <p className="text-centertext-base-100">
-                                    {error.response}
-                                </p>
-                            </div>
-                        )}
+                        <ProductsError isError={error} />
                         <div className="w-full bg-secondary  pb-4 pt-2">
                             <div className="max-w-7xl mx-auto">
                                 <div className="flex  mt-6 relative">
@@ -548,179 +151,20 @@ const Home = () => {
                                                                         </div>
                                                                     ) : (
                                                                         <>
-                                                                            {error && (
-                                                                                <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                                                                    <p className="text-centertext-base-100">
-                                                                                        {
-                                                                                            error.response
-                                                                                        }
-                                                                                    </p>
-                                                                                </div>
-                                                                            )}
+                                                                            <ProductsError
+                                                                                isError={
+                                                                                    isError
+                                                                                }
+                                                                            />
                                                                             <div className="mx-auto sm:hidden md:block lg:block">
-                                                                                {products.length >
-                                                                                    0 && (
-                                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 md:gap-4">
-                                                                                        {products
-                                                                                            .filter(
-                                                                                                (
-                                                                                                    item
-                                                                                                ) =>
-                                                                                                    item.categoryId ===
-                                                                                                    cat.id
-                                                                                            )
-                                                                                            .map(
-                                                                                                (
-                                                                                                    item
-                                                                                                ) => {
-                                                                                                    const alreadyAdded =
-                                                                                                        inCart(
-                                                                                                            item.id
-                                                                                                        );
-                                                                                                    return (
-                                                                                                        <div
-                                                                                                            className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                                                            key={
-                                                                                                                item.id
-                                                                                                            }
-                                                                                                        >
-                                                                                                            <Link
-                                                                                                                to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                                                                            >
-                                                                                                                <figure>
-                                                                                                                    <img
-                                                                                                                        src={
-                                                                                                                            item.imageUrl
-                                                                                                                        }
-                                                                                                                        alt={
-                                                                                                                            item.name
-                                                                                                                        }
-                                                                                                                    />
-                                                                                                                </figure>
-                                                                                                            </Link>
-                                                                                                            <div className="card-body">
-                                                                                                                <Link
-                                                                                                                    to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                                                                                >
-                                                                                                                    <p className="card-title text-base">
-                                                                                                                        {
-                                                                                                                            item.name
-                                                                                                                        }
-                                                                                                                    </p>
-
-                                                                                                                    <div className="rating md:rating-sm sm:rating-xs ">
-                                                                                                                        <input
-                                                                                                                            type="radio"
-                                                                                                                            name="rating-1"
-                                                                                                                            className="mask mask-star bg-primary"
-                                                                                                                        />
-                                                                                                                        <input
-                                                                                                                            type="radio"
-                                                                                                                            name="rating-1"
-                                                                                                                            className="mask mask-star bg-primary"
-                                                                                                                        />
-                                                                                                                        <input
-                                                                                                                            type="radio"
-                                                                                                                            name="rating-1"
-                                                                                                                            className="mask mask-star bg-primary"
-                                                                                                                            defaultChecked
-                                                                                                                        />
-                                                                                                                        <input
-                                                                                                                            type="radio"
-                                                                                                                            name="rating-1"
-                                                                                                                            className="mask mask-star bg-primary"
-                                                                                                                        />
-                                                                                                                        <input
-                                                                                                                            type="radio"
-                                                                                                                            name="rating-1"
-                                                                                                                            className="mask mask-star bg-primary"
-                                                                                                                        />
-                                                                                                                    </div>
-                                                                                                                    <p className="mt-2 text-primary font-bold">
-                                                                                                                        ${" "}
-                                                                                                                        {
-                                                                                                                            item.price
-                                                                                                                        }
-                                                                                                                    </p>
-                                                                                                                </Link>
-                                                                                                                <div className="card-actions">
-                                                                                                                    {alreadyAdded ? (
-                                                                                                                        <>
-                                                                                                                            {items
-                                                                                                                                .filter(
-                                                                                                                                    (
-                                                                                                                                        i
-                                                                                                                                    ) =>
-                                                                                                                                        i.id ===
-                                                                                                                                        item.id
-                                                                                                                                )
-                                                                                                                                .map(
-                                                                                                                                    (
-                                                                                                                                        p
-                                                                                                                                    ) => (
-                                                                                                                                        <div
-                                                                                                                                            className="form-control w-full"
-                                                                                                                                            key={
-                                                                                                                                                p.id
-                                                                                                                                            }
-                                                                                                                                        >
-                                                                                                                                            <label className="input-group input-group-sm">
-                                                                                                                                                <span
-                                                                                                                                                    className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                                                                                    onClick={() =>
-                                                                                                                                                        updateItemQuantity(
-                                                                                                                                                            p.id,
-                                                                                                                                                            p.quantity! -
-                                                                                                                                                                1
-                                                                                                                                                        )
-                                                                                                                                                    }
-                                                                                                                                                >
-                                                                                                                                                    -
-                                                                                                                                                </span>
-                                                                                                                                                <span className=" w-full flex justify-center items-center">
-                                                                                                                                                    {
-                                                                                                                                                        p.quantity
-                                                                                                                                                    }
-                                                                                                                                                </span>
-                                                                                                                                                <span
-                                                                                                                                                    className=" w-full flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                                                                                    onClick={() =>
-                                                                                                                                                        updateItemQuantity(
-                                                                                                                                                            p.id,
-                                                                                                                                                            p.quantity! +
-                                                                                                                                                                1
-                                                                                                                                                        )
-                                                                                                                                                    }
-                                                                                                                                                >
-                                                                                                                                                    +
-                                                                                                                                                </span>
-                                                                                                                                            </label>
-                                                                                                                                        </div>
-                                                                                                                                    )
-                                                                                                                                )}
-                                                                                                                        </>
-                                                                                                                    ) : (
-                                                                                                                        <button
-                                                                                                                            className="btn w-full btn-primary text-sm rounded-xl btn-sm"
-                                                                                                                            onClick={() =>
-                                                                                                                                addItem(
-                                                                                                                                    item
-                                                                                                                                )
-                                                                                                                            }
-                                                                                                                        >
-                                                                                                                            Add
-                                                                                                                            to
-                                                                                                                            cart
-                                                                                                                        </button>
-                                                                                                                    )}
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    );
-                                                                                                }
-                                                                                            )}
-                                                                                    </div>
-                                                                                )}
+                                                                                <CategoryProducts
+                                                                                    products={
+                                                                                        products
+                                                                                    }
+                                                                                    cat={
+                                                                                        cat
+                                                                                    }
+                                                                                />
                                                                             </div>
                                                                         </>
                                                                     )}
@@ -742,20 +186,24 @@ const Home = () => {
                                                         Categories
                                                     </h3>
                                                     {categories.map((cat) => (
-                                                        <li className="flex flex-row mb-3" key={cat.id}>
-                                                            <div className="ml-4 bg-accent shadow-lg p-2 rounded-xl max-w-fit justify-center items-center">
-                                                                <img
-                                                                    src={
-                                                                        cat.imageUrl
-                                                                    }
-                                                                    alt=""
-                                                                    className=" h-5 w-6"
-                                                                />
-                                                            </div>
+                                                        <li
+                                                            className="flex flex-row mb-3"
+                                                            key={cat.id}
+                                                        >
                                                             <a
                                                                 href={`#${cat.id}`}
                                                                 className="text-neutral capitalize hover:text-primary flex-auto"
                                                             >
+                                                                <div className="bg-accent shadow-lg p-2 rounded-xl max-w-fit justify-center items-center">
+                                                                    <img
+                                                                        src={
+                                                                            cat.imageUrl
+                                                                        }
+                                                                        alt=""
+                                                                        className=" h-5 w-6 "
+                                                                    />
+                                                                </div>
+
                                                                 {
                                                                     cat.categoryName
                                                                 }
@@ -803,227 +251,30 @@ const Home = () => {
                                                                     cat.categoryName
                                                                 }
                                                             </h3>
-                                                            {loading ? (
-                                                                <div id="loading ">
-                                                                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ml-6  animate-pulse">
-                                                                        {Array.from(
-                                                                            Array(
-                                                                                1
-                                                                            )
-                                                                        ).map(
-                                                                            (
-                                                                                _,
-                                                                                index
-                                                                            ) => (
-                                                                                <div
-                                                                                    className="card bg-base-100 shadow-2xl border-2 m-5"
-                                                                                    key={
-                                                                                        index
-                                                                                    }
-                                                                                >
-                                                                                    <figure className="h-48 bg-secondary"></figure>
-                                                                                    <div className="card-body">
-                                                                                        <h3 className="card-title"></h3>
-                                                                                        <div className="justify-start">
-                                                                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                                                                product
-                                                                                            </div>
-                                                                                            <div className="badge badge-outline badge-sm text-accent mr-2">
-                                                                                                tag
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <p></p>
-                                                                                        <div className="card-actions">
-                                                                                            <button className="btn  gap-2 w-full btn-neutral text-sm rounded-xl btn-sm">
-                                                                                                Loading...
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            )
-                                                                        )}
-                                                                    </div>
+                                                            {isLoading ? (
+                                                                <div>
+                                                                    <ProductsLoading
+                                                                        sectionTitle={
+                                                                            "Products will load in a few..."
+                                                                        }
+                                                                    />
                                                                 </div>
                                                             ) : (
                                                                 <>
-                                                                    {error && (
-                                                                        <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                                                            <p className="text-centertext-base-100">
-                                                                                {
-                                                                                    error
-                                                                                        .response
-                                                                                        .data
-                                                                                }
-                                                                            </p>
-                                                                        </div>
-                                                                    )}
+                                                                    <ProductsError
+                                                                        isError={
+                                                                            isError
+                                                                        }
+                                                                    />
                                                                     <div className="mx-auto sm:block md:hidden lg:hidden">
-                                                                        {products.length >
-                                                                            0 && (
-                                                                            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 md:gap-4">
-                                                                                {products
-                                                                                    .filter(
-                                                                                        (
-                                                                                            item
-                                                                                        ) =>
-                                                                                            item.categoryId ===
-                                                                                            cat.id
-                                                                                    )
-                                                                                    .map(
-                                                                                        (
-                                                                                            item
-                                                                                        ) => {
-                                                                                            const alreadyAdded =
-                                                                                                inCart(
-                                                                                                    item.id
-                                                                                                );
-                                                                                            return (
-                                                                                                <div
-                                                                                                    className="card w-fit bg-base-100 shadow-xl m-5"
-                                                                                                    key={
-                                                                                                        item.id
-                                                                                                    }
-                                                                                                >
-                                                                                                    <Link
-                                                                                                        to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                                                                    >
-                                                                                                        <figure>
-                                                                                                            <img
-                                                                                                                src={
-                                                                                                                    item.imageUrl
-                                                                                                                }
-                                                                                                                alt={
-                                                                                                                    item.name
-                                                                                                                }
-                                                                                                            />
-                                                                                                        </figure>
-                                                                                                    </Link>
-                                                                                                    <div className="card-body">
-                                                                                                        <Link
-                                                                                                            to={`/product/${item.categoryId}/${item.id}/${item.name}`}
-                                                                                                        >
-                                                                                                            <p className="card-title text-base">
-                                                                                                                {
-                                                                                                                    item.name
-                                                                                                                }
-                                                                                                                <div className="badge badge-primary sm:hidden lg:block">
-                                                                                                                    NEW
-                                                                                                                </div>
-                                                                                                            </p>
-
-                                                                                                            <div className="rating md:rating-sm sm:rating-xs ">
-                                                                                                                <input
-                                                                                                                    type="radio"
-                                                                                                                    name="rating-1"
-                                                                                                                    className="mask mask-star bg-primary"
-                                                                                                                />
-                                                                                                                <input
-                                                                                                                    type="radio"
-                                                                                                                    name="rating-1"
-                                                                                                                    className="mask mask-star bg-primary"
-                                                                                                                />
-                                                                                                                <input
-                                                                                                                    type="radio"
-                                                                                                                    name="rating-1"
-                                                                                                                    className="mask mask-star bg-primary"
-                                                                                                                    defaultChecked
-                                                                                                                />
-                                                                                                                <input
-                                                                                                                    type="radio"
-                                                                                                                    name="rating-1"
-                                                                                                                    className="mask mask-star bg-primary"
-                                                                                                                />
-                                                                                                                <input
-                                                                                                                    type="radio"
-                                                                                                                    name="rating-1"
-                                                                                                                    className="mask mask-star bg-primary"
-                                                                                                                />
-                                                                                                            </div>
-                                                                                                            <p className="mt-2 text-primary font-bold">
-                                                                                                                ${" "}
-                                                                                                                {
-                                                                                                                    item.price
-                                                                                                                }
-                                                                                                            </p>
-                                                                                                        </Link>
-                                                                                                        <div className="card-actions">
-                                                                                                            {alreadyAdded ? (
-                                                                                                                <>
-                                                                                                                    {items
-                                                                                                                        .filter(
-                                                                                                                            (
-                                                                                                                                i
-                                                                                                                            ) =>
-                                                                                                                                i.id ===
-                                                                                                                                item.id
-                                                                                                                        )
-                                                                                                                        .map(
-                                                                                                                            (
-                                                                                                                                p
-                                                                                                                            ) => (
-                                                                                                                                <div
-                                                                                                                                    className="form-control w-full"
-                                                                                                                                    key={
-                                                                                                                                        p.id
-                                                                                                                                    }
-                                                                                                                                >
-                                                                                                                                    <label className="input-group input-group-sm">
-                                                                                                                                        <span
-                                                                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-l-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                                                                            onClick={() =>
-                                                                                                                                                updateItemQuantity(
-                                                                                                                                                    p.id,
-                                                                                                                                                    p.quantity! -
-                                                                                                                                                        1
-                                                                                                                                                )
-                                                                                                                                            }
-                                                                                                                                        >
-                                                                                                                                            -
-                                                                                                                                        </span>
-                                                                                                                                        <span className=" w-full flex justify-center items-center">
-                                                                                                                                            {
-                                                                                                                                                p.quantity
-                                                                                                                                            }
-                                                                                                                                        </span>
-                                                                                                                                        <span
-                                                                                                                                            className=" w-full flex justify-center items-center bg-primary rounded-r-full text-base-100 hover:border-2 shadow-md hover:bg-base-100 hover:text-primary"
-                                                                                                                                            onClick={() =>
-                                                                                                                                                updateItemQuantity(
-                                                                                                                                                    p.id,
-                                                                                                                                                    p.quantity! +
-                                                                                                                                                        1
-                                                                                                                                                )
-                                                                                                                                            }
-                                                                                                                                        >
-                                                                                                                                            +
-                                                                                                                                        </span>
-                                                                                                                                    </label>
-                                                                                                                                </div>
-                                                                                                                            )
-                                                                                                                        )}
-                                                                                                                </>
-                                                                                                            ) : (
-                                                                                                                <button
-                                                                                                                    className="btn w-full btn-primary text-sm rounded-xl btn-sm"
-                                                                                                                    onClick={() =>
-                                                                                                                        addItem(
-                                                                                                                            item
-                                                                                                                        )
-                                                                                                                    }
-                                                                                                                >
-                                                                                                                    Add
-                                                                                                                    to
-                                                                                                                    cart
-                                                                                                                </button>
-                                                                                                            )}
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            );
-                                                                                        }
-                                                                                    )}
-                                                                            </div>
-                                                                        )}
+                                                                        <CategoryProducts
+                                                                            products={
+                                                                                products
+                                                                            }
+                                                                            cat={
+                                                                                cat
+                                                                            }
+                                                                        />
                                                                     </div>
                                                                 </>
                                                             )}

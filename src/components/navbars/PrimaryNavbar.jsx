@@ -40,7 +40,7 @@ const PrimaryNavbar = () => {
     const handleLogOut = (e) => {
         e && e.preventDefault();
         localStorage.removeItem("accessToken");
-        navigate("/");
+        navigate("/login");
     };
 
     return (

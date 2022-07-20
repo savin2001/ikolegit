@@ -75,7 +75,7 @@ const Home = () => {
                     {isLoading ? (
                         <>
                             <CarouselLoading
-                                sectionTitle={"Products will load in a few..."}
+                                sectionTitle={"Caurousel will load in a few..."}
                             />
                         </>
                     ) : (

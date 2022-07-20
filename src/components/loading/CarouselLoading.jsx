@@ -1,15 +1,15 @@
 import { FaSpinner } from "react-icons/fa";
 
-const CarouselLoading = ({sectionTitle}) => {
+const CarouselLoading = ({ sectionTitle }) => {
     return (
         <>
-            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                <span className="flex justify-center">
-                    <FaSpinner className="h-8 w-8 animate-spin" />
-                    <span className="ml-6">{sectionTitle}</span>
-                </span>
-            </h3>
             <div className="sm:block md:hidden lg:hidden">
+                <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                    <span className="flex justify-center">
+                        <FaSpinner className="h-8 w-8 animate-spin" />
+                        <span className="ml-6">{sectionTitle}</span>
+                    </span>
+                </h3>
                 <div className="carousel relative carousel-center sm:max-w-xl md:max-w-4xl lg:max-w-7xl p-4 space-x-4 rounded-box animate-pulse">
                     {Array.from(Array(3)).map((_, index) => (
                         <div

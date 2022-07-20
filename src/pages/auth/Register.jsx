@@ -97,7 +97,7 @@ const Register = () => {
                                     Or{" "}
                                     <Link
                                         to="/login"
-                                        className="font-medium text-primary hover:opacity-90"
+                                        className="font-medium text-primary hover:underline"
                                     >
                                         you have an account
                                     </Link>

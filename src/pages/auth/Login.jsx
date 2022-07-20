@@ -100,7 +100,7 @@ const Login = () => {
                                     Or{" "}
                                     <Link
                                         to="/register"
-                                        className="font-medium text-primary hover:opacity-90"
+                                        className="font-medium text-primary hover:underline"
                                     >
                                         you don't have an account
                                     </Link>

@@ -41,7 +41,7 @@ const CustomerMenu = ({ user, fontTransform, handleLogOut, textSize }) => {
             </li>
             <li>
                 <Link
-                    to={`/my-orders/${user}`}
+                    to={`/my-messages/${user}`}
                     className={`justify-start font-bold hover:text-primary ${fontTransform} ${textSize}`}
                 >
                     <span className="left-0 inset-y-0 flex items-center">
@@ -70,7 +70,7 @@ const CustomerMenu = ({ user, fontTransform, handleLogOut, textSize }) => {
             <li>
                 <Link
                     to={`/seller-register`}
-                    className={`justify-start font-bold  hover:text-primary ${fontTransform} ${textSize}`}
+                    className={`justify-start font-bold  hover:text-primary ${fontTransform} ${textSize} animate-bounce`}
                 >
                     <span className="left-0 inset-y-0 flex items-center">
                         <AiOutlineShop

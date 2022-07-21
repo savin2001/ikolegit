@@ -5,12 +5,8 @@ import { FaSpinner } from "react-icons/fa";
 import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
 import Page404 from "../PageNotFound.tsx";
 import CustomerMenu from "../../components/menus/CustomerMenu.jsx";
-import PhotoUpdate from "../../components/profile/PhotoUpdate.jsx";
-import DetailsUpdate from "../../components/profile/DetailsUpdate.jsx";
-import NotificationUpdate from "../../components/profile/NotificationUpdate.jsx";
-// import {handleLogOut} from "../../components/logout/HandleLogOut.js"
 
-const Profile = () => {
+const WishList = () => {
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState("");
     const navigate = useNavigate();
@@ -28,15 +24,17 @@ const Profile = () => {
             {user ? (
                 <>
                     {loading ? (
-                        <div className="shadow-xl p-10 h-96 max-h-screen">
-                            <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
-                                Logging out user...
-                            </h3>
+                        <>
+                            <div className="shadow-xl p-10 h-96 max-h-screen">
+                                <h3 className="mt-9 lg:text-2xl sm:text-xl text-primary pb-6 text-center">
+                                    Logging out user...
+                                </h3>
 
-                            <div className="flex justify-center items-center h-3/4">
-                                <FaSpinner className="h-1/4 w-1/4 text-primary animate-spin" />
+                                <div className="flex justify-center items-center h-3/4">
+                                    <FaSpinner className="h-1/4 w-1/4 text-primary animate-spin" />
+                                </div>
                             </div>
-                        </div>
+                        </>
                     ) : (
                         <>
                             <PrimaryNavbar />
@@ -49,13 +47,7 @@ const Profile = () => {
                                             className="drawer-toggle"
                                         />
                                         <div className="drawer-content flex flex-col p-5">
-                                            <div className="md:grid md:grid-cols-3 md:gap-6">
-                                                <div className="mt-5 md:mt-0 md:col-span-3">
-                                                    <PhotoUpdate />
-                                                    <DetailsUpdate />
-                                                    <NotificationUpdate />
-                                                </div>
-                                            </div>
+                                            Wish List
                                         </div>
                                         <div className="drawer-side">
                                             <label
@@ -87,4 +79,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default WishList;

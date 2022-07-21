@@ -10,7 +10,10 @@ import {
     AiOutlineShoppingCart,
     AiOutlineBell,
     AiOutlineDelete,
+    AiOutlineShop,
 } from "react-icons/ai";
+import { FiLogIn } from "react-icons/fi";
+import { MdPersonOutline } from "react-icons/md";
 
 const PrimaryNavbar = () => {
     const user = JSON.parse(localStorage.getItem("accessToken"));
@@ -242,29 +245,55 @@ const PrimaryNavbar = () => {
                             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             {user ? (
-                                <CustomerMenu fontTransform={'uppercase'} user={user} textSize={'text-xs'} handleLogOut={handleLogOut} />
+                                <CustomerMenu
+                                    fontTransform={"uppercase"}
+                                    user={user}
+                                    textSize={"text-xs"}
+                                    handleLogOut={handleLogOut}
+                                />
                             ) : (
                                 <>
                                     <li>
                                         <Link
-                                            to="/login"
-                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                            to={`/seller-register`}
+                                            className="justify-start font-bold  hover:text-primary uppercase text-xs"
                                         >
+                                            <span className="left-0 inset-y-0 flex items-center">
+                                                <FiLogIn
+                                                    className="h-5 w-5 text-base"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
                                             Sign in
                                         </Link>
                                     </li>
                                     <li>
                                         <Link
-                                            to="/register"
-                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
+                                            to={`/seller-register`}
+                                            className="justify-start font-bold  hover:text-primary uppercase text-xs"
                                         >
+                                            <span className="left-0 inset-y-0 flex items-center">
+                                                <MdPersonOutline
+                                                    className="h-5 w-5 text-base"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
                                             New customer
                                         </Link>
                                     </li>
                                     <li>
-                                        <a className="justify-center font-bold uppercase text-xs hover:text-primary">
-                                            Become a seller
-                                        </a>
+                                        <Link
+                                            to={`/seller-register`}
+                                            className="justify-start font-bold  hover:text-primary uppercase text-xs"
+                                        >
+                                            <span className="left-0 inset-y-0 flex items-center">
+                                                <AiOutlineShop
+                                                    className="h-5 w-5 text-base"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                            become a seller
+                                        </Link>
                                     </li>
                                 </>
                             )}

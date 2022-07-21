@@ -70,7 +70,7 @@ const CustomerMenu = ({ user, fontTransform, handleLogOut, textSize }) => {
             <li>
                 <Link
                     to={`/seller-register`}
-                    className={`justify-start font-bold  hover:text-primary ${fontTransform} ${textSize} animate-bounce`}
+                    className={`justify-start font-bold  hover:text-primary ${fontTransform} ${textSize}`}
                 >
                     <span className="left-0 inset-y-0 flex items-center">
                         <AiOutlineShop

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
+import CustomerMenu from "../menus/CustomerMenu";
 
 import {
     AiOutlineSearch,
@@ -12,7 +13,6 @@ import {
 } from "react-icons/ai";
 
 const PrimaryNavbar = () => {
-
     const user = JSON.parse(localStorage.getItem("accessToken"));
     const navigate = useNavigate();
     const {
@@ -33,8 +33,6 @@ const PrimaryNavbar = () => {
     const handleCloseSearch = () => {
         setOpen(false);
     };
-
-    
 
     // Log out
     const handleLogOut = (e) => {
@@ -113,8 +111,6 @@ const PrimaryNavbar = () => {
                             tabIndex={0}
                             className="mt-5  card card-compact dropdown-content mx-auto bg-base-100 shadow-2xl md:w-96 max-h-96 sm:w-72 md:max-w-md overflow-y-auto scroll-smooth hover:scroll-auto -mr-12"
                         >
-                            
-
                             <div className="card-body">
                                 <span className="font-bold text-lg">
                                     {totalUniqueItems === 1 ? (
@@ -128,69 +124,63 @@ const PrimaryNavbar = () => {
                                     className=" divide-y divide-gray-200"
                                 >
                                     {/* {user && ( */}
-                                        <>
-                                            {items.map((item) => (
-                                                <li
-                                                    key={item.id}
-                                                    className="flex py-6"
-                                                >
-                                                    <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
-                                                        <img
-                                                            src={item.imageUrl}
-                                                            alt={item.name}
-                                                            className="h-fit w-fit object-cover object-center m-auto"
-                                                        />
-                                                    </div>
+                                    <>
+                                        {items.map((item) => (
+                                            <li
+                                                key={item.id}
+                                                className="flex py-6"
+                                            >
+                                                <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
+                                                    <img
+                                                        src={item.imageUrl}
+                                                        alt={item.name}
+                                                        className="h-fit w-fit object-cover object-center m-auto"
+                                                    />
+                                                </div>
 
-                                                    <div className="ml-4 flex flex-1 flex-col">
-                                                        <div>
-                                                            <div className="flex justify-between text-base font-medium text-neutral">
-                                                                <h3>
-                                                                    <a
-                                                                        href={
-                                                                            item.id
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            item.name
-                                                                        }
-                                                                    </a>
-                                                                </h3>
-                                                            </div>
-                                                            <div className="flex flex-1 justify-between items-center text-sm mt-2">
-                                                                <div className="text-accent flex justify-start">
-                                                                    <p className="text-primary text-left pr-2">
-                                                                        ${" "}
-                                                                        {
-                                                                            item.price
-                                                                        }
-                                                                    </p>
-                                                                    <span>
-                                                                        &times;
-                                                                    </span>
-                                                                    {
-                                                                        item.quantity
+                                                <div className="ml-4 flex flex-1 flex-col">
+                                                    <div>
+                                                        <div className="flex justify-between text-base font-medium text-neutral">
+                                                            <h3>
+                                                                <a
+                                                                    href={
+                                                                        item.id
                                                                     }
-                                                                </div>
-                                                                <div className="flex">
-                                                                    <button
-                                                                        onClick={() =>
-                                                                            removeItem(
-                                                                                item.id
-                                                                            )
-                                                                        }
-                                                                        type="button"
-                                                                        className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
-                                                                    >
-                                                                        <AiOutlineDelete className=" h-5 w-5" />
-                                                                    </button>
-                                                                </div>
+                                                                >
+                                                                    {item.name}
+                                                                </a>
+                                                            </h3>
+                                                        </div>
+                                                        <div className="flex flex-1 justify-between items-center text-sm mt-2">
+                                                            <div className="text-accent flex justify-start">
+                                                                <p className="text-primary text-left pr-2">
+                                                                    ${" "}
+                                                                    {item.price}
+                                                                </p>
+                                                                <span>
+                                                                    &times;
+                                                                </span>
+                                                                {item.quantity}
+                                                            </div>
+                                                            <div className="flex">
+                                                                <button
+                                                                    onClick={() =>
+                                                                        removeItem(
+                                                                            item.id
+                                                                        )
+                                                                    }
+                                                                    type="button"
+                                                                    className="font-medium bg-error text-base-100 hover:text-error hover:border hover:border-error hover:bg-base-100 p-3 rounded-md"
+                                                                >
+                                                                    <AiOutlineDelete className=" h-5 w-5" />
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                            ))}
-                                        </>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </>
                                     {/* )} */}
                                 </ul>
                                 <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
@@ -224,14 +214,16 @@ const PrimaryNavbar = () => {
                             </div>
                         </div>
                     </div>
-                    <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                            <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7" />
-                            <span className="badge badge-sm badge-primary indicator-item">
-                                2
-                            </span>
-                        </div>
-                    </button>
+                    {user && (
+                        <button className="btn btn-ghost btn-circle">
+                            <div className="indicator">
+                                <AiOutlineBell className=" h-5 w-5 lg:h-7 lg:w-7" />
+                                <span className="badge badge-sm badge-primary indicator-item">
+                                    2
+                                </span>
+                            </div>
+                        </button>
+                    )}
                     <div className="dropdown dropdown-end">
                         <label
                             tabIndex={0}
@@ -250,37 +242,7 @@ const PrimaryNavbar = () => {
                             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             {user ? (
-                                <>
-                                    <li>
-                                        <Link
-                                            to={`/my-profile/${user}`}
-                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
-                                        >
-                                            MY account
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            to="/register"
-                                            className="justify-center font-bold uppercase text-xs hover:text-primary"
-                                        >
-                                            wishlist
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <a className="justify-center font-bold uppercase text-xs hover:text-primary">
-                                            Become a seller
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <button
-                                            onClick={handleLogOut}
-                                            className="justify-center bg-error font-bold uppercase text-xs hover:text-primary"
-                                        >
-                                            Log out
-                                        </button>
-                                    </li>
-                                </>
+                                <CustomerMenu fontTransform={'uppercase'} user={user} textSize={'text-xs'} handleLogOut={handleLogOut} />
                             ) : (
                                 <>
                                     <li>

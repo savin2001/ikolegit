@@ -255,7 +255,7 @@ const PrimaryNavbar = () => {
                                 <>
                                     <li>
                                         <Link
-                                            to={`/seller-register`}
+                                            to={`/login`}
                                             className="justify-start font-bold  hover:text-primary uppercase text-xs"
                                         >
                                             <span className="left-0 inset-y-0 flex items-center">
@@ -269,7 +269,7 @@ const PrimaryNavbar = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            to={`/seller-register`}
+                                            to={`/register`}
                                             className="justify-start font-bold  hover:text-primary uppercase text-xs"
                                         >
                                             <span className="left-0 inset-y-0 flex items-center">

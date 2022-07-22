@@ -10,7 +10,7 @@ const OrderView = () => {
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
-  const {orderId} = useParams()
+  const { orderId } = useParams();
 
   const user = JSON.parse(localStorage.getItem("accessToken"));
   const handleLogOut = (e) => {
@@ -48,7 +48,27 @@ const OrderView = () => {
                       className="drawer-toggle"
                     />
                     <div className="drawer-content flex flex-col p-5">
-                    {orderId}
+                      <div className="shadow-lg sm:rounded-lg sm:overflow-hidden pb-4 mb-8 bg-base-100">
+                        <div className="px-4 py-5 bg-base-100 space-y-6 sm:p-6">
+                          <div className="flex flex-wrap">
+                            <h2 className="sm:text-lg md:text-xl font-bold leading-6 text-primary mr-5">
+                              Order Details
+                            </h2>
+                          </div>
+                          <div className="py-1">
+                            <div className="border-t border-secondary" />
+                          </div>
+                          <div className="mt-3">
+                            <div
+                              className="text-base font-semibold text-neutral"
+                              aria-hidden="true"
+                            >
+                              Order number {orderId}
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div className="drawer-side">
                       <label htmlFor="my-drawer-2" className="drawer-overlay" />

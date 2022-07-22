@@ -125,7 +125,7 @@ const OrdersTabs = ({ user }) => {
                       className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500"
                     >
                       <p className="text-primary text-right pr-2 uppercase">
-                        see more details
+                        view order details
                       </p>
                     </Link>
                   </li>

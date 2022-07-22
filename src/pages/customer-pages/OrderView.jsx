@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
 import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
 import Page404 from "../PageNotFound.tsx";
 import CustomerMenu from "../../components/menus/CustomerMenu.jsx";
 
-const Messages = () => {
+const OrderView = () => {
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
+  const {orderId} = useParams()
 
   const user = JSON.parse(localStorage.getItem("accessToken"));
   const handleLogOut = (e) => {
@@ -47,7 +48,7 @@ const Messages = () => {
                       className="drawer-toggle"
                     />
                     <div className="drawer-content flex flex-col p-5">
-                      Messages
+                    {orderId}
                     </div>
                     <div className="drawer-side">
                       <label htmlFor="my-drawer-2" className="drawer-overlay" />
@@ -76,4 +77,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default OrderView;

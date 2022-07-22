@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer.jsx"
 import ProductView from "./pages/ProductView.jsx"
 import Profile from "./pages/customer-pages/Profile.jsx";
 import Orders from "./pages/customer-pages/Orders.jsx";
+import OrderView from "./pages/customer-pages/OrderView.jsx";
 import Messages from "./pages/customer-pages/Messages.jsx";
 import WishList from "./pages/customer-pages/WishList.jsx";
 import SellerRegister from "./pages/seller-pages/SellerRegister.jsx";
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/my-profile/:accessToken" element={<Profile />} />
                         {/* Customer pages */}
                         <Route path="/my-orders/:accessToken" element={<Orders />} />
+                        <Route path="/my-orders/:accessToken/:orderId" element={<OrderView />} />
                         <Route path="/my-messages/:accessToken" element={<Messages />} />
                         <Route path="/my-wishlist/:accessToken" element={<WishList />} />
                         {/* Seller pages */}

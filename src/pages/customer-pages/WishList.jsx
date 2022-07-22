@@ -39,7 +39,7 @@ const WishList = () => {
                         <>
                             <PrimaryNavbar />
                             <div className="w-full relative mt-16 bg-secondary">
-                                <div className="max-w-7xl mx-auto mb-9">
+                                <div className="max-w-7xl mx-auto">
                                     <div className="drawer drawer-mobile">
                                         <input
                                             id="my-drawer-2"

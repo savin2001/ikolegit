@@ -74,7 +74,7 @@ const OrdersTabs = ({ user }) => {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className="">
+        <Tab.Panels>
           {Object.values(categories).map((posts, idx) => (
             <Tab.Panel
               key={idx}
@@ -82,47 +82,52 @@ const OrdersTabs = ({ user }) => {
             >
               <ul role="list" className=" divide-y divide-gray-200">
                 {posts.map((post) => (
-                  <li key={post.id} className="relative flex py-6">
-                    <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
-                      <img
-                        src={post.imgUrl}
-                        alt={post.title}
-                        className="h-fit w-fit object-cover object-center m-auto"
-                      />
-                    </div>
-                    <div className="ml-4 flex flex-1 flex-col">
-                      <div className="flex justify-between text-base font-medium text-neutral">
-                        <h3 className="text-sm font-medium leading-5">
-                          Order no. {post.id}
-                        </h3>
+                  <li
+                    key={post.id}
+                    className="relative flex sm:flex-col justify-between md:flex-row py-6"
+                  >
+                    <div className="flex">
+                      <div className="h-20 w-20 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
+                        <img
+                          src={post.imgUrl}
+                          alt={post.title}
+                          className="h-fit w-fit object-cover object-center m-auto"
+                        />
                       </div>
-                      <div className="flex flex-1 justify-between items-center text-sm mt-2">
-                        <div className="flex flex-col justify-around">
-                          {post.status ? (
-                            <div className="badge badge-success">
-                              <p>delivered</p>
-                            </div>
-                          ) : (
-                            <div className="badge badge-error">
-                              <p>cancelled</p>
-                            </div>
-                          )}
-                          <p className="text-xs mt-2 font-thin text-accent">
-                            <span>
-                              {dateState.toLocaleDateString("en-GB", {
-                                day: "numeric",
-                                month: "short",
-                                year: "numeric",
-                              })}
-                            </span>
-                          </p>
+                      <div className="ml-4 flex flex-1 flex-col">
+                        <div className="flex justify-between text-base font-medium text-neutral">
+                          <h3 className="text-sm font-medium leading-5">
+                            Order no. {post.id}
+                          </h3>
+                        </div>
+                        <div className="flex flex-1 justify-between items-center text-sm mt-2">
+                          <div className="flex flex-col justify-around">
+                            {post.status ? (
+                              <div className="badge badge-success">
+                                <p>delivered</p>
+                              </div>
+                            ) : (
+                              <div className="badge badge-error">
+                                <p>cancelled</p>
+                              </div>
+                            )}
+                            <p className="text-xs mt-2 font-thin text-accent">
+                              <span>
+                                {dateState.toLocaleDateString("en-GB", {
+                                  day: "numeric",
+                                  month: "short",
+                                  year: "numeric",
+                                })}
+                              </span>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
 
                     <Link
                       to={`/my-orders/${user}/${post.id}`}
-                      className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500"
+                      className="mt-4 flex space-x-1 text-xs font-normal leading-4"
                     >
                       <p className="text-primary text-right pr-2 uppercase">
                         view order details

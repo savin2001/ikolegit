@@ -39,7 +39,7 @@ const OrderView = () => {
           ) : (
             <>
               <PrimaryNavbar />
-              <div className="w-full relative mt-16 bg-secondary">
+              <main className="w-full relative mt-16 bg-secondary">
                 <div className="max-w-7xl mx-auto">
                   <div className="drawer drawer-mobile">
                     <input
@@ -63,9 +63,22 @@ const OrderView = () => {
                               className="text-base font-semibold text-neutral"
                               aria-hidden="true"
                             >
-                              Order number {orderId}
+                              Order no. {orderId}
                             </div>
-                            
+                            <div className="flex flex-col text-accent justify-between">
+                              <p>2 items</p>
+                              <p>22 Jul 2022</p>
+                              <p className="text-md font-semibold">
+                                Total:{" "}
+                                <span className="text-primary">$ 500</span>{" "}
+                              </p>
+                            </div>
+                            <div className="py-5">
+                              <div className="border-t border-secondary" />
+                            </div>
+                            <div className="block">
+                                <h3></h3>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -84,7 +97,7 @@ const OrderView = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </main>
             </>
           )}
         </>

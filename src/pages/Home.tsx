@@ -45,10 +45,6 @@ const Home = () => {
     }
   }, [isProduct]);
 
-  // Adding items to cart
-
-  const { addItem, inCart, updateItemQuantity, items } = useCart();
-
   return (
     <>
       <PrimaryNavbar />

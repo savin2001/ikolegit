@@ -42,7 +42,7 @@ const Orders = () => {
             <>
               <PrimaryNavbar />
               <div className="w-full relative mt-16 bg-secondary">
-                <div className="max-w-7xl mx-auto mb-9">
+                <div className="max-w-7xl mx-auto">
                   <div className="drawer drawer-mobile">
                     <input
                       id="my-drawer-2"
@@ -61,7 +61,7 @@ const Orders = () => {
                             <div className="border-t border-secondary" />
                           </div>
                           <div className="mt-3">
-                            <OrdersTabs/>
+                            <OrdersTabs user={user} />
                           </div>
                         </div>
                       </div>

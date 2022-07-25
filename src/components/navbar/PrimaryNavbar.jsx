@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import CustomerMenu from "../menus/CustomerMenu";
+import CustomerMenu from "../../pages/customer-pages/components/menus/CustomerMenu";
 
 import {
   AiOutlineSearch,
@@ -121,7 +121,6 @@ const PrimaryNavbar = () => {
                   )}
                 </span>
                 <ul role="list" className=" divide-y divide-gray-200">
-                  {/* {user && ( */}
                   <>
                     {items.map((item) => (
                       <li key={item.id} className="flex py-6">
@@ -161,7 +160,6 @@ const PrimaryNavbar = () => {
                       </li>
                     ))}
                   </>
-                  {/* )} */}
                 </ul>
 
                 {isEmpty ? (
@@ -192,12 +190,20 @@ const PrimaryNavbar = () => {
                         {" "}
                         Clear cart
                       </button>
-                      <Link
+                      {user ? (
+                        <Link
                         to="/cart"
                         className="btn btn-sm btn-primary btn-block rounded-xl"
                       >
                         view full cart
                       </Link>
+                      ):(<Link
+                        to="/login"
+                        className="btn btn-sm btn-primary btn-block rounded-xl"
+                      >
+                        login to checkout
+                      </Link>)}
+                      
                     </div>
                   </>
                 )}

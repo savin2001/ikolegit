@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
-import Page404 from "../PageNotFound.tsx";
-import CustomerMenu from "../../components/menus/CustomerMenu.jsx";
+import PrimaryNavbar from "../../../components/navbar/PrimaryNavbar.jsx";
+import Page404 from "../../PageNotFound.tsx";
+import CustomerMenu from "../components/menus/CustomerMenu.jsx";
 
-const OrderView = () => {
+const Messages = () => {
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
-  const { orderId } = useParams();
 
   const user = JSON.parse(localStorage.getItem("accessToken"));
   const handleLogOut = (e) => {
@@ -39,7 +38,7 @@ const OrderView = () => {
           ) : (
             <>
               <PrimaryNavbar />
-              <main className="w-full relative mt-16 bg-secondary">
+              <div className="w-full relative mt-16 bg-secondary">
                 <div className="max-w-7xl mx-auto">
                   <div className="drawer drawer-mobile">
                     <input
@@ -48,40 +47,7 @@ const OrderView = () => {
                       className="drawer-toggle"
                     />
                     <div className="drawer-content flex flex-col p-5">
-                      <div className="shadow-lg sm:rounded-lg sm:overflow-hidden pb-4 mb-8 bg-base-100">
-                        <div className="px-4 py-5 bg-base-100 space-y-6 sm:p-6">
-                          <div className="flex flex-wrap">
-                            <h2 className="sm:text-lg md:text-xl font-bold leading-6 text-primary mr-5">
-                              Order Details
-                            </h2>
-                          </div>
-                          <div className="py-1">
-                            <div className="border-t border-secondary" />
-                          </div>
-                          <div className="mt-3">
-                            <div
-                              className="text-base font-semibold text-neutral"
-                              aria-hidden="true"
-                            >
-                              Order no. {orderId}
-                            </div>
-                            <div className="flex flex-col text-accent justify-between">
-                              <p>2 items</p>
-                              <p>22 Jul 2022</p>
-                              <p className="text-md font-semibold">
-                                Total:{" "}
-                                <span className="text-primary">$ 500</span>{" "}
-                              </p>
-                            </div>
-                            <div className="py-5">
-                              <div className="border-t border-secondary" />
-                            </div>
-                            <div className="block">
-                                <h3></h3>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      Messages
                     </div>
                     <div className="drawer-side">
                       <label htmlFor="my-drawer-2" className="drawer-overlay" />
@@ -97,7 +63,7 @@ const OrderView = () => {
                     </div>
                   </div>
                 </div>
-              </main>
+              </div>
             </>
           )}
         </>
@@ -110,4 +76,4 @@ const OrderView = () => {
   );
 };
 
-export default OrderView;
+export default Messages;

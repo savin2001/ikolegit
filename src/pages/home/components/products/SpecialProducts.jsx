@@ -19,7 +19,7 @@ const SpecialProducts = ({ products }) => {
                     to={`/product/${item.categoryId}/${item.id}/${item.name}`}
                   >
                     <figure>
-                      <img src={item.imageUrl} alt={item.name} />
+                      <img src={item.imageUrl} alt="product" />
                     </figure>
                   </Link>
                   <div className="card-body">

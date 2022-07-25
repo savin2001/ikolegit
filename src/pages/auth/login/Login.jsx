@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { api } from "../../components/server-api/Api";
+import { api } from "../../../components/server-api/Api";
 import {
     AiFillLock,
     AiOutlineArrowLeft,
@@ -10,7 +10,7 @@ import {
     AiOutlineMail,
 } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
-import useForm from "../../components/form-validation/useSignUpForm";
+import useForm from "../utils/form-validation/useSignUpForm";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);

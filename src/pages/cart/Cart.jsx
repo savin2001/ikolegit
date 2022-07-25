@@ -1,6 +1,6 @@
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
-import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
+import PrimaryNavbar from "../../components/navbar/PrimaryNavbar.jsx";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const Cart = () => {
@@ -101,7 +101,7 @@ const Cart = () => {
                                   <button
                                     className="btn-sm text-lg btn-outline btn-primary flex justify-center items-center  rounded-l-full text-base-100 hover:border-2  hover:bg-base-100 hover:text-primary"
                                     onClick={() =>
-                                      updateItemQuantity(p.id, p.quantity! - 1)
+                                      updateItemQuantity(p.id, p.quantity - 1)
                                     }
                                   >
                                     -
@@ -112,7 +112,7 @@ const Cart = () => {
                                   <button
                                     className="btn-sm text-lg btn-outline btn-primary flex justify-center items-center  rounded-r-full text-base-100 hover:border-2  hover:bg-base-100 hover:text-primary"
                                     onClick={() =>
-                                      updateItemQuantity(p.id, p.quantity! + 1)
+                                      updateItemQuantity(p.id, p.quantity + 1)
                                     }
                                   >
                                     +

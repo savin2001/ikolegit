@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
-import PrimaryNavbar from "../../components/navbars/PrimaryNavbar.jsx";
-import Page404 from "../PageNotFound.tsx";
-import CustomerMenu from "../../components/menus/CustomerMenu.jsx";
+import PrimaryNavbar from "../../../components/navbar/PrimaryNavbar.jsx";
+import Page404 from "../../PageNotFound.tsx";
+import CustomerMenu from "../components/menus/CustomerMenu.jsx";
 
 const WishList = () => {
     const [loading, setLoading] = useState(false);

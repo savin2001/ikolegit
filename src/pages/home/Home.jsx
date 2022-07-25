@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
 
-import useFetch from "../components/axios-custom-hooks/useFetch.js";
-import PrimaryNavbar from "../components/navbars/PrimaryNavbar.jsx";
-import ProductsLoading from "../components/loading/ProductsLoading.jsx";
-import CarouselLoading from "../components/loading/CarouselLoading.jsx";
-import HeaderLoading from "../components/loading/HeaderLoading.jsx";
-import ProductsError from "../components/error/ProductsError.jsx";
-import HeaderProductList from "../components/products/HeaderProductList.jsx";
-import CarouselProducts from "../components/products/CarouselProducts.jsx";
-import SpecialProducts from "../components/products/SpecialProducts.jsx";
-import CategoryProducts from "../components/products/CategoryProducts.jsx";
+import useFetch from "../../components/axios-custom-hooks/useFetch.js";
+import PrimaryNavbar from "../../components/navbar/PrimaryNavbar.jsx";
+import ProductsLoading from "../../components/loading/ProductsLoading.jsx";
+import CarouselLoading from "../../components/loading/CarouselLoading.jsx";
+import HeaderLoading from "../../components/loading/HeaderLoading.jsx";
+import ProductsError from "../../components/error/ProductsError.jsx";
+import HeaderProductList from "./components/products/HeaderProductList.jsx";
+import CarouselProducts from "./components/products/CarouselProducts.jsx";
+import SpecialProducts from "./components/products/SpecialProducts.jsx";
+import CategoryProducts from "./components/products/CategoryProducts.jsx";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaSpinner } from "react-icons/fa";
@@ -29,8 +29,8 @@ const Home = () => {
     method: "get",
     url: "/product/",
   });
-  const [categories, setCategories] = useState<any[]>([]);
-  const [products, setProducts] = useState<any[]>([]);
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   // Fetching categories from the api
 

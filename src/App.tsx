@@ -2,17 +2,17 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import PageNotFound from "./pages/PageNotFound.jsx"
-import Home from "./pages/Home.jsx";
-import Login from "./pages/auth/Login.jsx";
-import Register from "./pages/auth/Register.jsx";
-import Cart from "./pages/Cart.jsx"
+import Home from "./pages/home/Home.jsx";
+import Login from "./pages/auth/login/Login.jsx";
+import Register from "./pages/auth/register/Register.jsx";
+import Cart from "./pages/cart/Cart.jsx"
 import Footer from "./components/footer/Footer.jsx"
 import ProductView from "./pages/ProductView.jsx"
-import Profile from "./pages/customer-pages/Profile.jsx";
-import Orders from "./pages/customer-pages/Orders.jsx";
-import OrderView from "./pages/customer-pages/OrderView.jsx";
-import Messages from "./pages/customer-pages/Messages.jsx";
-import WishList from "./pages/customer-pages/WishList.jsx";
+import Profile from "./pages/customer-pages/profile/Profile.jsx";
+import Orders from "./pages/customer-pages/orders/Orders.jsx";
+import OrderView from "./pages/customer-pages/orders/OrderView.jsx";
+import Messages from "./pages/customer-pages/messages/Messages.jsx";
+import WishList from "./pages/customer-pages/wishlist/WishList.jsx";
 import SellerRegister from "./pages/seller-pages/SellerRegister.jsx";
 
 

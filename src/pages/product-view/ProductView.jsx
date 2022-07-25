@@ -3,31 +3,31 @@ import { Link, useParams } from "react-router-dom";
 import { RadioGroup } from "@headlessui/react";
 import { useCart } from "react-use-cart";
 
-import Api from "../components/server-api/Api.js";
-import useFetch from "../components/axios-custom-hooks/useFetch.js";
-import PrimaryNavbar from "../components/navbar/PrimaryNavbar.jsx";
+import Api from "../../components/server-api/Api.js";
+import useFetch from "../../components/axios-custom-hooks/useFetch.js";
+import PrimaryNavbar from "../../components/navbar/PrimaryNavbar.jsx";
 
 import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
 
 const ProductView = () => {
-  const user = JSON.parse(localStorage.getItem("accessToken") || "{}");
+  const user = JSON.parse(localStorage.getItem("accessToken"));
   const [serverError, setServerError] = useState("");
   const colors = [
     { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
     { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
     { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
   ];
-  const classNames = (...classes: string[]) => {
+  const classNames = (...classes) => {
     return classes.filter(Boolean).join(" ");
   };
   const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const [products, setProducts] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   let { productId, categoryId, productName } = useParams();
-  let id = parseInt(productId!);
-  let category = parseInt(categoryId!);
+  let id = parseInt(productId);
+  let category = parseInt(categoryId);
 
   // Fetching the product
   const {
@@ -117,7 +117,7 @@ const ProductView = () => {
                             <>
                               {error && (
                                 <div className="w-full flex justify-center items-center p-5 bg-error rounded-2xl">
-                                  <p className="text-centertext-base-100">
+                                  <p className="text-center text-base-100">
                                     {error.response}
                                   </p>
                                 </div>
@@ -151,9 +151,7 @@ const ProductView = () => {
                     .filter((p) => p.id === id)
                     .map((item) => {
                       const alreadyAdded = inCart(item.id);
-                      const handleAddToDBCart = (e: {
-                        preventDefault: () => any;
-                      }) => {
+                      const handleAddToDBCart = (e) => {
                         e && e.preventDefault();
 
                         // Setting the validated values as payload
@@ -355,7 +353,7 @@ const ProductView = () => {
                                                 onClick={() =>
                                                   updateItemQuantity(
                                                     p.id,
-                                                    p.quantity! - 1
+                                                    p.quantity - 1
                                                   )
                                                 }
                                               >
@@ -369,7 +367,7 @@ const ProductView = () => {
                                                 onClick={() =>
                                                   updateItemQuantity(
                                                     p.id,
-                                                    p.quantity! + 1
+                                                    p.quantity + 1
                                                   )
                                                 }
                                               >
@@ -412,7 +410,7 @@ const ProductView = () => {
                               className="collapse collapse-arrow md:collapse-open"
                             >
                               <div className="collapse-title text-primary pl-0 md:hidden sm:text-lg font-medium">
-                                See more details
+                                More from this seller
                               </div>
                               <div className="collapse-content pl-0">
                                 <div className="flex sm:flex-col-reverse md:flex-row w-full">
@@ -426,7 +424,7 @@ const ProductView = () => {
                                         const alreadyAdded = inCart(item.id);
                                         return (
                                           <div
-                                            className="card w-fit bg-base-100 shadow-xl m-5"
+                                            className="card w-fit h-fit bg-base-100 shadow-xl m-5"
                                             key={item.id}
                                           >
                                             <Link
@@ -443,12 +441,9 @@ const ProductView = () => {
                                               <Link
                                                 to={`/product/${item.categoryId}/${item.id}/${item.name}`}
                                               >
-                                                <p className="card-title text-base">
+                                                <div className="card-title text-base">
                                                   {item.name}
-                                                  <div className="badge badge-primary sm:hidden lg:block">
-                                                    NEW
-                                                  </div>
-                                                </p>
+                                                </div>
 
                                                 <div className="rating md:rating-sm sm:rating-xs ">
                                                   <input
@@ -500,8 +495,7 @@ const ProductView = () => {
                                                               onClick={() =>
                                                                 updateItemQuantity(
                                                                   p.id,
-                                                                  p.quantity! -
-                                                                    1
+                                                                  p.quantity - 1
                                                                 )
                                                               }
                                                             >
@@ -515,8 +509,7 @@ const ProductView = () => {
                                                               onClick={() =>
                                                                 updateItemQuantity(
                                                                   p.id,
-                                                                  p.quantity! +
-                                                                    1
+                                                                  p.quantity + 1
                                                                 )
                                                               }
                                                             >
@@ -550,7 +543,10 @@ const ProductView = () => {
                                       <figure className="bg-base-100 rounded-xl p-8">
                                         <div className="avatar flex justify-center ">
                                           <div className="w-24 rounded-full border ">
-                                            <img src="https://avatars.dicebear.com/api/adventurer/your.svg" />
+                                            <img
+                                              src="https://avatars.dicebear.com/api/adventurer/your.svg"
+                                              alt="seller pic"
+                                            />
                                           </div>
                                         </div>
 

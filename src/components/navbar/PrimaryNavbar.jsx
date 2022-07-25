@@ -400,14 +400,14 @@ const PrimaryNavbar = () => {
           <div className="dropdown dropdown-end">
             <label
               tabIndex={0}
-              className="btn btn-ghost btn-circle avatar  swap swap-rotate"
+              className="btn btn-ghost btn-circle avatar swap swap-rotate"
             >
-              <input type="checkbox" />
+              <input type="checkbox"/>
               <div className="swap-on">
-                <MdPersonOutline className=" h-5 w-5 lg:h-7 lg:w-7" />
+                <MdPersonOutline className="h-5 w-5 lg:h-7 lg:w-7" />
               </div>
               <div className="swap-off">
-                <AiOutlineMenu className="  h-5 w-5 lg:h-7 lg:w-7" />
+                <AiOutlineMenu className="h-5 w-5 lg:h-7 lg:w-7" />
               </div>
             </label>
             <ul

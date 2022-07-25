@@ -7,7 +7,7 @@ import Login from "./pages/auth/login/Login.jsx";
 import Register from "./pages/auth/register/Register.jsx";
 import Cart from "./pages/cart/Cart.jsx"
 import Footer from "./components/footer/Footer.jsx"
-import ProductView from "./pages/ProductView.jsx"
+import ProductView from "./pages/product-view/ProductView.jsx"
 import Profile from "./pages/customer-pages/profile/Profile.jsx";
 import Orders from "./pages/customer-pages/orders/Orders.jsx";
 import OrderView from "./pages/customer-pages/orders/OrderView.jsx";

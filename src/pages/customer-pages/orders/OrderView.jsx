@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 
 import PrimaryNavbar from "../../../components/navbar/PrimaryNavbar.jsx";
@@ -8,6 +8,7 @@ import CustomerMenu from "../components/menus/CustomerMenu.jsx";
 
 const OrderView = () => {
   const [loading, setLoading] = useState(false);
+  const [dateState, setDateState] = useState(new Date());
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
   const { orderId } = useParams();
@@ -48,7 +49,7 @@ const OrderView = () => {
                       className="drawer-toggle"
                     />
                     <div className="drawer-content flex flex-col p-5">
-                      <div className="shadow-lg sm:rounded-lg sm:overflow-hidden pb-4 mb-8 bg-base-100">
+                      <div className="shadow-lg sm:rounded-lg pb-4 mb-8 bg-base-100">
                         <div className="px-4 py-5 bg-base-100 space-y-6 sm:p-6">
                           <div className="flex flex-wrap">
                             <h2 className="sm:text-lg md:text-xl font-bold leading-6 text-primary mr-5">
@@ -60,14 +61,20 @@ const OrderView = () => {
                           </div>
                           <div className="mt-3">
                             <div
-                              className="text-base font-semibold text-neutral"
+                              className="text-base font-semibold text-neutral mb-2"
                               aria-hidden="true"
                             >
                               Order no. {orderId}
                             </div>
                             <div className="flex flex-col text-accent justify-between">
-                              <p>2 items</p>
-                              <p>22 Jul 2022</p>
+                              <p className="mb-2">2 items</p>
+                              <p className="mb-2">
+                                {dateState.toLocaleDateString("en-GB", {
+                                  day: "numeric",
+                                  month: "short",
+                                  year: "numeric",
+                                })}
+                              </p>
                               <p className="text-md font-semibold">
                                 Total:{" "}
                                 <span className="text-primary">$ 500</span>{" "}
@@ -76,8 +83,66 @@ const OrderView = () => {
                             <div className="py-5">
                               <div className="border-t border-secondary" />
                             </div>
-                            <div className="block">
-                                <h3></h3>
+                            <div className="block p-2">
+                              <h4 className="uppercase mb-3">
+                                Products in your order
+                              </h4>
+                              <ul
+                                role="list"
+                                className=" divide-y divide-gray-200"
+                              >
+                                {Array.from(Array(4)).map((_, index) => (
+                                  <li
+                                    key={index}
+                                    className="relative flex sm:flex-col justify-between md:flex-row py-6"
+                                  >
+                                    <div className="flex">
+                                      <div className="h-32 w-32 flex-shrink-0 overflow-hidden flex justify-center items-center rounded-md border">
+                                        <img
+                                          src="https://m.media-amazon.com/images/I/717KHGCJ6eL._AC_SL1500_.jpg"
+                                          alt="iPhone XR, 64GB, Black"
+                                          className="h-fit w-fit object-cover object-center m-auto"
+                                        />
+                                      </div>
+                                      <div className="ml-4 flex flex-1 flex-col">
+                                        <div className="flex justify-between text-base font-medium text-neutral">
+                                          <h3 className="text-sm font-medium leading-5">
+                                            iPhone XR, 64GB, Black
+                                          </h3>
+                                        </div>
+                                        <div className="flex flex-1 justify-between items-center text-sm mt-2">
+                                          <div className="flex flex-col justify-around">
+                                            <div className="badge badge-success">
+                                              <p>delivered</p>
+                                            </div>
+                                            <p className="text-xs mt-2 font-thin text-accent">
+                                              <span>
+                                                on{" "}
+                                                {dateState.toLocaleDateString(
+                                                  "en-GB",
+                                                  {
+                                                    day: "numeric",
+                                                    month: "short",
+                                                    year: "numeric",
+                                                  }
+                                                )}
+                                              </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="mt-4 flex md:flex-col space-x-1 text-xs font-normal leading-4 justify-around">
+                                      <p className="btn btn-sm btn-primary text-right uppercase sm:mb-3">
+                                        Buy again
+                                      </p>
+                                      <p className="btn btn-sm btn-outline btn-primary text-right pr-2 uppercase">
+                                        check out history
+                                      </p>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           </div>
                         </div>

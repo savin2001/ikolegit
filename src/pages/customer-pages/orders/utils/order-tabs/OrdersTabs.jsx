@@ -107,7 +107,7 @@ const OrdersTabs = ({ user }) => {
                                 <p>delivered</p>
                               </div>
                             ) : (
-                              <div className="badge badge-error">
+                              <div className="badge badge-error text-base-100">
                                 <p>cancelled</p>
                               </div>
                             )}
@@ -127,9 +127,9 @@ const OrdersTabs = ({ user }) => {
 
                     <Link
                       to={`/my-orders/${user}/${post.id}`}
-                      className="mt-4 flex space-x-1 text-xs font-normal leading-4"
+                      className="mt-4 flex space-x-1 text-xs font-normal"
                     >
-                      <p className="text-primary text-right pr-2 uppercase">
+                      <p className="text-primary text-center uppercase hover:text-accent hover:font-bold">
                         view order details
                       </p>
                     </Link>

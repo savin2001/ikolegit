@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
+import { BiArrowBack } from "react-icons/bi";
 
 import PrimaryNavbar from "../../../components/navbar/PrimaryNavbar.jsx";
 import Page404 from "../../PageNotFound.tsx";
 import CustomerMenu from "../components/menus/CustomerMenu.jsx";
 
 const OrderView = () => {
+  const items = 2;
   const [loading, setLoading] = useState(false);
   const [dateState, setDateState] = useState(new Date());
   const [serverError, setServerError] = useState("");
@@ -51,7 +53,13 @@ const OrderView = () => {
                     <div className="drawer-content flex flex-col p-5">
                       <div className="shadow-lg sm:rounded-lg pb-4 mb-8 bg-base-100">
                         <div className="px-4 py-5 bg-base-100 space-y-6 sm:p-6">
-                          <div className="flex flex-wrap">
+                          <div className="flex flex-nowrap items-center">
+                            <Link
+                              to={`/my-orders/${user}`}
+                              className="text-accent hover:text-primary"
+                            >
+                              <BiArrowBack className="h-5 w-5 mr-5" />
+                            </Link>
                             <h2 className="sm:text-lg md:text-xl font-bold leading-6 text-primary mr-5">
                               Order Details
                             </h2>
@@ -64,10 +72,10 @@ const OrderView = () => {
                               className="text-base font-semibold text-neutral mb-2"
                               aria-hidden="true"
                             >
-                              Order no. {orderId}
+                              Order nº {orderId}
                             </div>
                             <div className="flex flex-col text-accent justify-between">
-                              <p className="mb-2">2 items</p>
+                              <p className="mb-2">{items} items</p>
                               <p className="mb-2">
                                 {dateState.toLocaleDateString("en-GB", {
                                   day: "numeric",
@@ -83,15 +91,18 @@ const OrderView = () => {
                             <div className="py-5">
                               <div className="border-t border-secondary" />
                             </div>
-                            <div className="block p-2">
-                              <h4 className="uppercase mb-3">
+                            <div
+                              tabIndex={0}
+                              className="block p-2 collapse collapse-arrow md:collapse-open border border-secondary rounded-box mb-3"
+                            >
+                              <h3 className="collapse-title font-semibold capitalize">
                                 Products in your order
-                              </h4>
+                              </h3>
                               <ul
                                 role="list"
-                                className=" divide-y divide-gray-200"
+                                className="collapse-content divide-y divide-gray-200"
                               >
-                                {Array.from(Array(4)).map((_, index) => (
+                                {Array.from(Array(items)).map((_, index) => (
                                   <li
                                     key={index}
                                     className="relative flex sm:flex-col justify-between md:flex-row py-6"
@@ -137,12 +148,80 @@ const OrderView = () => {
                                         Buy again
                                       </p>
                                       <p className="btn btn-sm btn-outline btn-primary text-right pr-2 uppercase">
-                                        check out history
+                                        check history
                                       </p>
                                     </div>
                                   </li>
                                 ))}
                               </ul>
+                            </div>
+                            <div className="flex sm:flex-col md:flex-row justify-around">
+                              <div
+                                tabIndex={0}
+                                className="collapse collapse-arrow md:collapse-open border border-secondary rounded-box sm:mb-3 md:mr-2 flex-1"
+                              >
+                                <h3 className="collapse-title font-semibold capitalize ">
+                                  Delivery details
+                                </h3>
+                                <div className="collapse-content text-sm">
+                                  <div className="mb-3">
+                                    <h4 className="text-sm font-bold mb-2 capitalize">
+                                      Delivery method
+                                    </h4>
+                                    <p className="text-neutral">
+                                      Delivery at a Pick-up Station
+                                    </p>
+                                  </div>
+                                  <div className="mb-2">
+                                    <h4 className="text-sm font-bold mb-2 capitalize">
+                                      Pick-up location
+                                    </h4>
+                                    <div className="text-neutral">
+                                      <p>Shell Kenyatta Avenue PUS </p>
+                                      <p>
+                                        Kenyatta Avenue Shell Petrol Station
+                                        Opposite GPO
+                                      </p>
+                                      <p>
+                                        CBD - GPO/City Market/Nation Centre,
+                                      </p>
+                                      <p>Nairobi</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                tabIndex={0}
+                                className="collapse collapse-arrow md:collapse-open border border-secondary rounded-box sm:mb-3 md:ml-2 flex-1"
+                              >
+                                <h3 className="collapse-title font-semibold capitalize">
+                                  Payment details
+                                </h3>
+                                <div className="collapse-content text-sm">
+                                  <div className="mb-2">
+                                    <h4 className="text-sm font-bold mb-2 capitalize">
+                                      Payment method
+                                    </h4>
+                                    <p className="text-neutral">Card payment</p>
+                                  </div>
+                                  <div className="mb-2">
+                                    <h4 className="text-sm font-bold mb-2 capitalize">
+                                      Payment information
+                                    </h4>
+                                    <div className="text-neutral capitalize">
+                                      <p>Items Total: $ 500</p>
+                                      <p>Shipping Fees: $ 20</p>
+                                      <p>Promotional Discount: $ 20</p>
+                                      <p>
+                                        Total:{" "}
+                                        <span className="text-primary">
+                                          $ 500
+                                        </span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>

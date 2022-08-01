@@ -97,7 +97,7 @@ const OrdersTabs = ({ user }) => {
                       <div className="ml-4 flex flex-1 flex-col">
                         <div className="flex justify-between text-base font-medium text-neutral">
                           <h3 className="text-sm font-medium leading-5">
-                            Order no. {post.id}
+                            Order nº {post.id}
                           </h3>
                         </div>
                         <div className="flex flex-1 justify-between items-center text-sm mt-2">

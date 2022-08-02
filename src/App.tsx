@@ -14,6 +14,7 @@ import OrderView from "./pages/customer-pages/orders/OrderView.jsx";
 import Messages from "./pages/customer-pages/messages/Messages.jsx";
 import WishList from "./pages/customer-pages/wishlist/WishList.jsx";
 import SellerRegister from "./pages/seller-pages/SellerRegister.jsx";
+import AdminDashBoard from "./pages/admin-pages/dash-board/DashBoard.jsx";
 
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
                         <Route path="/my-wishlist/:accessToken" element={<WishList />} />
                         {/* Seller pages */}
                         <Route path="/seller-register" element={<SellerRegister />} />
-                        
+                        {/* Admin pages */}
+                        <Route path="/admin/dashboard" element={<AdminDashBoard />} />
                     </Routes>
                 </Router>
                 <Footer/>

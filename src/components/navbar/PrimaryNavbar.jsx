@@ -192,18 +192,19 @@ const PrimaryNavbar = () => {
                       </button>
                       {user ? (
                         <Link
-                        to="/cart"
-                        className="btn btn-sm btn-primary btn-block rounded-xl"
-                      >
-                        view full cart
-                      </Link>
-                      ):(<Link
-                        to="/login"
-                        className="btn btn-sm btn-primary btn-block rounded-xl"
-                      >
-                        login to checkout
-                      </Link>)}
-                      
+                          to="/cart"
+                          className="btn btn-sm btn-primary btn-block rounded-xl"
+                        >
+                          view full cart
+                        </Link>
+                      ) : (
+                        <Link
+                          to="/login"
+                          className="btn btn-sm btn-primary btn-block rounded-xl"
+                        >
+                          login to checkout
+                        </Link>
+                      )}
                     </div>
                   </>
                 )}
@@ -402,7 +403,7 @@ const PrimaryNavbar = () => {
               tabIndex={0}
               className="btn btn-ghost btn-circle avatar swap swap-rotate"
             >
-              <input type="checkbox"/>
+              <input type="checkbox" />
               <div className="swap-on">
                 <MdPersonOutline className="h-5 w-5 lg:h-7 lg:w-7" />
               </div>

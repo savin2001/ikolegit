@@ -1,5 +1,7 @@
 # IkoLegit Smart Contract System
 
+Here is the [demo](https://ikolegit.netlify.app/) so far 
+
 ## Problem Statement
 
 Commerce is a fundamental part of human society. It is, however, hampered by the issue of trust between the trading parties. Therefore, despite most of the trades being legitimate and successful, there is also a huge share that is riddled with fraud, and parties are affected. There has been a surge in fraudulent transactions, especially in cross-border and online trading due to poor enforcement laws and the anonymity of the transacting parties. This is a concern that can be mitigated will the implementation of smart contracts.

@@ -1,0 +1,144 @@
+{
+  "categories": [{
+      "id": 1,
+      "categoryName": "Smartphones",
+      "imageUrl": "https://th.bing.com/th/id/OIP.8u7iB9JZIxJ6_aE56exPagHaHa?w=181&h=182&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 2,
+      "categoryName": "Laptops",
+      "imageUrl": "https://th.bing.com/th/id/OIP.PCdTpUbWCD1Vi-_LjbG9mgHaH_?w=199&h=215&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 3,
+      "categoryName": "Headphones",
+      "imageUrl": "https://th.bing.com/th/id/OIP.zRS3LOd5vVZ9Nsm5Noe1iwHaHa?w=208&h=208&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 4,
+      "categoryName": "Smartwatches",
+      "imageUrl": "https://th.bing.com/th/id/OIP.CwbYuZ8XGqI16LGEx6NRTgHaH6?w=192&h=206&c=7&r=0&o=5&pid=1.7"
+    }
+  ],
+  "products": [{
+      "id": 1,
+      "categoryId": 1,
+      "name": "iPhone 13 Pro",
+      "price": 999,
+      "description": "The most advanced iPhone ever.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.xhnvEObwHYLOpJdwH5iIaAHaHa?w=182&h=182&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 2,
+      "categoryId": 1,
+      "name": "Samsung Galaxy S22 Ultra",
+      "price": 1199,
+      "description": "The ultimate Android smartphone.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.E_NUOR-N7YRtQxXe1usphAHaHa?w=169&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 3,
+      "categoryId": 1,
+      "name": "Google Pixel 6 Pro",
+      "price": 899,
+      "description": "The best Pixel phone yet.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.cqRTr9JOnwQfAtXrNeDuyQHaFz?w=222&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 4,
+      "categoryId": 1,
+      "name": "OnePlus 10 Pro",
+      "price": 899,
+      "description": "A powerful and stylish Android smartphone.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.BTZUAlcNedyXGy0o7rtzSAHaHa?w=176&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 5,
+      "categoryId": 2,
+      "name": "MacBook Pro M1 Pro",
+      "price": 1999,
+      "description": "The most powerful MacBook Pro ever.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.MuIkQppHSzO_e1xtPjFC8gHaFj?w=221&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 6,
+      "categoryId": 2,
+      "name": "Dell XPS 13 Plus",
+      "price": 1199,
+      "description": "A sleek and powerful laptop.",
+      "imageUrl": "https://th.bing.com/th/id/OIF.23ZWtN9As6l4w7rikTOOlg?w=251&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 7,
+      "categoryId": 2,
+      "name": "HP Spectre x360",
+      "price": 1099,
+      "description": "A convertible laptop that can do it all.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.dDDM9jQhyJsgjKPLeTVAgAHaGS?w=196&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 9,
+      "categoryId": 3,
+      "name": "Bose QuietComfort 35 II",
+      "price": 299,
+      "description": "The best noise-canceling headphones on the market.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.bNOU65adVBg2yG7EXxIpVAHaHa?w=184&h=183&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 10,
+      "categoryId": 3,
+      "name": "Sony WH-1000XM4",
+      "price": 349,
+      "description": "A close second to the Bose QuietComfort 35 II.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.8Vqe4kcDN7u7ypMQi_q_lAHaGd?w=220&h=192&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 11,
+      "categoryId": 3,
+      "name": "Apple AirPods Max",
+      "price": 549,
+      "description": "A premium pair of headphones with great sound quality.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.OExUEZaIe9dvm7xnanS_hQHaGk?w=227&h=200&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 12,
+      "categoryId": 3,
+      "name": "Sennheiser Momentum 3 Wireless",
+      "price": 399,
+      "description": "A comfortable and stylish pair of headphones with great sound quality.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.s-qouvaZdAmQv0bDP8rxnAHaFj?w=283&h=213&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 13,
+      "categoryId": 4,
+      "name": "Apple Watch Series 7",
+      "price": 399,
+      "description": "The best smartwatch on the market.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.dx3X_L30U9v8Lg11ekNu8gHaFH?w=250&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 14,
+      "categoryId": 4,
+      "name": "Samsung Galaxy Watch 4",
+      "price": 249,
+      "description": "A great smartwatch with a long battery life.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.4CKHTd5XaoIf7r1uKEGaXwHaHa?w=188&h=188&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 15,
+      "categoryId": 4,
+      "name": "Garmin Forerunner 245",
+      "price": 299,
+      "description": "A great smartwatch for runners and cyclists.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.LjOB2D4HAe3-mHkTjUKORAHaHa?w=179&h=180&c=7&r=0&o=5&pid=1.7"
+    },
+    {
+      "id": 16,
+      "categoryId": 4,
+      "name": "Amazfit Bip U Pro",
+      "price": 79,
+      "description": "A great smartwatch for budget-minded users.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.8xe3qfZMNPuzBWE4pJdOSgHaHa?w=180&h=180&c=7&r=0&o=5&pid=1.7"
+    }
+  ]
+}

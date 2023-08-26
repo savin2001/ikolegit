@@ -36,7 +36,7 @@ const ProductView = () => {
     error: isError,
   } = useFetch({
     method: "get",
-    url: "/product/",
+    url: "/products",
   });
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const ProductView = () => {
   // Fetching categories
   const { response, loading, error } = useFetch({
     method: "get",
-    url: "/category/list",
+    url: "/categories",
   });
 
   // Cart functionality

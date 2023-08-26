@@ -1,4 +1,4 @@
-export const api = "https://qs-ecomm.herokuapp.com/codejava";
+export const api = "http://localhost:4000";
 
 const Api = api
 

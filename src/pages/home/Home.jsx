@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const { response, loading, error } = useFetch({
     method: "get",
-    url: "/category/list",
+    url: "/categories",
   });
   const {
     response: isProduct,
@@ -27,7 +27,7 @@ const Home = () => {
     error: isError,
   } = useFetch({
     method: "get",
-    url: "/product/",
+    url: "/products",
   });
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
